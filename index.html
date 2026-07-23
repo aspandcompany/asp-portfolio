@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ASP & Co. — Creation Research & Visual Storytelling</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,700;1,300;1,700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css">
 <style>
@@ -64,7 +64,6 @@ nav {
 }
 .nav-links a.nav-accent:hover { color: var(--warm); }
 .nav-work-item { position: relative; }
-.nav-work-trigger { cursor: default; }
 .nav-bridge { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); width: 160px; height: 40px; }
 .nav-dropdown {
   position: absolute; top: calc(100% + 40px); left: 50%;
@@ -772,6 +771,61 @@ footer {
 }
 .img-ph svg { width: 20px; height: 20px; opacity: 0.15; }
 
+/* ════════════════════════════════════════════════
+   FOUNDER'S PORTFOLIOS PAGE
+════════════════════════════════════════════════ */
+#page-founders-portfolios { background: var(--bone); }
+.founders-hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--moss); overflow: hidden;
+}
+.founders-hero img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; filter: saturate(0.88) brightness(0.7);
+}
+.founders-hero-overlay {
+  position: absolute; inset: 0;
+  background: rgba(37,35,32,0.15);
+}
+.founders-hero-line {
+  position: relative; z-index: 1;
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem); color: var(--sand);
+  text-align: center; padding: 0 2rem;
+}
+.founders-gallery {
+  background: var(--bone); padding: 6rem 3rem;
+  display: flex; flex-direction: column; gap: 6rem;
+  max-width: 1200px; margin: 0 auto;
+}
+.photo-pair, .photo-trio, .photo-offset { align-items: start; }
+.photo-solo { max-width: 520px; margin: 2rem auto; }
+.photo-solo .pc { background: var(--moss); overflow: hidden; position: relative; }
+.gallery-caption {
+  text-align: center; margin-top: 0.85rem;
+  font-family: 'Inter', sans-serif; font-weight: 400;
+  font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--warm);
+}
+.founders-closing {
+  background: var(--bone); padding: 5rem 3rem 8rem;
+  text-align: center;
+}
+.founders-closing-line {
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem); color: var(--map-doc);
+  margin-bottom: 2rem;
+}
+.founders-closing-link {
+  font-family: 'Inter', sans-serif; font-weight: 500;
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--warm); text-decoration: none; cursor: pointer;
+  border-bottom: 1px solid rgba(201,149,106,0.4); padding-bottom: 0.3rem;
+  transition: border-color 0.2s;
+}
+.founders-closing-link:hover { border-color: var(--warm); }
+
 .caption-strip {
   padding: 0.65rem 3rem; font-size: 0.7rem; letter-spacing: 0.08em;
   color: var(--dusk); border-bottom: 1px solid var(--fog);
@@ -899,6 +953,13 @@ footer {
 }
 .about-chapter.flip { direction: rtl; }
 .about-chapter.flip > * { direction: ltr; }
+.about-chapter.no-image { grid-template-columns: 1fr; min-height: 0; }
+.about-chapter.no-image .about-chapter-text { padding: 6rem 3rem; justify-content: flex-start; }
+.about-chapter-split {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start;
+}
+.about-chapter-split-left { position: sticky; top: 7rem; }
 .about-chapter-img {
   position: relative; background: var(--moss); overflow: hidden; min-height: 460px;
 }
@@ -1272,7 +1333,7 @@ footer {
    MEDIA KIT PAGE
 ════════════════════════════════════════════════ */
 #page-mediakit { min-height: 100vh; padding-top: 68px; background: var(--salt, var(--bone)); }
-#page-experience-design, #page-operator-partnerships, #page-hospitality-programming {
+#page-work, #page-origin-brief, #page-rooted-travel-partnerships {
   min-height: 100vh; padding-top: 68px; background: var(--bone);
 }
 
@@ -1354,6 +1415,8 @@ footer {
 ════════════════════════════════════════════════ */
 #page-archive { min-height: 100vh; padding-top: 68px; background: var(--bone); }
 #page-archive-raleigh { min-height: 100vh; padding-top: 68px; background: var(--bone); }
+#page-archive-nashville { min-height: 100vh; padding-top: 68px; background: var(--bone); }
+#page-archive-miami { min-height: 100vh; padding-top: 68px; background: var(--bone); }
 
 .archive-hero {
   background: var(--slate); padding: 5rem 3rem 4rem;
@@ -1714,109 +1777,6 @@ footer {
 ════════════════════════════════════════════════ */
 #page-licensing { min-height: 100vh; padding-top: 68px; background: var(--bone); }
 
-.lic-page-hero {
-  background: var(--slate); padding: 5rem 3rem 4rem;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: end;
-}
-.lic-page-hero-left {}
-.lic-page-eyebrow {
-  font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--tide); display: block; margin-bottom: 1.5rem;
-}
-.lic-page-title {
-  font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.5rem);
-  font-weight: 700; line-height: 0.95; color: var(--sand); margin-bottom: 1.5rem;
-}
-.lic-page-title em { font-style: italic; color: var(--accent); }
-.lic-page-body {
-  font-size: 0.9rem; line-height: 1.9; color: rgba(242,237,227,0.45); max-width: 48ch;
-}
-.lic-page-hero-right { padding-bottom: 0.5rem; }
-.lic-page-how-title {
-  font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--tide); margin-bottom: 1.5rem;
-}
-.lic-page-how-list { display: flex; flex-direction: column; gap: 0; }
-.lic-page-how-item {
-  padding: 1rem 0; border-top: 1px solid rgba(184,154,114,0.1);
-  display: grid; grid-template-columns: 1.5rem 1fr; gap: 1rem;
-  font-size: 0.9rem; color: rgba(242,237,227,0.5); line-height: 1.7;
-}
-.lic-page-how-item:last-child { border-bottom: 1px solid rgba(184,154,114,0.1); }
-.lic-page-how-num { color: var(--accent); font-family: var(--serif); font-size: 1rem; font-weight: 700; }
-
-.lic-collections {
-  padding: 6rem 3rem; background: var(--sand);
-}
-.lic-collections-header {
-  margin-bottom: 3rem;
-}
-.lic-collections-title {
-  font-family: var(--serif); font-size: clamp(1.8rem, 2.5vw, 2.5rem);
-  font-weight: 700; color: var(--slate); line-height: 1.1; margin-bottom: 0.75rem;
-}
-.lic-collections-sub {
-  font-size: 0.9rem; color: var(--dusk); line-height: 1.8; max-width: 52ch;
-}
-.lic-collections-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-}
-.lic-collection-card {
-  background: var(--bone); border: 1px solid var(--fog);
-  cursor: pointer; transition: border-color 0.25s, transform 0.25s;
-}
-.lic-collection-card:hover { border-color: var(--horizon); transform: translateY(-3px); }
-.lic-collection-img {
-  aspect-ratio: 16/9; background: var(--moss); position: relative; overflow: hidden;
-}
-.lic-collection-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85); }
-.lic-collection-img-ph {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-  color: rgba(250,248,244,0.1); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
-}
-.lic-collection-body { padding: 1.5rem 1.75rem 2rem; }
-.lic-collection-region {
-  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--horizon); margin-bottom: 0.4rem;
-}
-.lic-collection-name {
-  font-family: var(--serif); font-size: 1.35rem; font-weight: 700;
-  color: var(--slate); margin-bottom: 0.4rem; line-height: 1.1;
-}
-.lic-collection-nodes {
-  font-size: 0.7rem; color: var(--tide); letter-spacing: 0.08em; margin-bottom: 0.75rem;
-}
-.lic-collection-desc { font-size: 0.9rem; line-height: 1.75; color: var(--dusk); }
-.lic-collection-cta {
-  display: inline-flex; align-items: center; gap: 0.45rem;
-  font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--horizon); margin-top: 1rem;
-}
-.lic-collection-cta svg { width: 10px; height: 10px; transition: transform 0.2s; }
-.lic-collection-card:hover .lic-collection-cta svg { transform: translateX(3px); }
-
-.lic-terms {
-  padding: 5rem 3rem; background: var(--bone);
-  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
-}
-.lic-terms-left {}
-.lic-terms-title {
-  font-family: var(--serif); font-size: clamp(1.8rem, 2.5vw, 2.5rem);
-  font-weight: 700; color: var(--slate); line-height: 1.1; margin-bottom: 1.25rem;
-}
-.lic-terms-body {
-  font-size: 0.9rem; line-height: 1.9; color: var(--moss); margin-bottom: 2rem;
-}
-.lic-terms-body p + p { margin-top: 0.9rem; }
-.lic-terms-right {}
-.lic-terms-row {
-  padding: 1rem 0; border-top: 1px solid var(--fog);
-  display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; font-size: 0.9rem;
-}
-.lic-terms-row:last-child { border-bottom: 1px solid var(--fog); }
-.lic-terms-label { color: var(--tide); }
-.lic-terms-val { color: var(--slate); line-height: 1.6; }
-
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   nav { padding: 1.1rem 1.5rem; }
@@ -1864,6 +1824,9 @@ footer {
   .about-method-phase { grid-template-columns: 1fr; gap: 0.5rem; }
   .about-now { padding: 5rem 1.5rem; }
   .about-chapter { grid-template-columns: 1fr; min-height: unset; }
+  .about-chapter-split { grid-template-columns: 1fr; gap: 1.5rem; }
+  .about-chapter-split-left { position: static; }
+  .about-chapter.no-image .about-chapter-text { padding: 3.5rem 1.5rem; }
   .about-chapter.flip { direction: ltr; }
   .about-chapter-text { padding: 3.5rem 1.5rem; }
   .about-chapter-img { min-height: 280px; }
@@ -1874,11 +1837,6 @@ footer {
   .about-for { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
   .about-for-types { grid-template-columns: 1fr; }
   .about-strip { padding: 1.5rem; }
-  .lic-page-hero { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
-  .lic-collections { padding: 4rem 1.5rem; }
-  .lic-collections-grid { grid-template-columns: 1fr; }
-  .lic-terms { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
-  .lic-terms-row { grid-template-columns: 1fr; gap: 0.2rem; }
   .archive-hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
   .archive-grid, .archive-grid.three { grid-template-columns: repeat(2, 1fr); }
   .archive-grid-section { padding: 4rem 1.5rem; }
@@ -1989,7 +1947,7 @@ const CONFIG = {
     },
     {
       id: "nashville", name: "Nashville", region: "Tennessee",
-      status: "identity", latlng: [36.1627, -86.7816], archivePage: null,
+      status: "identity", latlng: [36.1627, -86.7816], archivePage: "archive-nashville",
       sectors: ["place", "practice", "people", "passage"],
       sectorCopy: {
         place:    "The Cumberland River corridor, Jefferson Street, the migration routes that brought country and gospel into the same geography.",
@@ -2028,13 +1986,13 @@ const CONFIG = {
     },
     {
       id: "miami", name: "Miami", region: "South Florida",
-      status: "anticipated", latlng: [25.7617, -80.1918], archivePage: null,
+      status: "identity", latlng: [25.7617, -80.1918], archivePage: "archive-miami",
       sectors: ["place", "practice", "people", "passage"],
       sectorCopy: {
-        place:    "South Florida's coastal geography and Caribbean-facing waterways — where the geographic thesis extends next.",
-        practice: "The Caribbean and Latin cultural currents running through South Florida, to be documented once field presence begins.",
-        people:   "The carriers of Miami's cultural origin — identified through direct field research, the same as every other Portfolio.",
-        passage:  "The scale of Miami's hospitality market makes this the furthest-reaching Passage opportunity in the current thesis, pending the same research process as every documented place."
+        place:    "South Florida's coastal geography and Caribbean-facing waterways — the Atlantic corridor connecting Miami to Nassau, Key West, and the Gulf.",
+        practice: "The Caribbean and Bahamian cultural currents running through South Florida, traced through the sponging trade that also built Tarpon Springs.",
+        people:   "The carriers of that Atlantic-corridor heritage — documented alongside the same Bahamian sponging communities the practice already knows from Tarpon Springs.",
+        passage:  "The scale of Miami's hospitality market makes this the furthest-reaching Passage opportunity in the current thesis."
       }
     }
   ],
@@ -2178,21 +2136,21 @@ function showPage(id) {
     <li><a onclick="showPage('home')">Home</a></li>
     <li><a onclick="showPage('about')">About</a></li>
     <li class="nav-work-item">
-      <a onclick="showPage('archives')">The Archive</a>
+      <a onclick="showPage('archive-hub')">The Archive</a>
       <div class="nav-bridge"></div>
       <div class="nav-dropdown">
-        <a onclick="showPage('home'); setTimeout(()=>document.getElementById('letters-anchor').scrollIntoView({behavior:'smooth'}),80)">Founder's Portfolios</a>
+        <a onclick="showPage('founders-portfolios')">The Founder's Portfolio</a>
+        <a onclick="showPage('archive-hub')">The Archive</a>
       </div>
     </li>
     <li class="nav-work-item">
-      <a class="nav-work-trigger">The Work</a>
+      <a onclick="showPage('work')">The Work</a>
       <div class="nav-bridge"></div>
       <div class="nav-dropdown">
-        <a onclick="showPage('experience-design')">Experience Design</a>
-        <a onclick="showPage('operator-partnerships')">Operator Partnerships</a>
-        <a onclick="showPage('hospitality-programming')">Hospitality Programming</a>
-        <a onclick="showPage('mediakit')">Media Kit</a>
+        <a onclick="showPage('origin-brief')">The Origin Brief</a>
+        <a onclick="showPage('rooted-travel-partnerships')">Rooted Travel Partnerships</a>
         <a onclick="showPage('licensing')" class="nav-accent">License Imagery</a>
+        <a onclick="showPage('mediakit')">Media Kit</a>
       </div>
     </li>
     <li><a onclick="showPage('contact')" style="cursor:pointer">Contact</a></li>
@@ -2201,13 +2159,13 @@ function showPage(id) {
 <div class="nav-mobile-menu" id="nav-mobile-menu">
   <a onclick="showPage('home');closeMobileNav()">Home</a>
   <a onclick="showPage('about');closeMobileNav()">About</a>
-  <a onclick="showPage('archives');closeMobileNav()">The Archive</a>
-  <a onclick="showPage('home');setTimeout(()=>document.getElementById('letters-anchor').scrollIntoView({behavior:'smooth'}),80);closeMobileNav()">Founder's Portfolios</a>
-  <a onclick="showPage('experience-design');closeMobileNav()">Experience Design</a>
-  <a onclick="showPage('operator-partnerships');closeMobileNav()">Operator Partnerships</a>
-  <a onclick="showPage('hospitality-programming');closeMobileNav()">Hospitality Programming</a>
-  <a onclick="showPage('mediakit');closeMobileNav()">Media Kit</a>
+  <a onclick="showPage('archive-hub');closeMobileNav()">The Archive</a>
+  <a onclick="showPage('founders-portfolios');closeMobileNav()">The Founder's Portfolio</a>
+  <a onclick="showPage('work');closeMobileNav()">The Work</a>
+  <a onclick="showPage('origin-brief');closeMobileNav()">The Origin Brief</a>
+  <a onclick="showPage('rooted-travel-partnerships');closeMobileNav()">Rooted Travel Partnerships</a>
   <a onclick="showPage('licensing');closeMobileNav()" class="nav-accent">License Imagery</a>
+  <a onclick="showPage('mediakit');closeMobileNav()">Media Kit</a>
   <a onclick="showPage('contact');closeMobileNav()">Contact</a>
 </div>
 
@@ -2234,7 +2192,7 @@ function showPage(id) {
       <p class="hero-body">ASP & Co. curates visual portfolios that help businesses and destinations express their connection to the places they call home — through extended presence, not visits.</p>
       <div class="hero-cta-group">
         <button class="cta-primary" onclick="document.getElementById('letters-anchor').scrollIntoView({behavior:'smooth'})">
-          Founder's Portfolios
+          The Founder's Portfolio
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 9l5 5 5-5"/></svg>
         </button>
         <button class="cta-secondary" onclick="showPage('letter')">
@@ -2342,7 +2300,7 @@ function showPage(id) {
   <!-- Love Letters -->
   <div class="letters-section" id="letters-anchor">
     <div class="letters-header">
-      <span class="eyebrow" style="color:var(--tide)">ASP & Co. — Founder's Portfolios</span>
+      <span class="eyebrow" style="color:var(--tide)">ASP & Co. — The Founder's Portfolio</span>
       <h2 class="letters-title">Living archives of the places that matter.</h2>
       <p class="letters-body">Each record is a living field document — part photography, part personal record. Places with deep relationships earn a record. Others enter The Archive. All are available for licensing.</p>
     </div>
@@ -2424,6 +2382,188 @@ function showPage(id) {
   </footer>
 
 </div><!-- /page-home -->
+
+
+<!-- ════════════════════════════════
+     THE ARCHIVE — LANDING PAGE
+════════════════════════════════ -->
+<div class="page" id="page-archive-hub" style="background:var(--bone);padding-top:68px;min-height:100vh">
+
+  <div style="max-width:760px;margin:0 auto;padding:7rem 3rem 3rem;text-align:center">
+    <span style="font-family:'Inter',sans-serif;font-weight:500;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--warm);display:block;margin-bottom:2rem">Creation Research · ASP & Co.</span>
+    <h1 style="font-family:var(--serif);font-weight:700;font-size:clamp(2.5rem,5vw,4rem);line-height:1.05;color:var(--map-doc);margin-bottom:2rem">The Archive</h1>
+    <p style="font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.05rem;line-height:1.85;color:var(--map-doc);margin-bottom:1.5rem">Every place ASP & Co. enters becomes a permanent part of the Archive. What begins as field research resolves into a visual record, a written account, and a lived experience — built from the ground up, place by place.</p>
+    <p style="font-family:var(--serif);font-style:italic;font-weight:300;font-size:1.05rem;line-height:1.85;color:var(--map-doc)">Enter through the work. Or go straight to the Archive.</p>
+  </div>
+
+  <div class="mk-section">
+    <div class="mk-partner-types" style="max-width:900px;margin:0 auto">
+      <div class="mk-partner-type">
+        <p class="mk-partner-type-title">The Founder's Portfolio</p>
+        <p>A curated glimpse of the work — the places, the people, and the geographies that define the practice. The invitation.</p>
+        <p><a class="lic-link" onclick="showPage('founders-portfolios')" style="cursor:pointer;display:inline-flex;align-items:center;gap:0.6rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--slate);text-decoration:none;border-bottom:1px solid var(--horizon);padding-bottom:0.2rem">View the Portfolios &#8594;</a></p>
+      </div>
+      <div class="mk-partner-type">
+        <p class="mk-partner-type-title">The Archive</p>
+        <p>The full body of research. Every Identity Portfolio, every location ASP & Co. has entered, organized by geography and documented through the 225 Framework.</p>
+        <p><a class="lic-link" onclick="showPage('archives')" style="cursor:pointer;display:inline-flex;align-items:center;gap:0.6rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--slate);text-decoration:none;border-bottom:1px solid var(--horizon);padding-bottom:0.2rem">Explore the Archive &#8594;</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════
+     FOUNDER'S PORTFOLIOS PAGE
+════════════════════════════════ -->
+<div class="page" id="page-founders-portfolios">
+
+  <div class="founders-hero">
+    <img src="photos/DSC_0920.jpg" alt="Maximo Park, St. Petersburg, Florida">
+    <div class="founders-hero-overlay"></div>
+    <p class="founders-hero-line">This is what we've found.</p>
+  </div>
+
+  <div class="founders-gallery">
+
+    <div>
+      <div class="photo-full" style="aspect-ratio:1620/1080"><img src="photos/DSC_0920.jpg" alt="Maximo Park, St. Petersburg, Florida"></div>
+      <p class="gallery-caption">Maximo Park, St. Petersburg, Florida</p>
+    </div>
+
+    <div class="photo-pair">
+      <div>
+        <div class="pc" style="aspect-ratio:1620/1080"><img src="photos/DSC_0783.jpg" alt="St. Petersburg, Florida"></div>
+        <p class="gallery-caption">St. Petersburg, Florida</p>
+      </div>
+      <div>
+        <div class="pc" style="aspect-ratio:1547/1031"><img src="photos/DSC_0052.jpg" alt="Brunswick Town, Winnabow, North Carolina"></div>
+        <p class="gallery-caption">Brunswick Town, Winnabow, North Carolina</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="photo-full" style="aspect-ratio:1620/1080"><img src="photos/DSC_0173.jpg" alt="The Cumberland River, Nashville, Tennessee"></div>
+      <p class="gallery-caption">The Cumberland River, Nashville, Tennessee</p>
+    </div>
+
+    <div>
+      <div class="photo-full" style="aspect-ratio:1614/1076"><img src="photos/DSC_0449.jpg" alt="St. Petersburg, Florida"></div>
+      <p class="gallery-caption">St. Petersburg, Florida</p>
+    </div>
+
+    <div class="photo-solo">
+      <div class="pc" style="aspect-ratio:1080/1620"><img src="photos/DSC_0034.jpg" alt="Nashville, Tennessee"></div>
+      <p class="gallery-caption">Nashville, Tennessee</p>
+    </div>
+
+    <div>
+      <div class="photo-full" style="aspect-ratio:1591/1061"><img src="photos/DSC_0938.jpg" alt="Fred Howard Park, Tarpon Springs, Florida"></div>
+      <p class="gallery-caption">Fred Howard Park, Tarpon Springs, Florida</p>
+    </div>
+
+    <div class="photo-solo">
+      <div class="pc" style="aspect-ratio:1080/1620"><img src="photos/DSC_0827.jpg" alt="Central Avenue, St. Petersburg, Florida"></div>
+      <p class="gallery-caption">Central Avenue, St. Petersburg, Florida</p>
+    </div>
+
+    <div class="photo-trio">
+      <div>
+        <div class="pc" style="aspect-ratio:1620/1080"><img src="photos/DSC_0452.jpg" alt="South Pointe Park, Miami Beach, Florida"></div>
+        <p class="gallery-caption">South Pointe Park, Miami Beach, Florida</p>
+      </div>
+      <div>
+        <div class="pc" style="aspect-ratio:1620/1080"><img src="photos/DSC_0006.jpg" alt="Nashville, Tennessee"></div>
+        <p class="gallery-caption">Nashville, Tennessee</p>
+      </div>
+      <div>
+        <div class="pc" style="aspect-ratio:1620/1080"><img src="photos/DSC_0917.jpg" alt="Miami Beach, Florida"></div>
+        <p class="gallery-caption">Miami Beach, Florida</p>
+      </div>
+    </div>
+
+    <div class="photo-pair">
+      <div>
+        <div class="pc" style="aspect-ratio:1620/1080"><img src="photos/DSC_0986.jpg" alt="Maximo Park, St. Petersburg, Florida"></div>
+        <p class="gallery-caption">Maximo Park, St. Petersburg, Florida</p>
+      </div>
+      <div>
+        <div class="pc" style="aspect-ratio:1620/1080"><img src="photos/DSC_0925.jpg" alt="Surf City, North Carolina"></div>
+        <p class="gallery-caption">Surf City, North Carolina</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="photo-full" style="aspect-ratio:1620/1080"><img src="photos/DSC_0077.jpg" alt="Sponge Docks, Tarpon Springs, Florida"></div>
+      <p class="gallery-caption">Sponge Docks, Tarpon Springs, Florida</p>
+    </div>
+
+    <div class="photo-pair">
+      <div>
+        <div class="pc" style="aspect-ratio:1620/1080"><img src="photos/DSC_0299.jpg" alt="St. Petersburg, Florida"></div>
+        <p class="gallery-caption">St. Petersburg, Florida</p>
+      </div>
+      <div>
+        <div class="pc" style="aspect-ratio:1620/1080"><img src="photos/DSC_0011.jpg" alt="Surf City Pier, North Carolina"></div>
+        <p class="gallery-caption">Surf City Pier, North Carolina</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="photo-full" style="aspect-ratio:1620/1080"><img src="photos/DSC_0641.jpg" alt="Pass-a-Grille, St. Petersburg, Florida"></div>
+      <p class="gallery-caption">Pass-a-Grille, St. Petersburg, Florida</p>
+    </div>
+
+    <div class="photo-solo">
+      <div class="pc" style="aspect-ratio:1080/1620"><img src="photos/DSC_0531.jpg" alt="St. Petersburg, Florida"></div>
+      <p class="gallery-caption">St. Petersburg, Florida</p>
+    </div>
+
+    <div class="photo-pair">
+      <div>
+        <div class="pc" style="aspect-ratio:1590/1060"><img src="photos/DSC_0607.jpg" alt="The Gulf of Mexico, Tarpon Springs, Florida"></div>
+        <p class="gallery-caption">The Gulf of Mexico, Tarpon Springs, Florida</p>
+      </div>
+      <div>
+        <div class="pc" style="aspect-ratio:1608/1072"><img src="photos/DSC_0649.jpg" alt="Tampa Bay, Florida"></div>
+        <p class="gallery-caption">Tampa Bay, Florida</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="photo-full" style="aspect-ratio:1620/1080"><img src="photos/DSC_0158.jpg" alt="Bay Vista Park, St. Petersburg, Florida"></div>
+      <p class="gallery-caption">Bay Vista Park, St. Petersburg, Florida</p>
+    </div>
+
+    <div class="photo-solo">
+      <div class="pc" style="aspect-ratio:1080/1620"><img src="photos/DSC_0959.jpg" alt="Vanderbilt University, Nashville, Tennessee"></div>
+      <p class="gallery-caption">Vanderbilt University, Nashville, Tennessee</p>
+    </div>
+
+    <div class="photo-trio">
+      <div>
+        <div class="pc" style="aspect-ratio:1620/1080"><img src="photos/DSC_0934.jpg" alt="Surf City, North Carolina"></div>
+        <p class="gallery-caption">Surf City, North Carolina</p>
+      </div>
+      <div>
+        <div class="pc" style="aspect-ratio:1620/1080"><img src="photos/DSC_0633.jpg" alt="St. Petersburg, Florida"></div>
+        <p class="gallery-caption">St. Petersburg, Florida</p>
+      </div>
+      <div>
+        <div class="pc" style="aspect-ratio:1620/1080"><img src="photos/DSC_0133.jpg" alt="Bay Vista Park, St. Petersburg, Florida"></div>
+        <p class="gallery-caption">Bay Vista Park, St. Petersburg, Florida</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="founders-closing">
+    <p class="founders-closing-line">This is the surface. The Archive goes deeper.</p>
+    <a class="founders-closing-link" onclick="showPage('archives')">Explore the Archive &#8594;</a>
+  </div>
+
+</div>
 
 
 <!-- ════════════════════════════════
@@ -3064,87 +3204,70 @@ function showPage(id) {
 ════════════════════════════════ -->
 <div class="page" id="page-licensing">
 
-  <!-- Hero -->
-  <div class="lic-page-hero">
-    <div class="lic-page-hero-left">
-      <span class="lic-page-eyebrow">ASP & Co. — License Imagery</span>
-      <h1 class="lic-page-title">Place-rooted imagery,<br>available for<br><em>licensing.</em></h1>
-      <p class="lic-page-body">You're not licensing from a library. You're licensing from an active field research practice — imagery produced through sustained presence in coastal communities with cultural histories that most destination photography has never reached. Rooted in the American coastal South, the practice extends to any coastal place where the visual record is incomplete. What you license is primary source material from a researcher who has been present long enough to see what these places actually look like.</p>
-    </div>
-    <div class="lic-page-hero-right">
-      <p class="lic-page-how-title">How it works</p>
-      <div class="lic-page-how-list">
-        <div class="lic-page-how-item"><span class="lic-page-how-num">01</span><span>Browse the collections below and identify the region or specific locations relevant to your project.</span></div>
-        <div class="lic-page-how-item"><span class="lic-page-how-num">02</span><span>Reach out with your use case — campaign, editorial, destination marketing, cultural documentation. The more specific, the better.</span></div>
-        <div class="lic-page-how-item"><span class="lic-page-how-num">03</span><span>We assemble a custom portfolio from the full collection — not just what's shown on the archive pages — and negotiate terms directly.</span></div>
-        <div class="lic-page-how-item"><span class="lic-page-how-num">04</span><span>No preset packages, no middlemen. Rights negotiated per use — web, print, campaign, editorial, exclusivity available on request.</span></div>
-      </div>
+  <div class="archive-map-header">
+    <div>
+      <span class="eyebrow" style="color:var(--tide);margin-bottom:0.75rem;display:block">The Work · ASP & Co.</span>
+      <h1 class="archive-map-title">License<br><em>Imagery.</em></h1>
     </div>
   </div>
 
-  <!-- Collections -->
-  <div class="lic-collections">
-    <div class="lic-collections-header">
-      <span class="eyebrow" style="color:var(--tide)">Available Collections</span>
-      <h2 class="lic-collections-title">Three regions. One practice.</h2>
-      <p class="lic-collections-sub">Each collection is actively growing — imagery is added regularly as documentation continues. What you see in the archive pages is a selection. The full backlog runs significantly deeper.</p>
+  <!-- Chapter 01 -->
+  <div class="about-chapter dark">
+    <div class="about-chapter-img">
+      <img src="photos/stpete-tile-cover.jpg" alt="St. Petersburg, FL">
     </div>
-    <div class="lic-collections-grid">
-
-      <div class="lic-collection-card" onclick="showPage('archive')">
-        <div class="lic-collection-img"><div class="lic-collection-img-ph">St. Petersburg, FL</div></div>
-        <div class="lic-collection-body">
-          <div class="lic-collection-region">Pinellas County, Florida</div>
-          <h3 class="lic-collection-name">St. Petersburg</h3>
-          <div class="lic-collection-nodes">St. Pete · The Beaches</div>
-          <p class="lic-collection-desc">The city and the barrier islands — bay side and Gulf side. Southside cultural corridors, Roser Park, the Deuces, Pass-a-Grille, Treasure Island, and the particular light of Tampa Bay at dusk.</p>
-          <span class="lic-collection-cta">View collection <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></svg></span>
-        </div>
+    <div class="about-chapter-text">
+      <span class="about-chapter-year">01</span>
+      <span class="about-chapter-place">How Licensing Works</span>
+      <div class="about-chapter-body">
+        <p>Every image in the ASP & Co. Archive comes from research. That is what makes it different from stock.</p>
+        <p>Place-based visual content is available to businesses, publications, DMOs, hospitality brands, and cultural institutions in two ways. One draws from what already exists in the Archive. The other builds something new.</p>
       </div>
-
-      <div class="lic-collection-card" onclick="showPage('archive-tarpon')">
-        <div class="lic-collection-img"><div class="lic-collection-img-ph">Tarpon Springs, FL</div></div>
-        <div class="lic-collection-body">
-          <div class="lic-collection-region">Pinellas County, Florida</div>
-          <h3 class="lic-collection-name">Tarpon Springs</h3>
-          <div class="lic-collection-nodes">Sponge Docks · Rose Cemetery · Fred Howard Park</div>
-          <p class="lic-collection-desc">Greek sponge diving heritage, Bahamian cultural roots, Spring Bayou, and the Gulf-facing parks. The historic district and the coastline — two distinct characters of the same city.</p>
-          <span class="lic-collection-cta">View collection <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></svg></span>
-        </div>
-      </div>
-
-      <div class="lic-collection-card" onclick="showPage('archive-nc')">
-        <div class="lic-collection-img"><div class="lic-collection-img-ph">Lower Cape Fear, NC</div></div>
-        <div class="lic-collection-body">
-          <div class="lic-collection-region">Brunswick · New Hanover · Pender Counties, NC</div>
-          <h3 class="lic-collection-name">Lower Cape Fear</h3>
-          <div class="lic-collection-nodes">Surf City · Wilmington · Southport · Oak Island</div>
-          <p class="lic-collection-desc">A four-node coastal corridor — barrier islands, the Cape Fear River, and the communities that didn't become resorts. The Gullah Geechee coastline documented from the inside.</p>
-          <span class="lic-collection-cta">View collection <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M9 3l5 5-5 5"/></svg></span>
-        </div>
-      </div>
-
+      <span class="about-chapter-tag">License Imagery</span>
     </div>
   </div>
 
-  <!-- Terms & Process -->
-  <div class="lic-terms">
-    <div class="lic-terms-left">
-      <h2 class="lic-terms-title">What you're<br>actually licensing.</h2>
-      <div class="lic-terms-body">
-        <p>Every image in these collections comes from extended presence — not a single shoot, not a stock trip. The photographer has a genuine relationship with each of these places. That context is part of what you're paying for.</p>
-        <p>Custom portfolios can be assembled from the full backlog — what appears on the archive pages is a curated selection. If you need specific neighborhoods, specific light conditions, or specific cultural contexts, ask. The collection likely has it.</p>
-      </div>
-      <a class="lic-link" onclick="showPage('contact')" style="cursor:pointer;display:inline-flex;align-items:center;gap:0.6rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--slate);text-decoration:none;border-bottom:1px solid var(--horizon);padding-bottom:0.2rem">Start the conversation &#8594;</a>
+  <!-- Chapter 02 -->
+  <div class="about-chapter light flip">
+    <div class="about-chapter-img">
+      <img src="photos/stpete-skyline-aug2022.jpg" alt="St. Petersburg, FL skyline">
     </div>
-    <div class="lic-terms-right">
-      <div class="lic-terms-row"><span class="lic-terms-label">Format</span><span class="lic-terms-val">High-resolution digital files</span></div>
-      <div class="lic-terms-row"><span class="lic-terms-label">Rights</span><span class="lic-terms-val">Negotiated per use — web, print, campaign, editorial</span></div>
-      <div class="lic-terms-row"><span class="lic-terms-label">Exclusivity</span><span class="lic-terms-val">Available on request — industry or region-specific</span></div>
-      <div class="lic-terms-row"><span class="lic-terms-label">Custom Portfolios</span><span class="lic-terms-val">Yes — assembled from full collection based on your brief</span></div>
-      <div class="lic-terms-row"><span class="lic-terms-label">Archive Growth</span><span class="lic-terms-val">All collections actively growing — new imagery added regularly</span></div>
-      <div class="lic-terms-row"><span class="lic-terms-label">Process</span><span class="lic-terms-val">Direct — no preset packages, no middlemen</span></div>
-      <div class="lic-terms-row"><span class="lic-terms-label">Contact</span><span class="lic-terms-val" id="licensing-contact-email"></span></div>
+    <div class="about-chapter-text">
+      <span class="about-chapter-year">02</span>
+      <span class="about-chapter-place">From the Archive</span>
+      <div class="about-chapter-body">
+        <p>The Visual Reckoning is available for licensing at two levels.</p>
+        <p>Known Portrait imagery — the recognized visual identity of a place as documented through ASP & Co.'s lens — is available now for every active Identity Portfolio. This is the foundation. It reflects what a place is already known for, captured with the rigor and perspective ASP & Co. brings to every location it enters.</p>
+        <p>Record imagery goes deeper — into the cultural heritage, lived reality, and the stories a place's reputation has left out. This imagery is released for licensing only after that Record's Reckoning of Place is complete and published. As each Reckoning is finished, the licensing parameters for that Portfolio expand. Agreements are structured to grow with the research rather than freeze at a single transaction.</p>
+      </div>
+      <div class="mk-partner-type" style="margin-top:1.5rem">
+        <p class="mk-partner-type-title">Currently Available</p>
+        <p>Known Portrait imagery from the Saint Petersburg Identity Portfolio. Additional Portfolios are in active development — Nashville, Miami, and Tarpon Springs Known Portrait imagery will be available as each reaches completion. Record imagery releases as individual Reckonings are completed.</p>
+      </div>
+      <span class="about-chapter-tag">The Visual Reckoning</span>
+    </div>
+  </div>
+
+  <!-- Chapter 03 -->
+  <div class="about-chapter sand">
+    <div class="about-chapter-img">
+      <div class="about-chapter-img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg> New location documentation</div>
+    </div>
+    <div class="about-chapter-text">
+      <span class="about-chapter-year">03</span>
+      <span class="about-chapter-place">Commissioned Place Portfolios</span>
+      <div class="about-chapter-body">
+        <p>If ASP & Co. has not yet documented your location, that is not a barrier — it is an invitation.</p>
+        <p>A Commissioned Place Portfolio brings ASP & Co.'s full research methodology to a location on behalf of a specific client. The client receives custom place-based visual content rooted in genuine on-the-ground documentation — imagery that reflects the cultural identity, geographical character, and lived reality of the place, not a surface reading of it. ASP & Co. enters a new location market, builds the research foundation, and adds the documentation to the Archive.</p>
+        <p>No stock library produces this. The imagery exists because the research happened. That is what makes it licensable on terms that mean something.</p>
+      </div>
+      <span class="about-chapter-tag">New Locations</span>
+    </div>
+  </div>
+
+  <div class="mk-section">
+    <div class="archive-cta-body">
+      <p>To inquire about licensing existing Archive imagery or commissioning a Place Portfolio for your location, reach out through the <a onclick="showPage('contact')" style="cursor:pointer;color:var(--horizon);text-decoration:underline">contact page</a>.</p>
     </div>
   </div>
 
@@ -3411,29 +3534,29 @@ function showPage(id) {
           <div class="about-method-phase">
             <span class="about-method-phase-label">Movement I</span>
             <div class="about-method-phase-content">
-              <div class="about-method-phase-title">Research Orientation</div>
-              <p class="about-method-phase-desc">Before any field presence, the practice builds a comprehensive orientation memo — a primary-source-anchored map of what is known, what is contested, and what is missing. Its final section names explicitly what is not yet known. You cannot restore what you have not first honestly witnessed.</p>
+              <div class="about-method-phase-title">The Physical Record</div>
+              <p class="about-method-phase-desc">Intensive study and visual documentation of the natural environment — waterways, geography, ecology, the built landscape. The land and water as they actually exist, before any story is told about them.</p>
             </div>
           </div>
           <div class="about-method-phase">
             <span class="about-method-phase-label">Movement II</span>
             <div class="about-method-phase-content">
-              <div class="about-method-phase-title">Annotated Bibliography</div>
-              <p class="about-method-phase-desc">Every claim made in any ASP & Co. deliverable traces back to a source. The bibliography is tiered — primary documentary evidence, institutional scholarship, journalistic record, provisional leads. Disagreements between sources are documented, not smoothed over. Restoration requires receipts.</p>
+              <div class="about-method-phase-title">The Cultural Intersection</div>
+              <p class="about-method-phase-desc">Equally intensive study of the cultural heritage and human livelihoods native to that environment — the economies, traditions, and communities that grew directly out of the physical record. This is where the relationship between people and place gets defined.</p>
             </div>
           </div>
           <div class="about-method-phase">
             <span class="about-method-phase-label">Movement III</span>
             <div class="about-method-phase-content">
-              <div class="about-method-phase-title">Field Documentation</div>
-              <p class="about-method-phase-desc">Enter the place. The field brief translates research into specific questions, specific people, specific locations, and a visual argument — not an inventory. Every shot ties to a thread from the research. Every person ties to the bibliography. This is where the dual-asset principle operates: client portfolio content and ASP & Co.'s own archival material grow from the same fieldwork. Restoration requires presence.</p>
+              <div class="about-method-phase-title">The Lived Reality</div>
+              <p class="about-method-phase-desc">The present-day condition. What of that culture survives, what has been commodified, what has been displaced. The gap between how a place markets itself and how its people actually live inside it now.</p>
             </div>
           </div>
           <div class="about-method-phase">
             <span class="about-method-phase-label">Movement IV</span>
             <div class="about-method-phase-content">
-              <div class="about-method-phase-title">Post-Field Synthesis</div>
-              <p class="about-method-phase-desc">Reconcile what was found with what was expected. Contradictions between the bibliography and the field are load-bearing — they are not soft-pedaled. The synthesis does not close the project. It opens the next research loop. Restoration is not a single act. It is a compounding practice.</p>
+              <div class="about-method-phase-title">The Audit and the Gap</div>
+              <p class="about-method-phase-desc">The written reckoning. An honest critique of what lifestyle branding has consistently left out — whose story has stopped renewing, whose identity has been frozen in archive while others circulate freely in the present tense. The demand is not to abandon the form. It is to apply it fully.</p>
             </div>
           </div>
         </div>
@@ -3651,19 +3774,38 @@ function showPage(id) {
 </div>
 
 <!-- ════════════════════════════════
-     THE WORK — PLACEHOLDER PAGE SHELLS
-     (§6B — structure only, no copy yet)
+     THE WORK — LANDING + PAGE SHELLS
+     (nav restructure — Origin Brief / Rooted Travel Partnerships copy
+     added in following steps; License Imagery is page-licensing)
 ════════════════════════════════ -->
-<div class="page" id="page-experience-design">
+<div class="page" id="page-work">
   <div class="archive-map-header">
     <div>
       <span class="eyebrow" style="color:var(--tide);margin-bottom:0.75rem;display:block">ASP & Co. — The Work</span>
-      <h1 class="archive-map-title">Experience<br><em>Design.</em></h1>
+      <h1 class="archive-map-title">The<br><em>Work.</em></h1>
     </div>
   </div>
+
   <div class="mk-section">
-    <p class="mk-statement">This page is in development.</p>
+    <p class="mk-statement">ASP & Co. does not sell destination marketing. It sells what destination marketing has been missing — the cultural and geographical foundation that makes a place worth representing in the first place.</p>
+    <p class="mk-statement" style="margin-top:1.5rem">The work is available in three forms. Each one is built from the same research. Each one goes deeper than the last.</p>
+
+    <div class="mk-partner-types three" style="margin-top:3rem">
+      <div class="mk-partner-type" onclick="showPage('origin-brief')" style="cursor:pointer">
+        <p class="mk-partner-type-title">The Origin Brief</p>
+        <p><a class="lic-link" style="cursor:pointer;display:inline-flex;align-items:center;gap:0.6rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--slate);text-decoration:none;border-bottom:1px solid var(--horizon);padding-bottom:0.2rem">View &#8594;</a></p>
+      </div>
+      <div class="mk-partner-type" onclick="showPage('rooted-travel-partnerships')" style="cursor:pointer">
+        <p class="mk-partner-type-title">Rooted Travel Partnerships</p>
+        <p><a class="lic-link" style="cursor:pointer;display:inline-flex;align-items:center;gap:0.6rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--slate);text-decoration:none;border-bottom:1px solid var(--horizon);padding-bottom:0.2rem">View &#8594;</a></p>
+      </div>
+      <div class="mk-partner-type" onclick="showPage('licensing')" style="cursor:pointer">
+        <p class="mk-partner-type-title">License Imagery</p>
+        <p><a class="lic-link" style="cursor:pointer;display:inline-flex;align-items:center;gap:0.6rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--slate);text-decoration:none;border-bottom:1px solid var(--horizon);padding-bottom:0.2rem">View &#8594;</a></p>
+      </div>
+    </div>
   </div>
+
   <footer>
     <div class="footer-mark-wrap"><span class="footer-mark" onclick="showPage('home')">ASP & Co.</span>
       <span class="footer-tagline">Research practice &nbsp;·&nbsp; Visual storytelling &nbsp;·&nbsp; Portfolio curation</span>
@@ -3678,16 +3820,96 @@ function showPage(id) {
   </footer>
 </div>
 
-<div class="page" id="page-operator-partnerships">
+<div class="page" id="page-origin-brief">
   <div class="archive-map-header">
     <div>
-      <span class="eyebrow" style="color:var(--tide);margin-bottom:0.75rem;display:block">ASP & Co. — The Work</span>
-      <h1 class="archive-map-title">Operator<br><em>Partnerships.</em></h1>
+      <span class="eyebrow" style="color:var(--tide);margin-bottom:0.75rem;display:block">The Work · ASP & Co.</span>
+      <h1 class="archive-map-title">The Origin<br><em>Brief.</em></h1>
     </div>
   </div>
-  <div class="mk-section">
-    <p class="mk-statement">This page is in development.</p>
+
+  <!-- Chapter 01 -->
+  <div class="about-chapter dark no-image">
+    <div class="about-chapter-text">
+      <div class="about-chapter-split">
+        <div class="about-chapter-split-left">
+          <span class="about-chapter-year">01</span>
+          <span class="about-chapter-place">The Foundation</span>
+        </div>
+        <div>
+          <div class="about-chapter-body">
+            <p>Every place has a cultural origin. Most businesses built in that place have never been formally introduced to it.</p>
+            <p>The Origin Brief is a strategic consulting document that answers three questions for any place-based business:</p>
+          </div>
+          <span class="about-chapter-tag">Origin Brief</span>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Chapter 02 -->
+  <div class="about-chapter light no-image">
+    <div class="about-chapter-text">
+      <div class="about-chapter-split">
+        <div class="about-chapter-split-left">
+          <span class="about-chapter-year">02</span>
+          <span class="about-chapter-place">The Three Questions</span>
+        </div>
+        <div>
+          <div class="about-method-phases">
+            <div class="about-method-phase">
+              <span class="about-method-phase-label">01</span>
+              <p class="about-method-phase-desc">What is the cultural and geographical foundation this place is actually built on — the waterways, communities, migrations, and traditions that shaped it before your business arrived?</p>
+            </div>
+            <div class="about-method-phase">
+              <span class="about-method-phase-label">02</span>
+              <p class="about-method-phase-desc">Where is the gap between how your business currently represents itself and the deeper story it could be telling?</p>
+            </div>
+            <div class="about-method-phase">
+              <span class="about-method-phase-label">03</span>
+              <p class="about-method-phase-desc">How can your photography, visual storytelling, social media, web presence, and brand expression be reoriented around that origin — so that what you put into the world reflects where you actually are?</p>
+            </div>
+          </div>
+          <span class="about-chapter-tag">Strategic Framework</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chapter 03 -->
+  <div class="about-chapter sand no-image">
+    <div class="about-chapter-text">
+      <div class="about-chapter-split">
+        <div class="about-chapter-split-left">
+          <span class="about-chapter-year">03</span>
+          <span class="about-chapter-place">How to Engage</span>
+        </div>
+        <div>
+          <div class="about-chapter-body">
+            <p>The Brief is built from ASP & Co.'s place-based research. It is not a rebrand. It is a deepening — a formal introduction between a business and the place it calls home, with a clear direction for what to do with that introduction.</p>
+          </div>
+          <div class="mk-partner-types" style="margin-top:2rem">
+            <div class="mk-partner-type">
+              <p class="mk-partner-type-title">Consulting</p>
+              <p>ASP & Co. researches, writes, and delivers the Origin Brief. Your team executes.</p>
+            </div>
+            <div class="mk-partner-type">
+              <p class="mk-partner-type-title">Consulting + Visual Portfolio</p>
+              <p>The same Brief, with visual content from ASP & Co.'s Archive or commissioned specifically for your location. For locations where an active Identity Portfolio exists, imagery is drawn from the existing Visual Reckoning and licensed for your use. For locations not yet in the Archive, ASP & Co. builds a Commissioned Place Portfolio — entering the location, conducting the research, and producing place-based visual content rooted in genuine on-the-ground documentation. No stock library produces this. The imagery exists because the research happened.</p>
+            </div>
+          </div>
+          <span class="about-chapter-tag">Two Ways to Engage</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mk-section">
+    <div class="archive-cta-body">
+      <p>To inquire about an Origin Brief for your business, reach out through the <a onclick="showPage('contact')" style="cursor:pointer;color:var(--horizon);text-decoration:underline">contact page</a>.</p>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-mark-wrap"><span class="footer-mark" onclick="showPage('home')">ASP & Co.</span>
       <span class="footer-tagline">Research practice &nbsp;·&nbsp; Visual storytelling &nbsp;·&nbsp; Portfolio curation</span>
@@ -3702,16 +3924,84 @@ function showPage(id) {
   </footer>
 </div>
 
-<div class="page" id="page-hospitality-programming">
+<div class="page" id="page-rooted-travel-partnerships">
   <div class="archive-map-header">
     <div>
-      <span class="eyebrow" style="color:var(--tide);margin-bottom:0.75rem;display:block">ASP & Co. — The Work</span>
-      <h1 class="archive-map-title">Hospitality<br><em>Programming.</em></h1>
+      <span class="eyebrow" style="color:var(--tide);margin-bottom:0.75rem;display:block">The Work · ASP & Co.</span>
+      <h1 class="archive-map-title">Rooted Travel<br><em>Partnerships.</em></h1>
     </div>
   </div>
-  <div class="mk-section">
-    <p class="mk-statement">This page is in development.</p>
+
+  <!-- Chapter 01 -->
+  <div class="about-chapter dark no-image">
+    <div class="about-chapter-text">
+      <div class="about-chapter-split">
+        <div class="about-chapter-split-left">
+          <span class="about-chapter-year">01</span>
+          <span class="about-chapter-place">The Approach</span>
+        </div>
+        <div>
+          <div class="about-chapter-body">
+            <p>The most compelling travel experiences are not the ones that look the most polished. They are the ones that know where they are.</p>
+            <p>ASP & Co. partners with experiential travel operators — cruise lines, tour companies, luxury travel brands — who want their experiences to be genuinely rooted in the cultural identity of the places they operate in.</p>
+            <p>The work is embedded. ASP & Co. travels with or alongside an operator, documenting the actual interaction between the experiences being sold and the places where they happen. The result is field photography, written findings, and a strategic direction built from what the research found — not from what the marketing already assumed.</p>
+          </div>
+          <span class="about-chapter-tag">Rooted Travel Partnerships</span>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Chapter 02 -->
+  <div class="about-chapter light no-image">
+    <div class="about-chapter-text">
+      <div class="about-chapter-split">
+        <div class="about-chapter-split-left">
+          <span class="about-chapter-year">02</span>
+          <span class="about-chapter-place">What Each Side Brings</span>
+        </div>
+        <div>
+          <div class="mk-partner-types">
+            <div class="mk-partner-type">
+              <p class="mk-partner-type-title">What Operators Bring to This</p>
+              <p>Existing experiences in specific places. A genuine desire to go deeper than the standard shore excursion or curated itinerary. Openness to honest findings.</p>
+            </div>
+            <div class="mk-partner-type">
+              <p class="mk-partner-type-title">What ASP & Co. Brings</p>
+              <p>The 225 Framework applied to travel — the same research methodology used across every Identity Portfolio in the Archive, now directed at how an operator's experiences interact with place identity, culture, and history.</p>
+            </div>
+          </div>
+          <span class="about-chapter-tag">The Partnership</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chapter 03 -->
+  <div class="about-chapter sand no-image">
+    <div class="about-chapter-text">
+      <div class="about-chapter-split">
+        <div class="about-chapter-split-left">
+          <span class="about-chapter-year">03</span>
+          <span class="about-chapter-place">How It Works</span>
+        </div>
+        <div>
+          <div class="about-chapter-body">
+            <p>The underlying research archive produced during every partnership belongs to ASP & Co. and feeds the broader Archive. Operators license the documentary content produced for their specific use. The research keeps renewing. So does the relationship.</p>
+          </div>
+          <span class="about-chapter-tag">Get Involved</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mk-section">
+    <div class="archive-cta-body">
+      <p>ASP & Co. is actively building partnerships with operators who are already doing meaningful work in place and want to go further. If that is you, reach out.</p>
+      <p>To explore a Rooted Travel Partnerships engagement, reach out through the <a onclick="showPage('contact')" style="cursor:pointer;color:var(--horizon);text-decoration:underline">contact page</a>.</p>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-mark-wrap"><span class="footer-mark" onclick="showPage('home')">ASP & Co.</span>
       <span class="footer-tagline">Research practice &nbsp;·&nbsp; Visual storytelling &nbsp;·&nbsp; Portfolio curation</span>
@@ -3996,7 +4286,7 @@ function _buildMap() {
     center: [32.0, -80.5],
     zoom: 6,
     zoomControl: true,
-    scrollWheelZoom: false,
+    scrollWheelZoom: true,
   });
 
   // Mapbox dark style tiles
@@ -4330,7 +4620,7 @@ function _buildMap() {
 
   _leafletMap.addLayer(triangleClusterGroup);
 
-  // Nashville, Savannah, Miami — pins for §6A locations without dedicated archive pages yet
+  // Nashville, Savannah, Miami — §6A/6C locations; Savannah still has no dedicated archive page yet
   ['nashville', 'savannah', 'miami'].forEach(id => {
     const p = CONFIG.portfolios.find(x => x.id === id);
     const statusColor = p.status === 'identity' ? 'var(--map-doc)' : 'var(--tide)';
@@ -4341,7 +4631,9 @@ function _buildMap() {
         <div class="lp-title">${p.name}</div>
         <div class="lp-loc">${p.region}</div>
         <div class="lp-sectors">${sectorPillsHTML(p.sectors)}</div>
-        <button class="lp-btn lp-btn-coming" disabled>Archive Coming Soon</button>
+        ${p.archivePage
+          ? `<button class="lp-btn lp-btn-active" onclick="showPage('${p.archivePage}')">View Archive →</button>`
+          : `<button class="lp-btn lp-btn-coming" disabled>Archive Coming Soon</button>`}
       </div>`;
     const marker = L.marker(p.latlng, { icon: makeIcon(p.status === 'identity', p.name + ', ' + p.region, p.status === 'identity', false, p.status) })
       .bindPopup(popupHTML, { maxWidth: 220, minWidth: 220, offset: [0, -10] })
@@ -4610,13 +4902,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const sace = document.getElementById('stpete-archive-contact');
   if (sace) { sace.textContent = em; }
 
-  /* Licensing page contact email */
-  const lce2 = document.getElementById('licensing-contact-email');
-  if (lce2) { lce2.textContent = em; }
-
   /* Tarpon archive contact email */
   const tace = document.getElementById('tarpon-archive-contact');
   if (tace) { tace.textContent = em; }
+
+  /* Nashville archive contact email */
+  const nashCe = document.getElementById('nashville-archive-contact');
+  if (nashCe) { nashCe.textContent = em; }
+
+  /* Miami archive contact email */
+  const miaCe = document.getElementById('miami-archive-contact');
+  if (miaCe) { miaCe.textContent = em; }
 
   /* Media Kit — Founder press line */
   const mkFpe = document.getElementById('mk-founder-press-email');
@@ -4703,6 +4999,204 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="archive-detail-row"><span class="archive-detail-label">Region</span><span class="archive-detail-val">Raleigh / Triangle — expanding to Durham & greater metro</span></div>
       <div class="archive-detail-row"><span class="archive-detail-label">Coverage</span><span class="archive-detail-val">Downtown, neighborhoods, cultural corridors, architecture & detail</span></div>
       <div class="archive-detail-row"><span class="archive-detail-label">Contact</span><span class="archive-detail-val" id="raleigh-archive-contact"></span></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-mark-wrap"><span class="footer-mark" onclick="showPage('home')">ASP & Co.</span>
+      <span class="footer-tagline">Research practice &nbsp;·&nbsp; Visual storytelling &nbsp;·&nbsp; Portfolio curation</span>
+      <span class="footer-higher-ground">From Higher Ground</span>
+    </div>
+    <div class="footer-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('archives')">The Archive</a>
+      <a onclick="showPage('contact')">Contact</a>
+      <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,227,0.15)">© 2025 ASP & Co.</span>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ════════════════════════════════
+     NASHVILLE ARCHIVE PAGE
+════════════════════════════════ -->
+<div class="page" id="page-archive-nashville">
+
+  <div class="archive-hero">
+    <div class="archive-hero-left">
+      <span class="archive-hero-eyebrow">Davidson County, TN — Identity Portfolio</span>
+      <h1 class="archive-hero-title">The Nashville<br><em>Archive.</em></h1>
+      <p class="archive-hero-body">The Cumberland River corridor, Jefferson Street, and the migration routes that brought country and gospel into the same geography — Nashville is where the practice's Place, Practice, and People sectors converge most fully. This field record is early — the Known Portrait below holds what's been documented so far, with room for individual Records as the work deepens.</p>
+    </div>
+    <div class="archive-hero-right">
+      <div class="archive-stat"><div class="archive-stat-num">Identity</div><div class="archive-stat-label">Portfolio status</div></div>
+      <div class="archive-stat"><div class="archive-stat-num">4</div><div class="archive-stat-label">Active sectors</div></div>
+      <div class="archive-stat"><div class="archive-stat-num">Custom</div><div class="archive-stat-label">Licensing portfolios</div></div>
+    </div>
+  </div>
+
+  <!-- Known Portrait -->
+  <div class="archive-grid-section" style="padding-top:2.5rem">
+    <div class="archive-grid-header">
+      <span class="archive-grid-title">Known Portrait — Selected imagery</span>
+      <span class="archive-grid-note">Full collection available on request</span>
+    </div>
+    <div class="archive-grid">
+      <div class="archive-cell"><div class="archive-cell-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Cumberland River</div><div class="archive-cell-label">Cumberland River</div></div>
+      <div class="archive-cell"><div class="archive-cell-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Jefferson Street</div><div class="archive-cell-label">Jefferson Street</div></div>
+      <div class="archive-cell"><div class="archive-cell-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Music Row</div><div class="archive-cell-label">Music Row</div></div>
+      <div class="archive-cell"><div class="archive-cell-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Worship & Gospel</div><div class="archive-cell-label">Worship & Gospel</div></div>
+    </div>
+  </div>
+
+  <!-- Records -->
+  <div class="archive-grid-section" style="padding-top:0">
+    <div class="archive-grid-header">
+      <span class="archive-grid-title">Records</span>
+    </div>
+    <p style="font-size:0.9rem;line-height:1.9;color:var(--dusk);max-width:56ch">Records will appear here as the work deepens.</p>
+  </div>
+
+  <!-- Sector tags -->
+  <div class="mk-section">
+    <p class="mk-section-label">Active Sectors</p>
+    <div class="portfolio-card-sectors" style="margin-bottom:1.5rem">
+      <span class="portfolio-sector-tag">Place</span>
+      <span class="portfolio-sector-tag">Practice</span>
+      <span class="portfolio-sector-tag">People</span>
+      <span class="portfolio-sector-tag">Passage</span>
+    </div>
+    <div class="portfolio-card-sector-desc">
+      <span class="portfolio-card-sector-label">Place</span>
+      <span class="portfolio-card-sector-text">The Cumberland River corridor, Jefferson Street, the migration routes that brought country and gospel into the same geography.</span>
+    </div>
+    <div class="portfolio-card-sector-desc">
+      <span class="portfolio-card-sector-label">Practice</span>
+      <span class="portfolio-card-sector-text">Music, worship, cuisine. The living traditions that grew directly out of that geography.</span>
+    </div>
+    <div class="portfolio-card-sector-desc">
+      <span class="portfolio-card-sector-label">People</span>
+      <span class="portfolio-card-sector-text">The artists and elders who carry Nashville's cultural origin forward. Asher HaVon. The Jefferson Street community. Pastor Ross.</span>
+    </div>
+    <div class="portfolio-card-sector-desc">
+      <span class="portfolio-card-sector-label">Passage</span>
+      <span class="portfolio-card-sector-text">The experience design and operator work this Portfolio enables for travel partners and hospitality clients.</span>
+    </div>
+  </div>
+
+  <div class="archive-cta-section">
+    <div>
+      <h2 class="archive-cta-title">License the<br>Nashville archive.</h2>
+      <div class="archive-cta-body">
+        <p>An early-stage field record of a city where the practice's Place, Practice, and People sectors converge most fully. What you license is primary source material from a research practice documenting Nashville from the inside.</p>
+        <p>The archive will expand as the Known Portrait deepens and individual Records are added. Every inquiry is a direct conversation.</p>
+      </div>
+      <a class="lic-link" onclick="showPage('contact')" style="cursor:pointer;display:inline-flex;align-items:center;gap:0.6rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--slate);text-decoration:none;border-bottom:1px solid var(--horizon);padding-bottom:0.2rem">Start the conversation &#8594;</a>
+    </div>
+    <div class="archive-details">
+      <div class="archive-detail-row"><span class="archive-detail-label">Format</span><span class="archive-detail-val">High-resolution digital files</span></div>
+      <div class="archive-detail-row"><span class="archive-detail-label">Rights</span><span class="archive-detail-val">Negotiated per use — web, print, campaign, editorial</span></div>
+      <div class="archive-detail-row"><span class="archive-detail-label">Region</span><span class="archive-detail-val">Nashville, TN — Davidson County</span></div>
+      <div class="archive-detail-row"><span class="archive-detail-label">Contact</span><span class="archive-detail-val" id="nashville-archive-contact"></span></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-mark-wrap"><span class="footer-mark" onclick="showPage('home')">ASP & Co.</span>
+      <span class="footer-tagline">Research practice &nbsp;·&nbsp; Visual storytelling &nbsp;·&nbsp; Portfolio curation</span>
+      <span class="footer-higher-ground">From Higher Ground</span>
+    </div>
+    <div class="footer-links">
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('archives')">The Archive</a>
+      <a onclick="showPage('contact')">Contact</a>
+      <span style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(242,237,227,0.15)">© 2025 ASP & Co.</span>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ════════════════════════════════
+     MIAMI ARCHIVE PAGE
+════════════════════════════════ -->
+<div class="page" id="page-archive-miami">
+
+  <div class="archive-hero">
+    <div class="archive-hero-left">
+      <span class="archive-hero-eyebrow">South Florida — Identity Portfolio</span>
+      <h1 class="archive-hero-title">The Miami<br><em>Archive.</em></h1>
+      <p class="archive-hero-body">South Florida's coastal geography and Caribbean-facing waterways, traced along the same Atlantic corridor that connects Nassau, Miami, Key West, and Tarpon Springs — the Bahamian sponging heritage the practice already documents on Florida's Gulf side. This field record is early — the Known Portrait below holds what's been documented so far, with room for individual Records as the work deepens.</p>
+    </div>
+    <div class="archive-hero-right">
+      <div class="archive-stat"><div class="archive-stat-num">Identity</div><div class="archive-stat-label">Portfolio status</div></div>
+      <div class="archive-stat"><div class="archive-stat-num">4</div><div class="archive-stat-label">Active sectors</div></div>
+      <div class="archive-stat"><div class="archive-stat-num">Custom</div><div class="archive-stat-label">Licensing portfolios</div></div>
+    </div>
+  </div>
+
+  <!-- Known Portrait -->
+  <div class="archive-grid-section" style="padding-top:2.5rem">
+    <div class="archive-grid-header">
+      <span class="archive-grid-title">Known Portrait — Selected imagery</span>
+      <span class="archive-grid-note">Full collection available on request</span>
+    </div>
+    <div class="archive-grid">
+      <div class="archive-cell"><div class="archive-cell-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Atlantic Corridor</div><div class="archive-cell-label">Atlantic Corridor</div></div>
+      <div class="archive-cell"><div class="archive-cell-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Bahamian Heritage</div><div class="archive-cell-label">Bahamian Heritage</div></div>
+      <div class="archive-cell"><div class="archive-cell-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Coastal Waterways</div><div class="archive-cell-label">Coastal Waterways</div></div>
+      <div class="archive-cell"><div class="archive-cell-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>South Florida Hospitality</div><div class="archive-cell-label">South Florida Hospitality</div></div>
+    </div>
+  </div>
+
+  <!-- Records -->
+  <div class="archive-grid-section" style="padding-top:0">
+    <div class="archive-grid-header">
+      <span class="archive-grid-title">Records</span>
+    </div>
+    <p style="font-size:0.9rem;line-height:1.9;color:var(--dusk);max-width:56ch">Records will appear here as the work deepens.</p>
+  </div>
+
+  <!-- Sector tags -->
+  <div class="mk-section">
+    <p class="mk-section-label">Active Sectors</p>
+    <div class="portfolio-card-sectors" style="margin-bottom:1.5rem">
+      <span class="portfolio-sector-tag">Place</span>
+      <span class="portfolio-sector-tag">Practice</span>
+      <span class="portfolio-sector-tag">People</span>
+      <span class="portfolio-sector-tag">Passage</span>
+    </div>
+    <div class="portfolio-card-sector-desc">
+      <span class="portfolio-card-sector-label">Place</span>
+      <span class="portfolio-card-sector-text">South Florida's coastal geography and Caribbean-facing waterways — the Atlantic corridor connecting Miami to Nassau, Key West, and the Gulf.</span>
+    </div>
+    <div class="portfolio-card-sector-desc">
+      <span class="portfolio-card-sector-label">Practice</span>
+      <span class="portfolio-card-sector-text">The Caribbean and Bahamian cultural currents running through South Florida, traced through the sponging trade that also built Tarpon Springs.</span>
+    </div>
+    <div class="portfolio-card-sector-desc">
+      <span class="portfolio-card-sector-label">People</span>
+      <span class="portfolio-card-sector-text">The carriers of that Atlantic-corridor heritage — documented alongside the same Bahamian sponging communities the practice already knows from Tarpon Springs.</span>
+    </div>
+    <div class="portfolio-card-sector-desc">
+      <span class="portfolio-card-sector-label">Passage</span>
+      <span class="portfolio-card-sector-text">The scale of Miami's hospitality market makes this the furthest-reaching Passage opportunity in the current thesis.</span>
+    </div>
+  </div>
+
+  <div class="archive-cta-section">
+    <div>
+      <h2 class="archive-cta-title">License the<br>Miami archive.</h2>
+      <div class="archive-cta-body">
+        <p>An early-stage field record tracing the same Atlantic corridor and Bahamian sponging heritage the practice documents in Tarpon Springs, extended south to Miami. What you license is primary source material from a research practice working across that corridor.</p>
+        <p>The archive will expand as the Known Portrait deepens and individual Records are added. Every inquiry is a direct conversation.</p>
+      </div>
+      <a class="lic-link" onclick="showPage('contact')" style="cursor:pointer;display:inline-flex;align-items:center;gap:0.6rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--slate);text-decoration:none;border-bottom:1px solid var(--horizon);padding-bottom:0.2rem">Start the conversation &#8594;</a>
+    </div>
+    <div class="archive-details">
+      <div class="archive-detail-row"><span class="archive-detail-label">Format</span><span class="archive-detail-val">High-resolution digital files</span></div>
+      <div class="archive-detail-row"><span class="archive-detail-label">Rights</span><span class="archive-detail-val">Negotiated per use — web, print, campaign, editorial</span></div>
+      <div class="archive-detail-row"><span class="archive-detail-label">Region</span><span class="archive-detail-val">Miami, FL — South Florida</span></div>
+      <div class="archive-detail-row"><span class="archive-detail-label">Contact</span><span class="archive-detail-val" id="miami-archive-contact"></span></div>
     </div>
   </div>
 
