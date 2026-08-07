@@ -454,15 +454,45 @@ function initRaleighNodeMap() {
   box-shadow: 0 8px 24px rgba(37,35,32,0.08);
 }
 .nav-mobile-menu.open { display: flex; }
-.nav-mobile-menu a {
+.nav-mobile-menu { max-height: calc(100vh - 68px); overflow-y: auto; }
+.nav-mobile-menu > a {
   font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--slate); text-decoration: none;
   padding: 1rem 0; border-bottom: 1px solid var(--fog); cursor: pointer;
   transition: color 0.2s;
 }
-.nav-mobile-menu a:last-child { border-bottom: none; }
-.nav-mobile-menu a:hover { color: var(--horizon); }
-.nav-mobile-menu a.nav-accent { color: var(--horizon); }
+.nav-mobile-menu > a:last-child { border-bottom: none; }
+.nav-mobile-menu > a:hover { color: var(--horizon); }
+.nav-mobile-menu > a.nav-accent { color: var(--horizon); }
+
+.nav-mobile-group { border-bottom: 1px solid var(--fog); }
+.nav-mobile-group:last-child { border-bottom: none; }
+.nav-mobile-group-row { display: flex; align-items: center; }
+.nav-mobile-group-row a {
+  flex: 1; font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--slate); text-decoration: none;
+  padding: 1rem 0; cursor: pointer; transition: color 0.2s;
+}
+.nav-mobile-group-row a:hover { color: var(--horizon); }
+.nav-mobile-caret {
+  background: none; border: none; cursor: pointer; padding: 0.5rem;
+  margin-left: 0.5rem; color: var(--slate); display: flex;
+  align-items: center; justify-content: center; transition: transform 0.25s;
+}
+.nav-mobile-caret svg { width: 11px; height: 11px; }
+.nav-mobile-caret.open { transform: rotate(180deg); }
+.nav-mobile-submenu {
+  max-height: 0; overflow: hidden; transition: max-height 0.25s ease;
+}
+.nav-mobile-submenu.open { max-height: 320px; }
+.nav-mobile-submenu a {
+  display: block; font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--tide); text-decoration: none;
+  padding: 0.85rem 0 0.85rem 1.25rem; cursor: pointer; transition: color 0.2s;
+  border-top: 1px solid var(--fog);
+}
+.nav-mobile-submenu a:hover { color: var(--horizon); }
+.nav-mobile-submenu a.nav-accent { color: var(--warm); }
 
 
 
@@ -2159,13 +2189,32 @@ function showPage(id) {
 <div class="nav-mobile-menu" id="nav-mobile-menu">
   <a onclick="showPage('home');closeMobileNav()">Home</a>
   <a onclick="showPage('about');closeMobileNav()">About</a>
-  <a onclick="showPage('archive-hub');closeMobileNav()">The Archive</a>
-  <a onclick="showPage('founders-portfolios');closeMobileNav()">The Founder's Portfolio</a>
-  <a onclick="showPage('work');closeMobileNav()">The Work</a>
-  <a onclick="showPage('origin-brief');closeMobileNav()">The Origin Brief</a>
-  <a onclick="showPage('rooted-travel-partnerships');closeMobileNav()">Rooted Travel Partnerships</a>
-  <a onclick="showPage('licensing');closeMobileNav()" class="nav-accent">License Imagery</a>
-  <a onclick="showPage('mediakit');closeMobileNav()">Media Kit</a>
+  <div class="nav-mobile-group">
+    <div class="nav-mobile-group-row">
+      <a onclick="showPage('archive-hub');closeMobileNav()">The Archive</a>
+      <button class="nav-mobile-caret" onclick="toggleMobileSubmenu(this)" aria-label="Expand The Archive">
+        <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l5 5 5-5"/></svg>
+      </button>
+    </div>
+    <div class="nav-mobile-submenu">
+      <a onclick="showPage('founders-portfolios');closeMobileNav()">The Founder's Portfolio</a>
+      <a onclick="showPage('archives');closeMobileNav()">The Archive</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <div class="nav-mobile-group-row">
+      <a onclick="showPage('work');closeMobileNav()">The Work</a>
+      <button class="nav-mobile-caret" onclick="toggleMobileSubmenu(this)" aria-label="Expand The Work">
+        <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l5 5 5-5"/></svg>
+      </button>
+    </div>
+    <div class="nav-mobile-submenu">
+      <a onclick="showPage('origin-brief');closeMobileNav()">The Origin Brief</a>
+      <a onclick="showPage('rooted-travel-partnerships');closeMobileNav()">Rooted Travel Partnerships</a>
+      <a onclick="showPage('licensing');closeMobileNav()" class="nav-accent">License Imagery</a>
+      <a onclick="showPage('mediakit');closeMobileNav()">Media Kit</a>
+    </div>
+  </div>
   <a onclick="showPage('contact');closeMobileNav()">Contact</a>
 </div>
 
@@ -4157,6 +4206,14 @@ function toggleMobileNav() {
 function closeMobileNav() {
   document.getElementById('nav-mobile-menu').classList.remove('open');
   document.getElementById('nav-hamburger').classList.remove('open');
+  document.querySelectorAll('.nav-mobile-submenu.open').forEach(el => el.classList.remove('open'));
+  document.querySelectorAll('.nav-mobile-caret.open').forEach(el => el.classList.remove('open'));
+}
+function toggleMobileSubmenu(btn) {
+  const group = btn.closest('.nav-mobile-group');
+  const submenu = group.querySelector('.nav-mobile-submenu');
+  const isOpen = submenu.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
 }
 
 /* ── Archive map popups ── */
