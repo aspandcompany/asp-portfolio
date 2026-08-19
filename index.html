@@ -364,16 +364,18 @@ img { max-width: 100%; display: block; }
   );
 }
 
-.home-hero-coords {
-  position: relative;
+.home-hero-geo {
+  position: absolute;
+  right: 64px;
+  bottom: 80px;
+  max-width: 240px;
   font-family: 'Spectral', serif;
   font-size: 10px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--steel-blue);
-  margin-bottom: 12px;
-  opacity: 0.95;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.7);
+  text-align: right;
+  color: rgba(250, 248, 244, 0.55);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
 }
 
 .home-hero h1 {
@@ -2826,6 +2828,15 @@ img { max-width: 100%; display: block; }
   .work-hub-hero, .work-page-hero, .rtp-hero, .contact-hero,
   .fp-hero { padding: 64px 24px 48px; }
 
+  .home-hero-geo {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    text-align: left;
+    max-width: none;
+    margin-top: 16px;
+  }
+
   .home-model, .home-field, .home-archive-strip, .home-portraits,
   .home-clients, .home-quote-band, .home-cta { padding: 64px 24px; }
 
@@ -2963,7 +2974,6 @@ img { max-width: 100%; display: block; }
     <div class="home-hero-bg">
       <img src="photos/DSC_0866.jpg" alt="St. Petersburg, Florida">
     </div>
-    <p class="home-hero-coords">27.773° N, 82.639° W · St. Petersburg, FL · Est. 2025</p>
     <h1>Rooted.</h1>
 
     <div class="home-hero-actions">
@@ -2971,6 +2981,8 @@ img { max-width: 100%; display: block; }
       <a class="btn btn-light" onclick="showPage('archive')">View St. Pete →</a>
     </div>
     <p class="home-hero-tagline">From Higher Ground.</p>
+
+    <p class="home-hero-geo">27.773° N, 82.639° W · St.&nbsp;Petersburg, FL · Est. 2025</p>
   </div>
 
   <!-- Positioning statement — full copy, given room to breathe -->
