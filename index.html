@@ -349,7 +349,7 @@ img { max-width: 100%; display: block; }
   object-fit: cover;
   object-position: center 40%;
   display: block;
-  filter: brightness(0.28) saturate(0.75);
+  filter: brightness(0.38) saturate(0.8);
 }
 
 .home-hero-bg::after {
@@ -358,21 +358,20 @@ img { max-width: 100%; display: block; }
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(10, 16, 26, 0.96) 0%,
-    rgba(10, 16, 26, 0.65) 40%,
-    rgba(10, 16, 26, 0.25) 100%
+    rgba(10, 16, 26, 0.88) 0%,
+    rgba(10, 16, 26, 0.52) 40%,
+    rgba(10, 16, 26, 0.15) 100%
   );
 }
 
-.home-hero-coords {
+.home-hero-headline-row {
   position: relative;
-  font-family: 'Spectral', serif;
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--steel-blue);
-  margin-bottom: 32px;
-  opacity: 0.8;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 .home-hero h1 {
@@ -384,7 +383,7 @@ img { max-width: 100%; display: block; }
   color: var(--gold);
   letter-spacing: -0.01em;
   max-width: 820px;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   text-shadow: 0 2px 24px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.4);
 }
 
@@ -398,22 +397,46 @@ img { max-width: 100%; display: block; }
   color: var(--steel-blue);
 }
 
+.home-hero-geo-tag {
+  position: relative;
+  flex-shrink: 0;
+  max-width: 220px;
+  font-family: 'Spectral', serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.7;
+  color: var(--steel-blue);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+
+.home-hero-geo-tag::after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 12px;
+  margin-left: 2px;
+  background: var(--steel-blue);
+  vertical-align: -1px;
+  opacity: 0;
+}
+
+.home-hero-geo-tag.typing::after {
+  opacity: 1;
+  animation: geoCursorBlink 0.8s steps(1) infinite;
+}
+
+@keyframes geoCursorBlink {
+  50% { opacity: 0; }
+}
+
 .home-hero-actions {
   position: relative;
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 12px;
-}
-
-.home-hero-tagline {
-  position: relative;
-  font-family: 'Spectral', serif;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(250, 248, 244, 0.25);
-  margin-top: 20px;
 }
 
 /* Positioning statement, given room to breathe below the hero */
@@ -2830,6 +2853,9 @@ img { max-width: 100%; display: block; }
   .work-hub-hero, .work-page-hero, .rtp-hero, .contact-hero,
   .fp-hero { padding: 64px 24px 48px; }
 
+  .home-hero-headline-row { flex-direction: column; align-items: flex-start; }
+  .home-hero-geo-tag { max-width: 100%; text-align: left; white-space: normal; }
+
   .home-statement { padding: 64px 24px; }
 
   .home-model, .home-field, .home-archive-strip, .home-portraits,
@@ -2960,14 +2986,15 @@ img { max-width: 100%; display: block; }
     <div class="home-hero-bg">
       <img src="photos/DSC_0866.jpg" alt="St. Petersburg, Florida">
     </div>
-    <p class="home-hero-coords">27.773° N, 82.639° W · St. Petersburg, FL · Est. 2025</p>
-    <h1>ROOTED.<br><em>From Higher Ground.</em></h1>
+    <div class="home-hero-headline-row">
+      <h1>ROOTED.<br><em>From Higher Ground.</em></h1>
+      <p class="home-hero-geo-tag" id="homeHeroGeoTag">27.773° N, 82.639° W · ST. PETERSBURG, FL · EST. 2025</p>
+    </div>
 
     <div class="home-hero-actions">
       <a class="btn btn-light" onclick="showPage('founders-portfolio')">The Founder's Portfolio</a>
       <a class="btn btn-light" onclick="showPage('archive')">View St. Pete →</a>
     </div>
-    <p class="home-hero-tagline">From Higher Ground</p>
   </div>
 
   <!-- Positioning statement — full copy, given room to breathe -->
@@ -4499,15 +4526,40 @@ img { max-width: 100%; display: block; }
       window.scrollTo(0, 0);
     }
     closeMobile();
-    // Init St. Pete mini-map when home loads
-    if (id === 'home' && !_homeMiniMapInit) {
-      _homeMiniMapInit = true;
-      initHomeMiniMap();
+    if (id === 'home') {
+      typewriteGeoTag();
+      // Init St. Pete mini-map when home loads
+      if (!_homeMiniMapInit) {
+        _homeMiniMapInit = true;
+        initHomeMiniMap();
+      }
     }
   }
 
-  // Init home mini-map on first load (home page is active by default)
+  // Geo-coordinates typewriter, replays every time the home hero appears
+  let _geoTypeTimer = null;
+  function typewriteGeoTag() {
+    const el = document.getElementById('homeHeroGeoTag');
+    if (!el) return;
+    const full = el.dataset.geoText || el.textContent;
+    el.dataset.geoText = full;
+    clearInterval(_geoTypeTimer);
+    el.textContent = '';
+    el.classList.add('typing');
+    let i = 0;
+    _geoTypeTimer = setInterval(() => {
+      i++;
+      el.textContent = full.slice(0, i);
+      if (i >= full.length) {
+        clearInterval(_geoTypeTimer);
+        el.classList.remove('typing');
+      }
+    }, 35);
+  }
+
+  // Init home hero on first load (home page is active by default)
   window.addEventListener('load', () => {
+    typewriteGeoTag();
     if (!_homeMiniMapInit) {
       _homeMiniMapInit = true;
       setTimeout(initHomeMiniMap, 300);
