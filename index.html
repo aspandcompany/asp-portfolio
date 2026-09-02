@@ -4478,6 +4478,31 @@ img { max-width: 100%; display: block; }
     }
   }
 
+  // Init home mini-map on first load (home page is active by default)
+  window.addEventListener('load', () => {
+    if (!_homeMiniMapInit) {
+      _homeMiniMapInit = true;
+      setTimeout(initHomeMiniMap, 300);
+    }
+  });
+
+  // Mobile menu
+  function toggleMobile() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Client row accordion
+  function toggleClientRow(id) {
+    const row = document.getElementById(id);
+    const isOpen = row.classList.contains('open');
+    document.querySelectorAll('.client-row').forEach(r => r.classList.remove('open'));
+    if (!isOpen) row.classList.add('open');
+  }
+
   // ── Mapbox token ───────────────────────────────────────────
   const MAPBOX_TOKEN = 'pk.eyJ1IjoiYWRzdGVwdGVyIiwiYSI6ImNtbnRnMnBqYTBvYzAycXEwbWl0YjFnb3YifQ.T108PjN5fRwJSK-yaeJS4Q';
 
