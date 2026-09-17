@@ -2821,56 +2821,6 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.12em;
 }
 
-.map-popup-btn {
-  display: inline-block;
-  font-family: 'Spectral', serif;
-  font-size: 9px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  padding: 8px 14px;
-  background: var(--deep-blue);
-  color: var(--cream);
-  border: none;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.map-popup-btn:hover { background: #1e3a4e; }
-
-/* Cluster label */
-.map-cluster {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  pointer-events: none;
-}
-
-.map-cluster-label {
-  background: var(--cream);
-  border: 1px solid var(--terracotta);
-  padding: 3px 10px;
-  white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(26, 35, 48, 0.25);
-}
-
-.map-cluster-label span {
-  font-family: 'Spectral', serif;
-  font-size: 7px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--deep-blue);
-}
-
-.map-cluster-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--terracotta);
-  border: 1.5px solid var(--cream);
-}
-
-.map-cluster-dot.dev { background: var(--steel-blue); }
 
 /* Pin icon */
 .map-pin-icon {
@@ -4750,50 +4700,127 @@ img { max-width: 100%; display: block; }
     });
     _archiveMap.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-left');
     _archiveMap.scrollZoom.disable();
+
+    const CITY_PIN_MINZOOM = 7;
+
+    const regions = {
+      pinellas:  { name: 'Tampa Bay Region',   coords: [[-82.84,28.17],[-82.56,28.17],[-82.56,27.63],[-82.84,27.63],[-82.84,28.17]] },
+      lcf:       { name: 'Lower Cape Fear',    coords: [[-78.10,34.52],[-77.40,34.52],[-77.40,33.82],[-78.10,33.82],[-78.10,34.52]] },
+      raleigh:   { name: 'Raleigh / Triangle', coords: [[-78.90,36.06],[-78.38,36.06],[-78.38,35.52],[-78.90,35.52],[-78.90,36.06]] },
+      nashville: { name: 'Nashville',          coords: [[-87.08,36.40],[-86.52,36.40],[-86.52,35.96],[-87.08,35.96],[-87.08,36.40]] },
+      miami:     { name: 'Miami',              coords: [[-80.44,25.98],[-80.10,25.98],[-80.10,25.46],[-80.44,25.46],[-80.44,25.98]] }
+    };
+
+    const cities = [
+      { lng: -82.639, lat: 27.773, title: 'St. Petersburg', sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'stpete-archive',        region: 'pinellas' },
+      { lng: -82.753, lat: 28.149, title: 'Tarpon Springs',  sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'tarpon-archive',        region: 'pinellas' },
+      { lng: -77.548, lat: 34.434, title: 'Surf City',       sub: 'Pender County, NC',      status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf' },
+      { lng: -77.944, lat: 34.226, title: 'Wilmington',      sub: 'New Hanover County, NC', status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf' },
+      { lng: -78.021, lat: 33.920, title: 'Southport',       sub: 'Brunswick County, NC',   status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf' },
+      { lng: -78.150, lat: 33.915, title: 'Oak Island',      sub: 'Brunswick County, NC',   status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf' },
+      { lng: -78.638, lat: 35.779, title: 'Raleigh',         sub: 'Wake County, NC',        status: 'Active — Growing',   pageId: 'raleigh-archive',       region: 'raleigh' },
+      { lng: -86.781, lat: 36.174, title: 'Nashville',       sub: 'Davidson County, TN',    status: 'Identity Portfolio', pageId: 'nashville-archive',     region: 'nashville' },
+      { lng: -80.191, lat: 25.762, title: 'Miami',           sub: 'South Florida',          status: 'Identity Portfolio', pageId: 'miami-archive',         region: 'miami' }
+    ];
+
+    function boundsOf(coords) {
+      let minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity;
+      coords.forEach(([lng, lat]) => {
+        minLng = Math.min(minLng, lng); maxLng = Math.max(maxLng, lng);
+        minLat = Math.min(minLat, lat); maxLat = Math.max(maxLat, lat);
+      });
+      return [[minLng, minLat], [maxLng, maxLat]];
+    }
+
+    // Palm icon is rasterized once and registered as a native symbol-layer
+    // icon, so pins render inside the map's own WebGL canvas and stay
+    // perfectly in sync with pan/zoom — no DOM marker lag.
+    function palmIconDataURI() {
+      const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="60" viewBox="0 0 24 30">'
+        + '<path d="M12 13.5C8.5 12 5 12.5 2 15C5.5 15.8 9 15 12 13.5Z" fill="#c9956a"/>'
+        + '<path d="M12 13.5C9.5 10 6.5 7 4 5C6 9 8.5 12 12 13.5Z" fill="#c9956a"/>'
+        + '<path d="M12 13.5C12.3 9 13 5 13.5 2C15 6 14.5 10.5 12 13.5Z" fill="#c9956a"/>'
+        + '<path d="M12 13.5C14.5 10 17.5 7 20 5C18 9 15.5 12 12 13.5Z" fill="#c9956a"/>'
+        + '<path d="M12 13.5C15.5 12 19 12.5 22 15C18.5 15.8 15 15 12 13.5Z" fill="#c9956a"/>'
+        + '<path d="M11 29L11.6 13.5H12.4L13 29Z" fill="#2a4a5e"/>'
+        + '</svg>';
+      return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
     _archiveMap.on('load', () => {
-      function addRegion(id, coords) {
-        _archiveMap.addSource(id, { type: 'geojson', data: { type: 'Feature', geometry: { type: 'Polygon', coordinates: [coords] } } });
-        _archiveMap.addLayer({ id: id+'-fill', type: 'fill', source: id, paint: { 'fill-color': '#2a4a5e', 'fill-opacity': 0.18 } });
-        _archiveMap.addLayer({ id: id+'-line', type: 'line', source: id, paint: { 'line-color': '#2a4a5e', 'line-width': 1.5, 'line-opacity': 0.65, 'line-dasharray': [4,3] } });
-      }
-      addRegion('pinellas', [[-82.84,28.17],[-82.56,28.17],[-82.56,27.63],[-82.84,27.63],[-82.84,28.17]]);
-      addRegion('lcf',      [[-78.10,34.52],[-77.40,34.52],[-77.40,33.82],[-78.10,33.82],[-78.10,34.52]]);
-      addRegion('raleigh',  [[-78.90,36.06],[-78.38,36.06],[-78.38,35.52],[-78.90,35.52],[-78.90,36.06]]);
-      addRegion('nashville',[[-87.08,36.40],[-86.52,36.40],[-86.52,35.96],[-87.08,35.96],[-87.08,36.40]]);
-      addRegion('miami',    [[-80.44,25.98],[-80.10,25.98],[-80.10,25.46],[-80.44,25.46],[-80.44,25.98]]);
+      // Regions: shaded, clickable areas. Clicking a region's fill or
+      // border zooms into it — no separate marker sits on top of it.
+      Object.keys(regions).forEach((id) => {
+        const r = regions[id];
+        _archiveMap.addSource(id, { type: 'geojson', data: { type: 'Feature', geometry: { type: 'Polygon', coordinates: [r.coords] } } });
+        _archiveMap.addLayer({ id: id + '-fill', type: 'fill', source: id, paint: { 'fill-color': '#2a4a5e', 'fill-opacity': 0.14 } });
+        _archiveMap.addLayer({ id: id + '-line', type: 'line', source: id, paint: { 'line-color': '#c9956a', 'line-width': 1.75, 'line-opacity': 0.9 } });
 
-      function popupHTML(status, color, title, sub, pageId) {
-        return `<div class="map-popup"><div class="map-popup-status" style="color:${color}">${status}</div><div class="map-popup-title">${title}</div><div class="map-popup-sub">${sub}</div><button class="map-popup-btn" onclick="showPage('${pageId}')">View Archive →</button></div>`;
-      }
+        _archiveMap.on('mouseenter', id + '-fill', () => {
+          _archiveMap.getCanvas().style.cursor = 'pointer';
+          _archiveMap.setPaintProperty(id + '-fill', 'fill-opacity', 0.26);
+        });
+        _archiveMap.on('mouseleave', id + '-fill', () => {
+          _archiveMap.getCanvas().style.cursor = '';
+          _archiveMap.setPaintProperty(id + '-fill', 'fill-opacity', 0.14);
+        });
+        _archiveMap.on('click', id + '-fill', () => {
+          _archiveMap.fitBounds(boundsOf(r.coords), { padding: 60, duration: 900 });
+        });
+      });
 
-      function addPin(lng, lat, html) {
-        const el = document.createElement('div');
-        el.className = 'map-palm-pin';
-        el.innerHTML = '<svg width="20" height="25" viewBox="0 0 24 30" xmlns="http://www.w3.org/2000/svg" style="display:block;filter:drop-shadow(0 2px 3px rgba(26,35,48,0.45));"><path d="M12 13.5C8.5 12 5 12.5 2 15C5.5 15.8 9 15 12 13.5Z" style="fill:var(--terracotta)"/><path d="M12 13.5C9.5 10 6.5 7 4 5C6 9 8.5 12 12 13.5Z" style="fill:var(--terracotta)"/><path d="M12 13.5C12.3 9 13 5 13.5 2C15 6 14.5 10.5 12 13.5Z" style="fill:var(--terracotta)"/><path d="M12 13.5C14.5 10 17.5 7 20 5C18 9 15.5 12 12 13.5Z" style="fill:var(--terracotta)"/><path d="M12 13.5C15.5 12 19 12.5 22 15C18.5 15.8 15 15 12 13.5Z" style="fill:var(--terracotta)"/><path d="M11 29L11.6 13.5H12.4L13 29Z" style="fill:var(--deep-blue)"/></svg>';
-        new mapboxgl.Marker({ element: el, anchor: 'bottom' }).setLngLat([lng, lat])
-          .setPopup(new mapboxgl.Popup({ offset: 14 }).setHTML(html))
-          .addTo(_archiveMap);
-      }
+      // Cities: palm pins only appear once zoomed into a region, so the
+      // overview never looks clustered. Hover previews the city, click
+      // opens its archive page.
+      const img = new Image(48, 60);
+      img.onload = () => {
+        _archiveMap.addImage('palm-icon', img);
 
-      function addLabel(lng, lat, text) {
-        const el = document.createElement('div');
-        el.className = 'map-cluster';
-        el.innerHTML = `<div class="map-cluster-label"><span>${text}</span></div><div class="map-cluster-dot"></div>`;
-        new mapboxgl.Marker({ element: el, anchor: 'bottom' }).setLngLat([lng, lat]).addTo(_archiveMap);
-      }
+        _archiveMap.addSource('cities', {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: cities.map((c) => ({
+              type: 'Feature',
+              geometry: { type: 'Point', coordinates: [c.lng, c.lat] },
+              properties: c
+            }))
+          }
+        });
 
-      addLabel(-82.74, 28.05, 'Tampa Bay Region');
-      addPin(-82.639, 27.773, popupHTML('Active — Growing','var(--terracotta)','St. Petersburg','Pinellas County, FL','stpete-archive'));
-      addPin(-82.753, 28.149, popupHTML('Active — Growing','var(--terracotta)','Tarpon Springs','Pinellas County, FL','tarpon-archive'));
-      addLabel(-77.88, 34.22, 'Lower Cape Fear');
-      addPin(-77.548, 34.434, popupHTML('Active — Growing','var(--terracotta)','Surf City','Pender County, NC','lowercapefear-archive'));
-      addPin(-77.944, 34.226, popupHTML('Active — Growing','var(--terracotta)','Wilmington','New Hanover County, NC','lowercapefear-archive'));
-      addPin(-78.021, 33.920, popupHTML('Active — Growing','var(--terracotta)','Southport','Brunswick County, NC','lowercapefear-archive'));
-      addPin(-78.150, 33.915, popupHTML('Active — Growing','var(--terracotta)','Oak Island','Brunswick County, NC','lowercapefear-archive'));
-      addLabel(-78.64, 35.88, 'Raleigh / Triangle');
-      addPin(-78.638, 35.779, popupHTML('Active — Growing','var(--terracotta)','Raleigh','Wake County, NC','raleigh-archive'));
-      addPin(-86.781, 36.174, popupHTML('Identity Portfolio','var(--terracotta)','Nashville','Davidson County, TN','nashville-archive'));
-      addPin(-80.191, 25.762, popupHTML('Identity Portfolio','var(--terracotta)','Miami','South Florida','miami-archive'));
+        _archiveMap.addLayer({
+          id: 'city-pins',
+          type: 'symbol',
+          source: 'cities',
+          minzoom: CITY_PIN_MINZOOM,
+          layout: {
+            'icon-image': 'palm-icon',
+            'icon-size': 0.55,
+            'icon-anchor': 'bottom',
+            'icon-allow-overlap': true,
+            'icon-ignore-placement': true
+          }
+        });
+
+        const cityPopup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false, offset: 16 });
+
+        _archiveMap.on('mouseenter', 'city-pins', (e) => {
+          _archiveMap.getCanvas().style.cursor = 'pointer';
+          const p = e.features[0].properties;
+          cityPopup.setLngLat(e.features[0].geometry.coordinates)
+            .setHTML('<div class="map-popup"><div class="map-popup-status" style="color:var(--terracotta)">' + p.status + '</div><div class="map-popup-title">' + p.title + '</div><div class="map-popup-sub">' + p.sub + '</div></div>')
+            .addTo(_archiveMap);
+        });
+        _archiveMap.on('mouseleave', 'city-pins', () => {
+          _archiveMap.getCanvas().style.cursor = '';
+          cityPopup.remove();
+        });
+        _archiveMap.on('click', 'city-pins', (e) => {
+          cityPopup.remove();
+          showPage(e.features[0].properties.pageId);
+        });
+      };
+      img.src = palmIconDataURI();
     });
   }
 
