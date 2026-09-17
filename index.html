@@ -4820,6 +4820,12 @@ img { max-width: 100%; display: block; }
         // has zoomed in enough for them to read cleanly.
         const regionPopup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false, offset: 22 });
 
+        // A zoom in progress can carry the cursor over the region icon
+        // as it animates, or make the icon vanish past its zoom cutoff
+        // before a mouseleave ever fires — either way the popup would be
+        // left stuck open, so any zoom transition clears it outright.
+        _archiveMap.on('zoomstart', () => regionPopup.remove());
+
         _archiveMap.on('mouseenter', 'region-pins', (e) => {
           _archiveMap.getCanvas().style.cursor = 'pointer';
           const p = e.features[0].properties;
