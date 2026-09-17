@@ -4798,7 +4798,7 @@ img { max-width: 100%; display: block; }
           id: 'city-pins',
           type: 'symbol',
           source: 'cities',
-          filter: ['==', ['get', 'region'], '__none__'],
+          minzoom: CITY_PIN_MINZOOM,
           layout: {
             'icon-image': 'palm-icon',
             'icon-size': 0.55,
@@ -4808,9 +4808,13 @@ img { max-width: 100%; display: block; }
           }
         });
 
-        function revealRegion(id) {
-          _archiveMap.setFilter('city-pins', ['==', ['get', 'region'], id || '__none__']);
-        }
+        // City pins are gated purely by zoom (minzoom above), not by which
+        // region was clicked — regions sit far enough apart that once
+        // zoomed in past that threshold by ANY means (nav buttons,
+        // double-click, scroll, drag), only one region's cities can be
+        // in view anyway. Gating on a "clicked region" filter instead
+        // meant double-click/scroll zoom bypassed the reveal entirely,
+        // since only the region icon's own click handler ever set it.
 
         // Hovering a region palm previews its cities as a compact list —
         // not as duplicate pins at their true coordinates, which (for a
@@ -4843,11 +4847,7 @@ img { max-width: 100%; display: block; }
         _archiveMap.on('click', 'region-pins', (e) => {
           regionPopup.remove();
           const id = e.features[0].properties.id;
-          revealRegion(id);
           _archiveMap.fitBounds(boundsOf(regions[id].coords), { padding: 60, duration: 900 });
-        });
-        _archiveMap.on('zoomend', () => {
-          if (_archiveMap.getZoom() < CITY_PIN_MINZOOM) revealRegion(null);
         });
 
         // Cities: hover previews the city, click opens its archive page.
