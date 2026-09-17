@@ -4683,9 +4683,9 @@ img { max-width: 100%; display: block; }
       miniMap.addLayer({ id: 'pinellas-fill', type: 'fill', source: 'pinellas', paint: { 'fill-color': '#2a4a5e', 'fill-opacity': 0.18 } });
       miniMap.addLayer({ id: 'pinellas-line', type: 'line', source: 'pinellas', paint: { 'line-color': '#2a4a5e', 'line-width': 1.5, 'line-opacity': 0.6, 'line-dasharray': [4, 3] } });
       const el = document.createElement('div');
-      el.style.cssText = 'width:14px;height:14px;border-radius:50%;background:rgba(26,35,48,0.9);border:2.5px solid #2a4a5e;';
+      el.style.cssText = 'width:16px;height:16px;border-radius:50%;background:var(--gold);border:2.5px solid var(--cream);box-shadow:0 1px 6px rgba(26,35,48,0.45);';
       new mapboxgl.Marker({ element: el }).setLngLat([-82.639, 27.773])
-        .setPopup(new mapboxgl.Popup({ offset: 12 }).setHTML('<div class="map-popup"><div class="map-popup-status" style="color:#2a4a5e">Headquarters</div><div class="map-popup-title">St. Petersburg, FL</div><div class="map-popup-sub">27.773° N · 82.639° W</div></div>'))
+        .setPopup(new mapboxgl.Popup({ offset: 12 }).setHTML('<div class="map-popup"><div class="map-popup-status" style="color:var(--gold)">Headquarters</div><div class="map-popup-title">St. Petersburg, FL</div><div class="map-popup-sub">27.773° N · 82.639° W</div></div>'))
         .addTo(miniMap);
     });
   }
@@ -4757,7 +4757,7 @@ img { max-width: 100%; display: block; }
 
       function addPin(lng, lat, html) {
         const el = document.createElement('div');
-        el.style.cssText = 'width:12px;height:12px;border-radius:50%;background:rgba(26,35,48,0.9);border:2px solid #2a4a5e;cursor:pointer;';
+        el.style.cssText = 'width:13px;height:13px;border-radius:50%;background:var(--terracotta);border:2px solid var(--cream);box-shadow:0 1px 5px rgba(26,35,48,0.4);cursor:pointer;';
         new mapboxgl.Marker({ element: el }).setLngLat([lng, lat])
           .setPopup(new mapboxgl.Popup({ offset: 10 }).setHTML(html))
           .addTo(_archiveMap);
@@ -4771,17 +4771,17 @@ img { max-width: 100%; display: block; }
       }
 
       addLabel(-82.74, 28.05, 'Tampa Bay Region');
-      addPin(-82.639, 27.773, popupHTML('Active — Growing','#2a4a5e','St. Petersburg','Pinellas County, FL','stpete-archive'));
-      addPin(-82.753, 28.149, popupHTML('Active — Growing','#2a4a5e','Tarpon Springs','Pinellas County, FL','tarpon-archive'));
+      addPin(-82.639, 27.773, popupHTML('Active — Growing','var(--terracotta)','St. Petersburg','Pinellas County, FL','stpete-archive'));
+      addPin(-82.753, 28.149, popupHTML('Active — Growing','var(--terracotta)','Tarpon Springs','Pinellas County, FL','tarpon-archive'));
       addLabel(-77.88, 34.22, 'Lower Cape Fear');
-      addPin(-77.548, 34.434, popupHTML('Active — Growing','#2a4a5e','Surf City','Pender County, NC','lowercapefear-archive'));
-      addPin(-77.944, 34.226, popupHTML('Active — Growing','#2a4a5e','Wilmington','New Hanover County, NC','lowercapefear-archive'));
-      addPin(-78.021, 33.920, popupHTML('Active — Growing','#2a4a5e','Southport','Brunswick County, NC','lowercapefear-archive'));
-      addPin(-78.150, 33.915, popupHTML('Active — Growing','#2a4a5e','Oak Island','Brunswick County, NC','lowercapefear-archive'));
+      addPin(-77.548, 34.434, popupHTML('Active — Growing','var(--terracotta)','Surf City','Pender County, NC','lowercapefear-archive'));
+      addPin(-77.944, 34.226, popupHTML('Active — Growing','var(--terracotta)','Wilmington','New Hanover County, NC','lowercapefear-archive'));
+      addPin(-78.021, 33.920, popupHTML('Active — Growing','var(--terracotta)','Southport','Brunswick County, NC','lowercapefear-archive'));
+      addPin(-78.150, 33.915, popupHTML('Active — Growing','var(--terracotta)','Oak Island','Brunswick County, NC','lowercapefear-archive'));
       addLabel(-78.64, 35.88, 'Raleigh / Triangle');
-      addPin(-78.638, 35.779, popupHTML('Active — Growing','#2a4a5e','Raleigh','Wake County, NC','raleigh-archive'));
-      addPin(-86.781, 36.174, popupHTML('Identity Portfolio','#2a4a5e','Nashville','Davidson County, TN','nashville-archive'));
-      addPin(-80.191, 25.762, popupHTML('Identity Portfolio','#2a4a5e','Miami','South Florida','miami-archive'));
+      addPin(-78.638, 35.779, popupHTML('Active — Growing','var(--terracotta)','Raleigh','Wake County, NC','raleigh-archive'));
+      addPin(-86.781, 36.174, popupHTML('Identity Portfolio','var(--terracotta)','Nashville','Davidson County, TN','nashville-archive'));
+      addPin(-80.191, 25.762, popupHTML('Identity Portfolio','var(--terracotta)','Miami','South Florida','miami-archive'));
     });
   }
 
