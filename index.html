@@ -4704,11 +4704,11 @@ img { max-width: 100%; display: block; }
     const CITY_PIN_MINZOOM = 7;
 
     const regions = {
-      pinellas:  { name: 'Tampa Bay Region',   coords: [[-82.84,28.17],[-82.56,28.17],[-82.56,27.63],[-82.84,27.63],[-82.84,28.17]] },
-      lcf:       { name: 'Lower Cape Fear',    coords: [[-78.10,34.52],[-77.40,34.52],[-77.40,33.82],[-78.10,33.82],[-78.10,34.52]] },
-      raleigh:   { name: 'Raleigh / Triangle', coords: [[-78.90,36.06],[-78.38,36.06],[-78.38,35.52],[-78.90,35.52],[-78.90,36.06]] },
-      nashville: { name: 'Nashville',          coords: [[-87.08,36.40],[-86.52,36.40],[-86.52,35.96],[-87.08,35.96],[-87.08,36.40]] },
-      miami:     { name: 'Miami',              coords: [[-80.44,25.98],[-80.10,25.98],[-80.10,25.46],[-80.44,25.46],[-80.44,25.98]] }
+      pinellas:  { name: 'Tampa Bay Region',   center: [-82.696, 27.961], coords: [[-82.84,28.17],[-82.56,28.17],[-82.56,27.63],[-82.84,27.63],[-82.84,28.17]] },
+      lcf:       { name: 'Lower Cape Fear',    center: [-77.916, 34.124], coords: [[-78.10,34.52],[-77.40,34.52],[-77.40,33.82],[-78.10,33.82],[-78.10,34.52]] },
+      raleigh:   { name: 'Raleigh / Triangle', center: [-78.638, 35.779], coords: [[-78.90,36.06],[-78.38,36.06],[-78.38,35.52],[-78.90,35.52],[-78.90,36.06]] },
+      nashville: { name: 'Nashville',          center: [-86.781, 36.174], coords: [[-87.08,36.40],[-86.52,36.40],[-86.52,35.96],[-87.08,35.96],[-87.08,36.40]] },
+      miami:     { name: 'Miami',              center: [-80.191, 25.762], coords: [[-80.44,25.98],[-80.10,25.98],[-80.10,25.46],[-80.44,25.46],[-80.44,25.98]] }
     };
 
     const cities = [
@@ -4748,33 +4748,39 @@ img { max-width: 100%; display: block; }
     }
 
     _archiveMap.on('load', () => {
-      // Regions: shaded, clickable areas. Clicking a region's fill or
-      // border zooms into it — no separate marker sits on top of it.
-      Object.keys(regions).forEach((id) => {
-        const r = regions[id];
-        _archiveMap.addSource(id, { type: 'geojson', data: { type: 'Feature', geometry: { type: 'Polygon', coordinates: [r.coords] } } });
-        _archiveMap.addLayer({ id: id + '-fill', type: 'fill', source: id, paint: { 'fill-color': '#2a4a5e', 'fill-opacity': 0.14 } });
-        _archiveMap.addLayer({ id: id + '-line', type: 'line', source: id, paint: { 'line-color': '#c9956a', 'line-width': 1.75, 'line-opacity': 0.9 } });
-
-        _archiveMap.on('mouseenter', id + '-fill', () => {
-          _archiveMap.getCanvas().style.cursor = 'pointer';
-          _archiveMap.setPaintProperty(id + '-fill', 'fill-opacity', 0.26);
-        });
-        _archiveMap.on('mouseleave', id + '-fill', () => {
-          _archiveMap.getCanvas().style.cursor = '';
-          _archiveMap.setPaintProperty(id + '-fill', 'fill-opacity', 0.14);
-        });
-        _archiveMap.on('click', id + '-fill', () => {
-          _archiveMap.fitBounds(boundsOf(r.coords), { padding: 60, duration: 900 });
-        });
-      });
-
-      // Cities: palm pins only appear once zoomed into a region, so the
-      // overview never looks clustered. Hover previews the city, click
-      // opens its archive page.
       const img = new Image(48, 60);
       img.onload = () => {
         _archiveMap.addImage('palm-icon', img);
+
+        // Regions: one large palm per region, standing in for the whole
+        // area. Hovering or clicking it reveals that region's city palms
+        // (smaller, same icon) in place — nothing else renders below the
+        // reveal zoom, so the overview never looks clustered.
+        _archiveMap.addSource('region-points', {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: Object.keys(regions).map((id) => ({
+              type: 'Feature',
+              geometry: { type: 'Point', coordinates: regions[id].center },
+              properties: { id, name: regions[id].name }
+            }))
+          }
+        });
+
+        _archiveMap.addLayer({
+          id: 'region-pins',
+          type: 'symbol',
+          source: 'region-points',
+          maxzoom: CITY_PIN_MINZOOM,
+          layout: {
+            'icon-image': 'palm-icon',
+            'icon-size': 1.35,
+            'icon-anchor': 'bottom',
+            'icon-allow-overlap': true,
+            'icon-ignore-placement': true
+          }
+        });
 
         _archiveMap.addSource('cities', {
           type: 'geojson',
@@ -4792,7 +4798,7 @@ img { max-width: 100%; display: block; }
           id: 'city-pins',
           type: 'symbol',
           source: 'cities',
-          minzoom: CITY_PIN_MINZOOM,
+          filter: ['==', ['get', 'region'], '__none__'],
           layout: {
             'icon-image': 'palm-icon',
             'icon-size': 0.55,
@@ -4802,6 +4808,43 @@ img { max-width: 100%; display: block; }
           }
         });
 
+        function revealRegion(id) {
+          _archiveMap.setFilter('city-pins', ['==', ['get', 'region'], id || '__none__']);
+        }
+
+        // Hovering a region palm previews its cities as a compact list —
+        // not as duplicate pins at their true coordinates, which (for a
+        // region like Tampa Bay or Lower Cape Fear) sit close enough
+        // together to overlap the big palm at this zoom. Clicking is what
+        // reveals the real, properly-spread-out city pins, once the map
+        // has zoomed in enough for them to read cleanly.
+        const regionPopup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false, offset: 22 });
+
+        _archiveMap.on('mouseenter', 'region-pins', (e) => {
+          _archiveMap.getCanvas().style.cursor = 'pointer';
+          const p = e.features[0].properties;
+          const regionCities = cities.filter((c) => c.region === p.id);
+          const statusLabel = regionCities.length + (regionCities.length === 1 ? ' City' : ' Cities');
+          const subLine = regionCities.length === 1 ? regionCities[0].sub : regionCities.map((c) => c.title).join(' · ');
+          regionPopup.setLngLat(e.features[0].geometry.coordinates)
+            .setHTML('<div class="map-popup"><div class="map-popup-status" style="color:var(--terracotta)">' + statusLabel + '</div><div class="map-popup-title">' + p.name + '</div><div class="map-popup-sub">' + subLine + '</div></div>')
+            .addTo(_archiveMap);
+        });
+        _archiveMap.on('mouseleave', 'region-pins', () => {
+          _archiveMap.getCanvas().style.cursor = '';
+          regionPopup.remove();
+        });
+        _archiveMap.on('click', 'region-pins', (e) => {
+          regionPopup.remove();
+          const id = e.features[0].properties.id;
+          revealRegion(id);
+          _archiveMap.fitBounds(boundsOf(regions[id].coords), { padding: 60, duration: 900 });
+        });
+        _archiveMap.on('zoomend', () => {
+          if (_archiveMap.getZoom() < CITY_PIN_MINZOOM) revealRegion(null);
+        });
+
+        // Cities: hover previews the city, click opens its archive page.
         const cityPopup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false, offset: 16 });
 
         _archiveMap.on('mouseenter', 'city-pins', (e) => {
