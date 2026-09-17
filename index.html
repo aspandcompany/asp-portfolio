@@ -927,6 +927,41 @@ img { max-width: 100%; display: block; }
   padding: 5px 10px;
 }
 
+.sector-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: 'Spectral', serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.offering-tag {
+  font-family: 'Spectral', serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--terracotta);
+  border: 1px solid var(--terracotta);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.work-card-sectors {
+  margin-top: 14px;
+  font-family: 'Spectral', serif;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgba(42, 74, 94, 0.6);
+  font-style: italic;
+}
+
 /* Closing quote */
 .home-quote-band {
   background: var(--deep-blue);
@@ -2960,7 +2995,7 @@ img { max-width: 100%; display: block; }
       </div>
     </li>
     <li>
-      <span>The Work ▾</span>
+      <a onclick="showPage('work')">The Work ▾</a>
       <div class="nav-dropdown">
         <a onclick="showPage('origin-brief')">The Origin Brief</a>
         <a onclick="showPage('rooted-travel')">Rooted Travel Partnerships</a>
@@ -2983,6 +3018,7 @@ img { max-width: 100%; display: block; }
     <a onclick="showPage('founders-portfolio'); closeMobile()">The Founder's Portfolio</a>
     <a onclick="showPage('archive'); closeMobile()">The Archive</a>
   </div>
+  <a onclick="showPage('work'); closeMobile()">The Work</a>
   <div class="mobile-sub">
     <a onclick="showPage('origin-brief'); closeMobile()">The Origin Brief</a>
     <a onclick="showPage('rooted-travel'); closeMobile()">Rooted Travel Partnerships</a>
@@ -3060,7 +3096,7 @@ img { max-width: 100%; display: block; }
       <h2>In The <em>Field.</em></h2>
     </div>
     <div class="field-grid">
-      <div class="field-card coming-soon">
+      <div class="field-card coming-soon" id="field-bims-melbourne">
         <p class="field-card-pub">BIMS · Melbourne, FL</p>
         <h4>Field Documentation — Florida Institute of Technology & Little Growers, Inc.</h4>
         <p>Photography alongside Florida Tech marine research professors and community nonprofit Little Growers, Inc., during a Black In Marine Science field trip to Melbourne. Documenting the intersection of scientific research, community stewardship, and environmental education on Florida's Space Coast.</p>
@@ -3166,12 +3202,14 @@ img { max-width: 100%; display: block; }
           <div class="client-row-body-spacer"></div>
           <div class="client-row-body-content">
             <p>A destination's official identity is usually built around what draws visitors — the landmarks, the experiences, the things most people associate with a place before they arrive. That foundation is real, and ASP & Co. documents it with the same craft and rigor applied to everything else. But a place is more than its visitor-facing identity. It is also the surf culture that has defined a stretch of coastline for generations. The founding story that never made it into the brochure. The neighborhood that shaped the city's music before anyone was paying attention.</p>
-            <p>ASP & Co. works with destinations to build a visual record that holds both: the identity travelers already know and the lived culture that exists alongside it. The result is destination content with genuine depth — imagery and research that reflects what a place actually is, not just what it has decided to show.</p>
+            <p>ASP & Co. works with destinations to build a visual record that holds both: the identity travelers already know and the lived culture that exists alongside it. A brochure is not a place. ASP & Co. documents what the brochure left out.</p>
             <div class="client-row-deliverables">
               <span class="deliverable-tag">The Stepter Cultural Report</span>
               <span class="deliverable-tag">Licensed Visual Archive</span>
               <span class="deliverable-tag">Identity Portfolio Documentation</span>
+              <span class="offering-tag" onclick="showPage('license')">Work: License Imagery</span>
             </div>
+            <p class="sector-link" onclick="showPage('stpete-archive')">See the record →</p>
           </div>
         </div>
       </div>
@@ -3186,12 +3224,14 @@ img { max-width: 100%; display: block; }
           <div class="client-row-body-spacer"></div>
           <div class="client-row-body-content">
             <p>The most memorable travel experiences aren't the ones that show guests the most polished version of a place. They're the ones that show them something true about it. A hotel that knows the neighborhood it's in. A tour that follows routes people actually travel, not just the ones that photograph well. An itinerary built from research, not from marketing instinct.</p>
-            <p>ASP & Co. partners with operators to document what their experiences are actually connected to — the geography, the communities, the cultural life that makes a destination worth visiting in the first place. That research becomes field photography, written findings, and experience programming that gives guests a genuine relationship with the place they've come to see.</p>
+            <p>ASP & Co. partners with operators to document what their experiences are actually connected to — the geography, the communities, the cultural life that makes a destination worth visiting in the first place. A polished stay isn't a relationship with a place. ASP & Co. supplies the research that builds one.</p>
             <div class="client-row-deliverables">
               <span class="deliverable-tag">Rooted Travel Partnership</span>
               <span class="deliverable-tag">Field Documentation</span>
               <span class="deliverable-tag">Physical Reckoning — Experience Design</span>
+              <span class="offering-tag" onclick="showPage('rooted-travel')">Work: Rooted Travel Partnerships</span>
             </div>
+            <p class="sector-link" onclick="showPage('rooted-travel')">See the record →</p>
           </div>
         </div>
       </div>
@@ -3206,12 +3246,14 @@ img { max-width: 100%; display: block; }
           <div class="client-row-body-spacer"></div>
           <div class="client-row-body-content">
             <p>Place-based storytelling is easy to get wrong. A weekend visit produces a weekend's worth of observation. What editors and readers can sense — even when they can't name it — is the difference between a piece written from the outside and one written from sustained presence inside a place.</p>
-            <p>ASP & Co. brings a documented research methodology, a proprietary archive built from years of field work across the American coastal South, and a geographic thesis to every editorial relationship: that the places worth writing about are the ones where the lived culture runs deeper than the visitor experience, and where the two exist alongside each other in ways that reward careful attention. The result is place writing and photography with a specific point of view — not assignments fulfilled, but stories that couldn't have been told by anyone who hadn't done this work first.</p>
+            <p>ASP & Co. brings a documented research methodology, a proprietary archive built from years of field work across the American coastal South, and a geographic thesis to every editorial relationship: that the places worth writing about are the ones where the lived culture runs deeper than the visitor experience, and where the two exist alongside each other in ways that reward careful attention. A weekend produces observation, not perspective. ASP & Co. brings the years of presence that create it.</p>
             <div class="client-row-deliverables">
               <span class="deliverable-tag">Place-Based Editorial Photography</span>
               <span class="deliverable-tag">The Reckoning of Place — Long-Form Narrative</span>
               <span class="deliverable-tag">Archive Licensing for Publication</span>
+              <span class="offering-tag" onclick="showPage('license')">Work: License Imagery</span>
             </div>
+            <p class="sector-link" onclick="showPage('nashville-archive')">See the record →</p>
           </div>
         </div>
       </div>
@@ -3226,13 +3268,16 @@ img { max-width: 100%; display: block; }
           <div class="client-row-body-spacer"></div>
           <div class="client-row-body-content">
             <p>Conservation has always understood that what isn't documented is at risk. The same is true for culture. The surf shops that have been on a barrier island for forty years. The congregation whose music shaped a city's identity. The farming community whose relationship to the land predates the development that's now erasing it. These aren't marginal stories. They are the living record of what a place is — and without documentation, they disappear.</p>
-            <p>ASP & Co. works with institutions whose mission is preservation to build visual records of the communities, traditions, and environments in their care. The research methodology is the same applied to every geography: document the physical environment, document the cultural life that grew out of it, document the present-day condition honestly. What comes back is primary-source material that belongs to the place and the people who made it.</p>
+            <p>ASP & Co. works with institutions whose mission is preservation to build visual records of the communities, traditions, and environments in their care. The research methodology is the same applied to every geography: document the physical environment, document the cultural life that grew out of it, document the present-day condition honestly. An archive isn't preservation until it's public. ASP & Co. gives the culture a record before it disappears.</p>
             <div class="client-row-deliverables">
               <span class="deliverable-tag">Community Documentation</span>
               <span class="deliverable-tag">Identity Portfolio Development</span>
               <span class="deliverable-tag">The Reckoning of Place — Public Record</span>
               <span class="deliverable-tag">Licensed Archive for Institutional Use</span>
+              <span class="offering-tag" onclick="showPage('origin-brief')">Work: The Origin Brief</span>
+              <span class="offering-tag" onclick="showPage('license')">Work: License Imagery</span>
             </div>
+            <p class="sector-link" onclick="showPage('tarpon-archive'); setTimeout(function(){ var el=document.getElementById('tarpon-node2'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 50)">See the record →</p>
           </div>
         </div>
       </div>
@@ -3253,7 +3298,9 @@ img { max-width: 100%; display: block; }
               <span class="deliverable-tag">Research-to-Public Visual Storytelling</span>
               <span class="deliverable-tag">Community Engagement Photography</span>
               <span class="deliverable-tag">Archive Development for Institutional & Editorial Use</span>
+              <span class="offering-tag" onclick="showPage('origin-brief')">Work: The Origin Brief</span>
             </div>
+            <p class="sector-link" onclick="showPage('home'); setTimeout(function(){ var el=document.getElementById('field-bims-melbourne'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 50)">See the record →</p>
           </div>
         </div>
       </div>
@@ -3453,6 +3500,7 @@ img { max-width: 100%; display: block; }
     <div class="for-whom-header">
       <p class="eyebrow">Who this is for</p>
       <h2>If you recognize your place in what we document — <em>we'd like to hear from you.</em></h2>
+      <p style="margin-bottom:16px;">The people we work best with aren't looking for content. They're staking something — a grant renewal, a budget line, a reputation — on the claim that a specific place matters. If that's the position you're in, this is built for you.</p>
       <p>ASP & Co. works on retainer with organizations that have a genuine stake in how their place is represented. Not one-time shoots — ongoing relationships that produce living archives and editorial content that grows over time.</p>
     </div>
     <div class="for-whom-grid">
@@ -4201,18 +4249,21 @@ img { max-width: 100%; display: block; }
       <div class="work-card-num">01</div>
       <h3>The Origin <em>Brief</em></h3>
       <p>A strategic consulting document that formally introduces a place-based business to the cultural and geographical foundation it's built on — and shows exactly where the gap is between what the business currently represents and what it could be telling.</p>
+      <p class="work-card-sectors">Typically delivered to: Cultural & Conservation, Academic & Scientific</p>
       <p style="margin-top:16px; font-family:'Spectral',serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--terracotta);">View →</p>
     </div>
     <div class="work-card" onclick="showPage('rooted-travel')">
       <div class="work-card-num">02</div>
       <h3>Rooted Travel <em>Partnerships</em></h3>
       <p>For experiential travel operators who want their experiences to be genuinely rooted in the cultural identity of the places they operate in — not just marketed through it. We help travel brands build deeper relationships between visitors and the places they serve.</p>
+      <p class="work-card-sectors">Typically delivered to: Travel & Hospitality</p>
       <p style="margin-top:16px; font-family:'Spectral',serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--terracotta);">View →</p>
     </div>
     <div class="work-card" onclick="showPage('license')">
       <div class="work-card-num">03</div>
       <h3>License <em>Imagery</em></h3>
       <p>Photography from the Archive available for licensing to businesses, publications, DMOs, and hospitality brands. Every image comes from real research. That is what makes it different from stock.</p>
+      <p class="work-card-sectors">Typically delivered to: Destinations, Editorial, Cultural & Conservation</p>
       <p style="margin-top:16px; font-family:'Spectral',serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--terracotta);">View →</p>
     </div>
   </div>
@@ -4392,7 +4443,7 @@ img { max-width: 100%; display: block; }
   <div class="mk-body">
     <div class="mk-section">
       <h2>The <em>Founder</em></h2>
-      <p class="mk-bio">Ashton Stepter is the founder of ASP & Co., a creation research practice documenting the intersection of cultural heritage and environmental significance across the American coastal South. The work began in 2019 on a barrier island in North Carolina and has since expanded through St. Petersburg, Florida, where the practice is now headquartered. Stepter identifies as a cultural scientist — approaching geography and place as living subjects worth studying with rigor and reverence before a single frame is made. He is the author of the 225 Framework, ASP & Co.'s four-movement research methodology for entering a place, recovering its documented truth, and returning it as a Visual Reckoning, a Written Reckoning, and a Physical Reckoning.</p>
+      <p class="mk-bio">Ashton Stepter is the founder of ASP & Co., a creation research practice documenting the intersection of cultural heritage and environmental significance across the American coastal South. The work began in 2019 on a barrier island in North Carolina and has since expanded through St. Petersburg, Florida, where the practice is now headquartered. Stepter identifies as a cultural scientist — approaching geography and place as living subjects worth studying with rigor and reverence before a single frame is made. He is the author of the 225 Framework, ASP & Co.'s four-movement research methodology for entering a place, recovering its documented truth, and returning it as a Visual Reckoning, a Written Reckoning, and a Physical Reckoning. He works best with people who have something real at stake in how their place is understood — not those simply looking for content.</p>
       <p style="font-family:'Spectral',serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--steel-blue);">Press and interview requests — <a href="mailto:ashton@aspandco.com" style="color:var(--terracotta);">ashton@aspandco.com</a></p>
     </div>
 
@@ -4620,7 +4671,7 @@ img { max-width: 100%; display: block; }
     mapboxgl.accessToken = MAPBOX_TOKEN;
     const miniMap = new mapboxgl.Map({
       container: 'home-stpete-map',
-      style: 'mapbox://styles/mapbox/dark-v11',
+      style: 'mapbox://styles/adstepter/cmtlvk4rp010601s90ehf343r',
       center: [-82.639, 27.773],
       zoom: 11,
       interactive: false,
@@ -4681,7 +4732,7 @@ img { max-width: 100%; display: block; }
     mapboxgl.accessToken = MAPBOX_TOKEN;
     _archiveMap = new mapboxgl.Map({
       container: 'leaflet-map',
-      style: 'mapbox://styles/mapbox/dark-v11',
+      style: 'mapbox://styles/adstepter/cmtlvk4rp010601s90ehf343r',
       center: [-82.5, 31.5],
       zoom: 4.8,
       attributionControl: true
