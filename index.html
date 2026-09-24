@@ -5398,6 +5398,17 @@ img { max-width: 100%; display: block; }
       miami:     { name: 'Miami',              center: [-80.191, 25.762], coords: [[-80.44,25.98],[-80.10,25.98],[-80.10,25.46],[-80.44,25.46],[-80.44,25.98]] }
     };
 
+    // Each city is a Place Portfolio. Two fields support The Atlas (internal/
+    // conceptual grouping — not a UI label — covering anything that represents
+    // ASP & Co.'s work spatially: this map, plus a set of per-location ArcGIS
+    // StoryMaps). Both are optional and omitted entirely until real data exists:
+    //   storymapUrl — link to this Place Portfolio's ArcGIS StoryMap, once built.
+    //                 When present, clicking the pin opens it in a new tab
+    //                 instead of the usual showPage() navigation.
+    //   atlasStatus — 'known-portrait' (only the opening visual identity exists)
+    //                 or 'records-in-progress' (Records inside the Portfolio are
+    //                 being built out). Not yet wired to any visual treatment —
+    //                 purely descriptive for now.
     const cities = [
       { lng: -82.639, lat: 27.773, title: 'St. Petersburg', sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'stpete-archive',        region: 'pinellas' },
       { lng: -82.753, lat: 28.149, title: 'Tarpon Springs',  sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'tarpon-archive',        region: 'pinellas' },
@@ -5553,7 +5564,12 @@ img { max-width: 100%; display: block; }
         });
         _archiveMap.on('click', 'city-pins', (e) => {
           cityPopup.remove();
-          showPage(e.features[0].properties.pageId);
+          const p = e.features[0].properties;
+          if (p.storymapUrl) {
+            window.open(p.storymapUrl, '_blank', 'noopener');
+          } else {
+            showPage(p.pageId);
+          }
         });
       };
       img.src = palmIconDataURI();
