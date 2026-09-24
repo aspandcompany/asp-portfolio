@@ -1433,6 +1433,35 @@ img { max-width: 100%; display: block; }
   line-height: 1.75;
 }
 
+.about-framework-callout {
+  padding: 72px 64px;
+  background: var(--soft);
+  text-align: center;
+  border-top: 1px solid rgba(42, 74, 94, 0.1);
+  border-bottom: 1px solid rgba(42, 74, 94, 0.1);
+}
+
+.about-framework-callout .eyebrow { justify-content: center; }
+
+.about-framework-callout h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.about-framework-callout h2 em { font-style: italic; color: var(--deep-blue); }
+
+.about-framework-callout p {
+  font-size: 15px;
+  font-weight: 300;
+  color: #555;
+  max-width: 560px;
+  margin: 0 auto 28px;
+  line-height: 1.65;
+}
+
 /* What drives the work */
 .about-pillars {
   background: var(--soft);
@@ -1659,6 +1688,7 @@ img { max-width: 100%; display: block; }
 }
 
 .archive-card:hover { background: var(--soft); }
+.archive-card .legend-item { color: #777; }
 
 .archive-card-region {
   font-family: 'Spectral', serif;
@@ -1893,6 +1923,23 @@ img { max-width: 100%; display: block; }
   padding: 72px 64px;
   color: var(--cream);
 }
+
+/* Cross-linking "Related" blocks — Phase 4 */
+.related-links {
+  background: var(--cream);
+  padding: 56px 64px 72px;
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(42, 74, 94, 0.1);
+}
+
+.related-links-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+.related-links-col .eyebrow { margin-bottom: 16px; }
 
 .archive-license-cta h2 {
   font-family: 'Cormorant Garamond', serif;
@@ -3603,40 +3650,12 @@ img { max-width: 100%; display: block; }
     </div>
   </div>
 
-  <!-- 225 Framework -->
-  <div class="about-framework">
-    <div class="framework-header">
-      <p class="eyebrow">The Methodology</p>
-      <h2>The <em>225</em> Framework.</h2>
-      <p>"I will restore to you the years the locusts have eaten." — Joel 2:25</p>
-    </div>
-    <div class="movements-grid">
-      <div class="movement-card">
-        <div class="movement-roman">I</div>
-        <p class="movement-label">Movement One</p>
-        <h3>The Physical Record</h3>
-        <p>Intensive study and visual documentation of the natural environment — waterways, geography, ecology, the built landscape. The land and water as they actually exist, before any story is told about them.</p>
-      </div>
-      <div class="movement-card">
-        <div class="movement-roman">II</div>
-        <p class="movement-label">Movement Two</p>
-        <h3>The Cultural Intersection</h3>
-        <p>Equally intensive study of the cultural heritage and human livelihoods native to that environment — the economies, traditions, and communities that grew directly out of the physical record. This is where the relationship between people and place gets defined.</p>
-      </div>
-      <div class="movement-card">
-        <div class="movement-roman">III</div>
-        <p class="movement-label">Movement Three</p>
-        <h3>The Lived Reality</h3>
-        <p>The present-day condition. What of that culture survives, what has been commodified, what has been displaced. The gap between how a place markets itself and how its people actually live inside it now.</p>
-      </div>
-      <div class="movement-card">
-        <div class="movement-roman">IV</div>
-        <p class="movement-label">Movement Four</p>
-        <h3>The Audit and the Gap</h3>
-        <p>The written reckoning. An honest critique of what lifestyle branding has consistently left out — whose story has stopped renewing, whose identity has been frozen in archive while others circulate freely. The demand is not to abandon the form. It is to apply it fully.</p>
-      </div>
-    </div>
-    <p style="font-size:14px; font-weight:300; color:#777; font-style:italic;">The 225 Framework is a continuous loop — each trip through the field feeds the next research cycle, and the archive compounds with every project.</p>
+  <!-- Method callout — full 225 Framework lives on its own page -->
+  <div class="about-framework-callout">
+    <p class="eyebrow">The Methodology</p>
+    <h2>The <em>225</em> Framework.</h2>
+    <p>Every ASP & Co. engagement follows the 225 Framework — a four-movement research methodology for entering a place, recovering its documented truth, and returning it as a Visual, Written, and Physical Reckoning.</p>
+    <a class="btn btn-outline" onclick="showPage('method')">Read the 225 Framework →</a>
   </div>
 
   <!-- What drives the work -->
@@ -3712,6 +3731,62 @@ img { max-width: 100%; display: block; }
     </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     METHOD PAGE — The 225 Framework
+     ============================================================ -->
+<div class="page page-content" id="page-method">
+  <div class="archive-page-hero">
+    <span class="back-btn" onclick="showPage('about')">About</span>
+    <h1>The <em>225</em> Framework.</h1>
+    <p>ASP & Co.'s four-movement research methodology for entering a place, recovering its documented truth, and returning it as a Visual Reckoning, a Written Reckoning, and a Physical Reckoning.</p>
+  </div>
+
+  <div class="about-framework">
+    <div class="framework-header">
+      <p class="eyebrow">The Methodology</p>
+      <h2>One method. <em>Four movements.</em></h2>
+      <p>"I will restore to you the years the locusts have eaten." — Joel 2:25</p>
+    </div>
+    <div class="movements-grid">
+      <div class="movement-card">
+        <div class="movement-roman">I</div>
+        <p class="movement-label">Movement One</p>
+        <h3>The Physical Record</h3>
+        <p>Intensive study and visual documentation of the natural environment — waterways, geography, ecology, the built landscape. The land and water as they actually exist, before any story is told about them.</p>
+      </div>
+      <div class="movement-card">
+        <div class="movement-roman">II</div>
+        <p class="movement-label">Movement Two</p>
+        <h3>The Cultural Intersection</h3>
+        <p>Equally intensive study of the cultural heritage and human livelihoods native to that environment — the economies, traditions, and communities that grew directly out of the physical record. This is where the relationship between people and place gets defined.</p>
+      </div>
+      <div class="movement-card">
+        <div class="movement-roman">III</div>
+        <p class="movement-label">Movement Three</p>
+        <h3>The Lived Reality</h3>
+        <p>The present-day condition. What of that culture survives, what has been commodified, what has been displaced. The gap between how a place markets itself and how its people actually live inside it now.</p>
+      </div>
+      <div class="movement-card">
+        <div class="movement-roman">IV</div>
+        <p class="movement-label">Movement Four</p>
+        <h3>The Audit and the Gap</h3>
+        <p>The written reckoning. An honest critique of what lifestyle branding has consistently left out — whose story has stopped renewing, whose identity has been frozen in archive while others circulate freely. The demand is not to abandon the form. It is to apply it fully.</p>
+      </div>
+    </div>
+    <p style="font-size:14px; font-weight:300; color:#777; font-style:italic;">The 225 Framework is a continuous loop — each trip through the field feeds the next research cycle, and the archive compounds with every project.</p>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
 </div>
 
@@ -4422,6 +4497,252 @@ img { max-width: 100%; display: block; }
     <a class="btn btn-light" onclick="showPage('contact')">Start the conversation →</a>
   </div>
 
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     PLACE STORIES HUB
+     ============================================================ -->
+<div class="page page-content" id="page-place-stories">
+  <div class="archive-hub-hero">
+    <p class="eyebrow">Place Stories</p>
+    <h1>The stories <em>told.</em></h1>
+    <p>Editorial essays and series built from the Archive's research — where field documentation resolves into narrative. Place Stories is where the practice writes what the images can't say on their own.</p>
+  </div>
+
+  <div class="archive-grid">
+    <div class="archive-card" data-sectors="place" onclick="showPage('story-water-vistas')">
+      <p class="archive-card-region">Lead Series</p>
+      <h3>Water <em>Vistas.</em></h3>
+      <p class="archive-card-sub">A series on the coastal South's relationship to water.</p>
+    </div>
+    <div class="archive-card" data-sectors="place" style="cursor:default;">
+      <p class="archive-card-region">Coming Soon</p>
+      <h3>More <em>stories.</em></h3>
+      <p class="archive-card-sub">Additional series in development.</p>
+    </div>
+    <div class="archive-card" data-sectors="place" style="cursor:default;">
+      <p class="archive-card-region">Coming Soon</p>
+      <h3>More <em>stories.</em></h3>
+      <p class="archive-card-sub">Additional series in development.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     PLACE STORY — WATER VISTAS (placeholder detail page)
+     ============================================================ -->
+<div class="page page-content" id="page-story-water-vistas">
+  <div class="archive-page-hero">
+    <span class="back-btn" onclick="showPage('place-stories')">Place Stories</span>
+    <h1>Water <em>Vistas.</em></h1>
+    <p>A series on the coastal South's relationship to water — where it draws people, and what it asks of the places that hold it. [Placeholder — essay copy in development.]</p>
+  </div>
+
+  <div class="about-worldview">
+    <div class="worldview-inner">
+      <p class="eyebrow" style="color:rgba(250,248,244,0.5);">Water Vistas · Entry 01</p>
+      <h2>[Placeholder <em>essay title.</em>]</h2>
+      <p>This is placeholder body copy for the lead entry in the Water Vistas series. The final essay will draw on field research from the Archive — the same source material behind the Portfolio imagery for this geography — and will run to a full editorial length once written.</p>
+      <p>TBD: essay text, pull quotes, and imagery to be dropped in during the content pass.</p>
+    </div>
+  </div>
+
+  <div class="related-links">
+    <div class="related-links-col">
+      <p class="eyebrow">From the Portfolio</p>
+      <a class="btn btn-outline" onclick="showPage('stpete-archive')">St. Petersburg Archive →</a>
+    </div>
+    <div class="related-links-col">
+      <p class="eyebrow">Related Place Project</p>
+      <a class="btn btn-outline" onclick="showPage('place-projects')">Place Projects →</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     PLACE PROJECTS HUB
+     ============================================================ -->
+<div class="page page-content" id="page-place-projects">
+  <div class="archive-hub-hero">
+    <p class="eyebrow">Place Projects</p>
+    <h1>The work <em>built.</em></h1>
+    <p>Physical initiatives built from what the field research established — programming, routes, and place-based work that resolves the research into a lived experience.</p>
+  </div>
+
+  <div class="archive-legend">
+    <span class="legend-item"><span class="legend-dot dot-documented"></span>Documented</span>
+    <span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span>
+    <span class="legend-item"><span class="legend-dot dot-anticipated"></span>Anticipated</span>
+  </div>
+
+  <div class="archive-grid">
+    <div class="archive-card" onclick="showPage('project-conch-road')">
+      <h3>Conch <em>Road.</em></h3>
+      <p class="archive-card-sub" style="margin-top:8px;"><span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span></p>
+    </div>
+    <div class="archive-card" onclick="showPage('project-shade-lines')">
+      <h3>Shade <em>Lines.</em></h3>
+      <p class="archive-card-sub" style="margin-top:8px;"><span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span></p>
+    </div>
+    <div class="archive-card" onclick="showPage('project-ross-era')">
+      <h3>The Ross <em>Era.</em></h3>
+      <p class="archive-card-sub" style="margin-top:8px;"><span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span></p>
+    </div>
+    <div class="archive-card" onclick="showPage('project-respect-the-locals')">
+      <h3>Respect The <em>Locals.</em></h3>
+      <p class="archive-card-sub" style="margin-top:8px;"><span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span></p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     PLACE PROJECT — CONCH ROAD (placeholder detail page)
+     ============================================================ -->
+<div class="page page-content" id="page-project-conch-road">
+  <div class="archive-page-hero">
+    <span class="back-btn" onclick="showPage('place-projects')">Place Projects</span>
+    <h1>Conch <em>Road.</em></h1>
+    <p><span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span> — [Placeholder — project description in development.]</p>
+  </div>
+  <div class="related-links">
+    <div class="related-links-col">
+      <p class="eyebrow">Portfolio Imagery</p>
+      <a class="btn btn-outline" onclick="showPage('archive')">View the Archive →</a>
+    </div>
+    <div class="related-links-col">
+      <p class="eyebrow">Stories It Produced</p>
+      <a class="btn btn-outline" onclick="showPage('place-stories')">View Place Stories →</a>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     PLACE PROJECT — SHADE LINES (placeholder detail page)
+     ============================================================ -->
+<div class="page page-content" id="page-project-shade-lines">
+  <div class="archive-page-hero">
+    <span class="back-btn" onclick="showPage('place-projects')">Place Projects</span>
+    <h1>Shade <em>Lines.</em></h1>
+    <p><span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span> — [Placeholder — project description in development.]</p>
+  </div>
+  <div class="related-links">
+    <div class="related-links-col">
+      <p class="eyebrow">Portfolio Imagery</p>
+      <a class="btn btn-outline" onclick="showPage('archive')">View the Archive →</a>
+    </div>
+    <div class="related-links-col">
+      <p class="eyebrow">Stories It Produced</p>
+      <a class="btn btn-outline" onclick="showPage('place-stories')">View Place Stories →</a>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     PLACE PROJECT — THE ROSS ERA (placeholder detail page)
+     ============================================================ -->
+<div class="page page-content" id="page-project-ross-era">
+  <div class="archive-page-hero">
+    <span class="back-btn" onclick="showPage('place-projects')">Place Projects</span>
+    <h1>The Ross <em>Era.</em></h1>
+    <p><span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span> — [Placeholder — project description in development.]</p>
+  </div>
+  <div class="related-links">
+    <div class="related-links-col">
+      <p class="eyebrow">Portfolio Imagery</p>
+      <a class="btn btn-outline" onclick="showPage('archive')">View the Archive →</a>
+    </div>
+    <div class="related-links-col">
+      <p class="eyebrow">Stories It Produced</p>
+      <a class="btn btn-outline" onclick="showPage('place-stories')">View Place Stories →</a>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     PLACE PROJECT — RESPECT THE LOCALS (placeholder detail page)
+     ============================================================ -->
+<div class="page page-content" id="page-project-respect-the-locals">
+  <div class="archive-page-hero">
+    <span class="back-btn" onclick="showPage('place-projects')">Place Projects</span>
+    <h1>Respect The <em>Locals.</em></h1>
+    <p><span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span> — [Placeholder — project description in development.]</p>
+  </div>
+  <div class="related-links">
+    <div class="related-links-col">
+      <p class="eyebrow">Portfolio Imagery</p>
+      <a class="btn btn-outline" onclick="showPage('archive')">View the Archive →</a>
+    </div>
+    <div class="related-links-col">
+      <p class="eyebrow">Stories It Produced</p>
+      <a class="btn btn-outline" onclick="showPage('place-stories')">View Place Stories →</a>
+    </div>
+  </div>
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
     <span class="footer-links">
