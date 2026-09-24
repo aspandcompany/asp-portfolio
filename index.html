@@ -475,6 +475,108 @@ img { max-width: 100%; display: block; }
   margin-bottom: 12px;
 }
 
+/* ============================================================
+   PLACE PANELS — dark homepage interlude (Portfolios / Stories / Projects)
+   ============================================================ */
+.place-panels { background: var(--night); }
+
+.place-panel {
+  padding: 88px 64px;
+  border-bottom: 1px solid rgba(107, 143, 163, 0.12);
+}
+
+.place-panel-header {
+  max-width: 900px;
+  margin: 0 auto 56px;
+}
+
+.place-panel .eyebrow { color: var(--terracotta); }
+.place-panel .eyebrow::before { background: var(--terracotta); }
+
+.place-panel h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+  margin-bottom: 20px;
+}
+
+.place-panel h2 em { font-style: italic; color: var(--steel-blue); }
+
+.place-panel-intro {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(250, 248, 244, 0.55);
+  max-width: 560px;
+}
+
+.place-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  background: rgba(107, 143, 163, 0.15);
+}
+
+.place-panel-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+.place-panel-card {
+  background: var(--night);
+  padding: 32px 28px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.place-panel-card:hover { background: rgba(107, 143, 163, 0.08); }
+
+.place-panel-lead-card { grid-column: span 2; }
+
+.place-panel-tag {
+  display: inline-block;
+  font-family: 'Spectral', serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  border: 1px solid rgba(201, 149, 106, 0.4);
+  padding: 4px 10px;
+  margin-bottom: 14px;
+}
+
+.place-panel-card-eyebrow {
+  font-family: 'Spectral', serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 244, 0.4);
+  margin-bottom: 10px;
+}
+
+.place-panel-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+.place-panel-card h3 em { font-style: italic; color: var(--terracotta); }
+
+.place-panel-card p {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(250, 248, 244, 0.5);
+}
+
+.place-panel-card .legend-item { margin-top: 14px; color: rgba(250, 248, 244, 0.45); }
+
+.place-panel-footer { text-align: center; }
+
 /* Positioning statement, given room to breathe below the hero */
 .home-statement {
   background: var(--cream);
@@ -2904,6 +3006,10 @@ img { max-width: 100%; display: block; }
 
   .model-grid, .clients-grid { grid-template-columns: 1fr; }
 
+  .place-panel { padding: 56px 24px; }
+  .place-panel-grid, .place-panel-grid.cols-3 { grid-template-columns: 1fr; }
+  .place-panel-lead-card { grid-column: span 1; }
+
   .about-hero { padding: 48px 24px 56px; min-height: 75vh; }
 
   .origin-header { padding: 56px 24px 40px; }
@@ -3016,6 +3122,101 @@ img { max-width: 100%; display: block; }
       <a class="btn btn-light" onclick="showPage('founders-portfolio')">The Founder's Portfolio</a>
       <a class="btn btn-light" onclick="showPage('archive')">View St. Pete →</a>
     </div>
+  </div>
+
+  <!-- ============================================================
+       PLACE PANELS — homepage tour: Portfolios → Stories → Projects
+       ============================================================ -->
+  <div class="place-panels">
+
+    <!-- Panel 1: Place Portfolios -->
+    <div class="place-panel">
+      <div class="place-panel-header">
+        <p class="eyebrow">Panel One</p>
+        <h2>Place <em>Portfolios.</em></h2>
+        <p class="place-panel-intro">The entry point to the Archive — every place ASP & Co. has entered, documented from the ground up.</p>
+      </div>
+      <div class="place-panel-grid">
+        <div class="place-panel-card" onclick="showPage('stpete-archive')">
+          <p class="place-panel-card-eyebrow">Pinellas County, FL</p>
+          <h3>St. <em>Petersburg</em></h3>
+          <p>Active archive — growing.</p>
+        </div>
+        <div class="place-panel-card" onclick="showPage('tarpon-archive')">
+          <p class="place-panel-card-eyebrow">Anclote River, FL</p>
+          <h3>Tarpon <em>Springs</em></h3>
+          <p>Active archive — growing.</p>
+        </div>
+        <div class="place-panel-card" onclick="showPage('nashville-archive')">
+          <p class="place-panel-card-eyebrow">Cumberland River, TN</p>
+          <h3><em>Nashville</em></h3>
+          <p>Identity Portfolio.</p>
+        </div>
+        <div class="place-panel-card" onclick="showPage('miami-archive')">
+          <p class="place-panel-card-eyebrow">Atlantic Corridor, FL</p>
+          <h3><em>Miami</em></h3>
+          <p>Identity Portfolio.</p>
+        </div>
+      </div>
+      <div class="place-panel-footer">
+        <a class="btn btn-light" onclick="showPage('archive')">View the Archive →</a>
+      </div>
+    </div>
+
+    <!-- Panel 2: Place Stories -->
+    <div class="place-panel">
+      <div class="place-panel-header">
+        <p class="eyebrow">Panel Two</p>
+        <h2>Place <em>Stories.</em></h2>
+        <p class="place-panel-intro">Editorial essays and series built from the Archive's research — where the documentation becomes narrative.</p>
+      </div>
+      <div class="place-panel-grid cols-3">
+        <div class="place-panel-card place-panel-lead-card" onclick="showPage('place-stories')">
+          <span class="place-panel-tag">Lead Series</span>
+          <h3>Water <em>Vistas.</em></h3>
+          <p>A series on the coastal South's relationship to water — where it draws people, and what it asks of the places that hold it.</p>
+        </div>
+        <div class="place-panel-card" onclick="showPage('place-stories')">
+          <p class="place-panel-card-eyebrow">Coming Soon</p>
+          <h3>More <em>stories.</em></h3>
+          <p>Additional series in development.</p>
+        </div>
+      </div>
+      <div class="place-panel-footer">
+        <a class="btn btn-light" onclick="showPage('place-stories')">View Place Stories →</a>
+      </div>
+    </div>
+
+    <!-- Panel 3: Place Projects -->
+    <div class="place-panel">
+      <div class="place-panel-header">
+        <p class="eyebrow">Panel Three</p>
+        <h2>Place <em>Projects.</em></h2>
+        <p class="place-panel-intro">Physical initiatives built from what the research established — programming, routes, and place-based work.</p>
+      </div>
+      <div class="place-panel-grid">
+        <div class="place-panel-card" onclick="showPage('place-projects')">
+          <h3>Conch <em>Road.</em></h3>
+          <span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span>
+        </div>
+        <div class="place-panel-card" onclick="showPage('place-projects')">
+          <h3>Shade <em>Lines.</em></h3>
+          <span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span>
+        </div>
+        <div class="place-panel-card" onclick="showPage('place-projects')">
+          <h3>The Ross <em>Era.</em></h3>
+          <span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span>
+        </div>
+        <div class="place-panel-card" onclick="showPage('place-projects')">
+          <h3>Respect The <em>Locals.</em></h3>
+          <span class="legend-item"><span class="legend-dot dot-progress"></span>In development</span>
+        </div>
+      </div>
+      <div class="place-panel-footer">
+        <a class="btn btn-light" onclick="showPage('place-projects')">View Place Projects →</a>
+      </div>
+    </div>
+
   </div>
 
   <!-- Positioning statement — full copy, given room to breathe -->
