@@ -185,6 +185,15 @@ img { max-width: 100%; display: block; }
 }
 
 .mobile-menu a:hover { color: var(--cream); }
+.mobile-menu > span {
+  display: block;
+  font-family: 'Spectral', serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 244, 0.7);
+  padding: 16px 0 0;
+}
 .mobile-menu .mobile-sub { padding-left: 16px; }
 .mobile-menu .mobile-sub a { font-size: 9px; color: rgba(250, 248, 244, 0.45); }
 
@@ -315,6 +324,20 @@ img { max-width: 100%; display: block; }
   font-style: italic;
   color: rgba(250, 248, 244, 0.3);
 }
+
+.footer-links {
+  font-family: 'Spectral', serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 244, 0.35);
+}
+.footer-links a {
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.footer-links a:hover { color: var(--terracotta); }
 
 .footer-right {
   font-family: 'Spectral', serif;
@@ -2945,25 +2968,15 @@ img { max-width: 100%; display: block; }
     <img src="photos/ASP___Co__PT_logo.png" alt="ASP & Co.">
   </a>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')">Home</a></li>
-    <li><a onclick="showPage('about')">About</a></li>
     <li>
-      <span>The Archive ▾</span>
+      <span>Place Portfolios ▾</span>
       <div class="nav-dropdown">
         <a onclick="showPage('founders-portfolio')">The Founder's Portfolio</a>
         <a onclick="showPage('archive')">The Archive</a>
       </div>
     </li>
-    <li>
-      <a onclick="showPage('work')">The Work ▾</a>
-      <div class="nav-dropdown">
-        <a onclick="showPage('origin-brief')">The Origin Brief</a>
-        <a onclick="showPage('rooted-travel')">Rooted Travel Partnerships</a>
-        <a onclick="showPage('license')">License Imagery</a>
-        <a onclick="showPage('media-kit')">Media Kit</a>
-      </div>
-    </li>
-    <li><a onclick="showPage('contact')">Contact</a></li>
+    <li><a onclick="showPage('place-stories')">Place Stories</a></li>
+    <li><a onclick="showPage('place-projects')">Place Projects</a></li>
   </ul>
   <div class="nav-hamburger" onclick="toggleMobile()" id="hamburger">
     <span></span><span></span><span></span>
@@ -2973,19 +2986,13 @@ img { max-width: 100%; display: block; }
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a onclick="showPage('home'); closeMobile()">Home</a>
-  <a onclick="showPage('about'); closeMobile()">About</a>
+  <span>Place Portfolios</span>
   <div class="mobile-sub">
     <a onclick="showPage('founders-portfolio'); closeMobile()">The Founder's Portfolio</a>
     <a onclick="showPage('archive'); closeMobile()">The Archive</a>
   </div>
-  <a onclick="showPage('work'); closeMobile()">The Work</a>
-  <div class="mobile-sub">
-    <a onclick="showPage('origin-brief'); closeMobile()">The Origin Brief</a>
-    <a onclick="showPage('rooted-travel'); closeMobile()">Rooted Travel Partnerships</a>
-    <a onclick="showPage('license'); closeMobile()">License Imagery</a>
-    <a onclick="showPage('media-kit'); closeMobile()">Media Kit</a>
-  </div>
-  <a onclick="showPage('contact'); closeMobile()">Contact</a>
+  <a onclick="showPage('place-stories'); closeMobile()">Place Stories</a>
+  <a onclick="showPage('place-projects'); closeMobile()">Place Projects</a>
 </div>
 
 
@@ -3286,6 +3293,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
   </footer>
@@ -3496,6 +3506,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
   </footer>
@@ -3686,6 +3699,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -3788,6 +3804,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -3861,6 +3880,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
   </footer>
@@ -3945,6 +3967,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
   </footer>
@@ -4045,6 +4070,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4093,6 +4121,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4141,6 +4172,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4189,6 +4223,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4229,6 +4266,9 @@ img { max-width: 100%; display: block; }
   </div>
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4279,6 +4319,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4339,6 +4382,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4385,6 +4431,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4471,6 +4520,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4534,6 +4586,9 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-links">
+      <a onclick="showPage('about')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
+    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
   </footer>
