@@ -327,20 +327,6 @@ img { max-width: 100%; display: block; }
   color: rgba(250, 248, 244, 0.3);
 }
 
-.footer-links {
-  font-family: 'Spectral', serif;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(250, 248, 244, 0.35);
-}
-.footer-links a {
-  color: inherit;
-  cursor: pointer;
-  transition: color 0.15s;
-}
-.footer-links a:hover { color: var(--terracotta); }
-
 .footer-right {
   font-family: 'Spectral', serif;
   font-size: 10px;
@@ -1677,7 +1663,7 @@ img { max-width: 100%; display: block; }
   padding: 48px 64px;
   background: var(--cream);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2px;
   background-color: rgba(42, 74, 94, 0.1);
 }
@@ -3593,9 +3579,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
   </footer>
@@ -3778,9 +3761,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
   </footer>
@@ -3806,9 +3786,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -3862,9 +3839,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4064,9 +4038,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4170,6 +4141,46 @@ img { max-width: 100%; display: block; }
         <span class="sector-tag">Place</span><span class="sector-tag">Practice</span><span class="sector-tag">People</span><span class="sector-tag">Passage</span>
       </div>
     </div>
+    <div class="archive-card" data-sectors="place" onclick="showPage('gulfport-archive')">
+      <p class="archive-card-region">Pinellas County, FL</p>
+      <h3><em>Gulfport</em></h3>
+      <p class="archive-card-sub">New to the Atlas</p>
+      <div class="archive-card-tags">
+        <span class="sector-tag">Place</span>
+      </div>
+    </div>
+    <div class="archive-card" data-sectors="place" onclick="showPage('safetyharbor-archive')">
+      <p class="archive-card-region">Pinellas County, FL</p>
+      <h3>Safety <em>Harbor</em></h3>
+      <p class="archive-card-sub">New to the Atlas</p>
+      <div class="archive-card-tags">
+        <span class="sector-tag">Place</span>
+      </div>
+    </div>
+    <div class="archive-card" data-sectors="place" onclick="showPage('bradenton-archive')">
+      <p class="archive-card-region">Manatee County, FL</p>
+      <h3><em>Bradenton</em></h3>
+      <p class="archive-card-sub">New to the Atlas</p>
+      <div class="archive-card-tags">
+        <span class="sector-tag">Place</span>
+      </div>
+    </div>
+    <div class="archive-card" data-sectors="place" onclick="showPage('melbourne-archive')">
+      <p class="archive-card-region">Space Coast, FL</p>
+      <h3><em>Melbourne</em></h3>
+      <p class="archive-card-sub">New to the Atlas</p>
+      <div class="archive-card-tags">
+        <span class="sector-tag">Place</span>
+      </div>
+    </div>
+    <div class="archive-card" data-sectors="place" onclick="showPage('staugustine-archive')">
+      <p class="archive-card-region">St. Johns County, FL</p>
+      <h3>St. <em>Augustine</em></h3>
+      <p class="archive-card-sub">New to the Atlas</p>
+      <div class="archive-card-tags">
+        <span class="sector-tag">Place</span>
+      </div>
+    </div>
   </div>
 
   <div class="archive-map-note">These archives are field records — active, growing research documents from a practice rooted in the American coastal South and expanding outward. The geographic thesis: coastal communities with layered cultural histories are systematically underrepresented by the imagery that's supposed to speak for them. Barrier islands, river mouths, port towns, cultural heritage corridors — each distinct, each carrying histories worth documenting honestly.</div>
@@ -4199,9 +4210,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4292,9 +4300,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
   </footer>
@@ -4396,9 +4401,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
   </footer>
@@ -4516,9 +4518,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4584,9 +4583,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4652,9 +4648,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4720,9 +4713,331 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     GULFPORT ARCHIVE
+     ============================================================ -->
+<div class="page page-content" id="page-gulfport-archive">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
+  <div class="archive-page-hero">
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <h1>The Gulfport <em>Atlas.</em></h1>
+    <p>A pocket of Pinellas County that never smoothed itself out for anyone — a walkable arts district, a historic Gulf-front casino ballroom, and a small-town bohemian character that sits in deliberate contrast to its larger neighbor across the bay.</p>
+  </div>
+  <div class="archive-stats">
+    <div class="archive-stat-item"><span class="archive-stat-num">1</span><span class="archive-stat-label">Anchor node</span></div>
+    <div class="archive-stat-item"><span class="archive-stat-num">New</span><span class="archive-stat-label">To the Atlas</span></div>
+    <div class="archive-stat-item"><span class="archive-stat-num">Custom</span><span class="archive-stat-label">Licensing portfolios</span></div>
+  </div>
+
+  <div class="archive-node">
+    <div class="node-header">
+      <p class="node-coords">Pinellas County, FL · 27.7459° N, 82.7031° W</p>
+      <h2><em>Gulfport</em></h2>
+      <p>Gulfport's arts district, its historic waterfront casino ballroom, and a Gulf-facing downtown that has kept its own pace even as the rest of the county grew up around it.</p>
+    </div>
+    <p class="node-gallery-label">Gulfport — Selected imagery · Full collection available on request</p>
+    <div class="node-gallery">
+      <div class="gallery-tile"><img src="photos/DSC_0633.jpg" alt="Gulfport waterfront"><div class="gallery-tile-label">Waterfront</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0299.jpg" alt="Gulfport downtown"><div class="gallery-tile-label">Downtown Core</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0158.jpg" alt="Gulfport casino"><div class="gallery-tile-label">Casino Ballroom</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0920.jpg" alt="Gulfport arts district"><div class="gallery-tile-label">Arts District</div></div>
+    </div>
+  </div>
+
+  <div class="archive-license-cta">
+    <h2>License the Gulfport archive.</h2>
+    <p>An early-stage field record of a small Pinellas County city with an outsized sense of its own identity.</p>
+    <div class="license-specs">
+      <div class="license-spec"><span class="license-spec-label">Format</span>High-resolution digital files</div>
+      <div class="license-spec"><span class="license-spec-label">Region</span>Gulfport, FL — Pinellas County</div>
+    </div>
+    <a class="btn btn-light" onclick="showPage('contact')">Start the conversation →</a>
+  </div>
+
+  <div class="related-links">
+    <div class="related-links-col">
+      <p class="eyebrow">More From This Place</p>
+      <p class="related-links-empty">No Place Stories linked yet.</p>
+    </div>
+    <div class="related-links-col">
+      <p class="eyebrow">Physical Initiatives</p>
+      <p class="related-links-empty">No Place Projects linked yet.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     SAFETY HARBOR ARCHIVE
+     ============================================================ -->
+<div class="page page-content" id="page-safetyharbor-archive">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
+  <div class="archive-page-hero">
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <h1>The Safety Harbor <em>Atlas.</em></h1>
+    <p>A natural mineral spring on Old Tampa Bay that drew the Tocobaga people long before it drew a spa town — Safety Harbor's Main Street character sits directly on top of one of Pinellas County's oldest continuously significant sites.</p>
+  </div>
+  <div class="archive-stats">
+    <div class="archive-stat-item"><span class="archive-stat-num">1</span><span class="archive-stat-label">Anchor node</span></div>
+    <div class="archive-stat-item"><span class="archive-stat-num">New</span><span class="archive-stat-label">To the Atlas</span></div>
+    <div class="archive-stat-item"><span class="archive-stat-num">Custom</span><span class="archive-stat-label">Licensing portfolios</span></div>
+  </div>
+
+  <div class="archive-node">
+    <div class="node-header">
+      <p class="node-coords">Pinellas County, FL · 28.0084° N, 82.6987° W</p>
+      <h2><em>Safety Harbor</em></h2>
+      <p>The mineral springs and Old Tampa Bay waterfront that gave the city its name and its wellness-town identity, and a small Main Street downtown that has resisted the county's wider development pressure.</p>
+    </div>
+    <p class="node-gallery-label">Safety Harbor — Selected imagery · Full collection available on request</p>
+    <div class="node-gallery">
+      <div class="gallery-tile"><img src="photos/DSC_0649.jpg" alt="Safety Harbor waterfront"><div class="gallery-tile-label">Old Tampa Bay</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0531.jpg" alt="Safety Harbor downtown"><div class="gallery-tile-label">Main Street</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0827.jpg" alt="Safety Harbor springs"><div class="gallery-tile-label">The Springs</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0783.jpg" alt="Safety Harbor detail"><div class="gallery-tile-label">Neighborhood Detail</div></div>
+    </div>
+  </div>
+
+  <div class="archive-license-cta">
+    <h2>License the Safety Harbor archive.</h2>
+    <p>An early-stage field record of a small city built around one of the county's oldest continuously significant sites.</p>
+    <div class="license-specs">
+      <div class="license-spec"><span class="license-spec-label">Format</span>High-resolution digital files</div>
+      <div class="license-spec"><span class="license-spec-label">Region</span>Safety Harbor, FL — Pinellas County</div>
+    </div>
+    <a class="btn btn-light" onclick="showPage('contact')">Start the conversation →</a>
+  </div>
+
+  <div class="related-links">
+    <div class="related-links-col">
+      <p class="eyebrow">More From This Place</p>
+      <p class="related-links-empty">No Place Stories linked yet.</p>
+    </div>
+    <div class="related-links-col">
+      <p class="eyebrow">Physical Initiatives</p>
+      <p class="related-links-empty">No Place Projects linked yet.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     BRADENTON ARCHIVE
+     ============================================================ -->
+<div class="page page-content" id="page-bradenton-archive">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
+  <div class="archive-page-hero">
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <h1>The Bradenton <em>Atlas.</em></h1>
+    <p>Manatee County's river city — a working downtown on the Manatee River that serves as the gateway to Anna Maria Island, documented as the practice's first step south of Tampa Bay proper.</p>
+  </div>
+  <div class="archive-stats">
+    <div class="archive-stat-item"><span class="archive-stat-num">1</span><span class="archive-stat-label">Anchor node</span></div>
+    <div class="archive-stat-item"><span class="archive-stat-num">New</span><span class="archive-stat-label">To the Atlas</span></div>
+    <div class="archive-stat-item"><span class="archive-stat-num">Custom</span><span class="archive-stat-label">Licensing portfolios</span></div>
+  </div>
+
+  <div class="archive-node">
+    <div class="node-header">
+      <p class="node-coords">Manatee County, FL · 27.4989° N, 82.5748° W</p>
+      <h2><em>Bradenton</em></h2>
+      <p>The Manatee River waterfront and Riverwalk, a historic downtown core, and the city's role as the mainland gateway to Anna Maria Island and the barrier islands beyond it.</p>
+    </div>
+    <p class="node-gallery-label">Bradenton — Selected imagery · Full collection available on request</p>
+    <div class="node-gallery">
+      <div class="gallery-tile"><img src="photos/DSC_0649.jpg" alt="Bradenton riverfront"><div class="gallery-tile-label">Manatee River</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0641.jpg" alt="Bradenton downtown"><div class="gallery-tile-label">Downtown Riverwalk</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0986.jpg" alt="Bradenton detail"><div class="gallery-tile-label">Historic Core</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0133.jpg" alt="Bradenton coastline"><div class="gallery-tile-label">Gateway to the Islands</div></div>
+    </div>
+  </div>
+
+  <div class="archive-license-cta">
+    <h2>License the Bradenton archive.</h2>
+    <p>An early-stage field record of Manatee County's river city, extending the practice's Tampa Bay presence south along the coast.</p>
+    <div class="license-specs">
+      <div class="license-spec"><span class="license-spec-label">Format</span>High-resolution digital files</div>
+      <div class="license-spec"><span class="license-spec-label">Region</span>Bradenton, FL — Manatee County</div>
+    </div>
+    <a class="btn btn-light" onclick="showPage('contact')">Start the conversation →</a>
+  </div>
+
+  <div class="related-links">
+    <div class="related-links-col">
+      <p class="eyebrow">More From This Place</p>
+      <p class="related-links-empty">No Place Stories linked yet.</p>
+    </div>
+    <div class="related-links-col">
+      <p class="eyebrow">Physical Initiatives</p>
+      <p class="related-links-empty">No Place Projects linked yet.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     MELBOURNE / SPACE COAST ARCHIVE
+     ============================================================ -->
+<div class="page page-content" id="page-melbourne-archive">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
+  <div class="archive-page-hero">
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <h1>The Melbourne <em>Atlas.</em></h1>
+    <p>The anchor city of Florida's Space Coast — the Indian River Lagoon on one side, the aerospace corridor leading up to Cape Canaveral on the other, and a coastline defined by both in equal measure.</p>
+  </div>
+  <div class="archive-stats">
+    <div class="archive-stat-item"><span class="archive-stat-num">1</span><span class="archive-stat-label">Anchor node</span></div>
+    <div class="archive-stat-item"><span class="archive-stat-num">New</span><span class="archive-stat-label">To the Atlas</span></div>
+    <div class="archive-stat-item"><span class="archive-stat-num">Custom</span><span class="archive-stat-label">Licensing portfolios</span></div>
+  </div>
+
+  <div class="archive-node">
+    <div class="node-header">
+      <p class="node-coords">Space Coast, FL · 28.0836° N, 80.6081° W</p>
+      <h2><em>Melbourne</em></h2>
+      <p>The Indian River Lagoon waterfront, a downtown shaped by the aerospace industry as much as by the beach, and a coastline that reads as launch-country as much as it reads as Florida coast.</p>
+    </div>
+    <p class="node-gallery-label">Melbourne — Selected imagery · Full collection available on request</p>
+    <div class="node-gallery">
+      <div class="gallery-tile"><img src="photos/DSC_0917.jpg" alt="Melbourne coastline"><div class="gallery-tile-label">Indian River Lagoon</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0452.jpg" alt="Melbourne beach"><div class="gallery-tile-label">Space Coast Beaches</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0940.jpg" alt="Melbourne downtown"><div class="gallery-tile-label">Downtown Melbourne</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0968.jpg" alt="Melbourne detail"><div class="gallery-tile-label">The Corridor</div></div>
+    </div>
+  </div>
+
+  <div class="archive-license-cta">
+    <h2>License the Melbourne archive.</h2>
+    <p>An early-stage field record of the Space Coast's anchor city — Cocoa Beach anticipated as a second node as the regional archive builds out.</p>
+    <div class="license-specs">
+      <div class="license-spec"><span class="license-spec-label">Format</span>High-resolution digital files</div>
+      <div class="license-spec"><span class="license-spec-label">Region</span>Melbourne, FL — Space Coast</div>
+    </div>
+    <a class="btn btn-light" onclick="showPage('contact')">Start the conversation →</a>
+  </div>
+
+  <div class="related-links">
+    <div class="related-links-col">
+      <p class="eyebrow">More From This Place</p>
+      <p class="related-links-empty">No Place Stories linked yet.</p>
+    </div>
+    <div class="related-links-col">
+      <p class="eyebrow">Physical Initiatives</p>
+      <p class="related-links-empty">No Place Projects linked yet.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     ST. AUGUSTINE ARCHIVE
+     ============================================================ -->
+<div class="page page-content" id="page-staugustine-archive">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
+  <div class="archive-page-hero">
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <h1>The St. Augustine <em>Atlas.</em></h1>
+    <p>The oldest continuously occupied European-founded city in the country — Spanish colonial streets, a coastline that has been fought over for five centuries, and a historic weight that most destination photography flattens into a postcard.</p>
+  </div>
+  <div class="archive-stats">
+    <div class="archive-stat-item"><span class="archive-stat-num">1</span><span class="archive-stat-label">Anchor node</span></div>
+    <div class="archive-stat-item"><span class="archive-stat-num">New</span><span class="archive-stat-label">To the Atlas</span></div>
+    <div class="archive-stat-item"><span class="archive-stat-num">Custom</span><span class="archive-stat-label">Licensing portfolios</span></div>
+  </div>
+
+  <div class="archive-node">
+    <div class="node-header">
+      <p class="node-coords">St. Johns County, FL · 29.9012° N, 81.3124° W</p>
+      <h2><em>St. Augustine</em></h2>
+      <p>The Castillo de San Marcos and the Spanish colonial core, the working waterfront along the Matanzas River, and a downtown built up in layers across nearly five hundred years of continuous occupation.</p>
+    </div>
+    <p class="node-gallery-label">St. Augustine — Selected imagery · Full collection available on request</p>
+    <div class="node-gallery">
+      <div class="gallery-tile"><img src="photos/DSC_0862.jpg" alt="St. Augustine fort"><div class="gallery-tile-label">Castillo de San Marcos</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0787.jpg" alt="St. Augustine streets"><div class="gallery-tile-label">Colonial Core</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0572.jpg" alt="St. Augustine waterfront"><div class="gallery-tile-label">Matanzas River</div></div>
+      <div class="gallery-tile"><img src="photos/DSC_0412.jpg" alt="St. Augustine detail"><div class="gallery-tile-label">Ancient City Detail</div></div>
+    </div>
+  </div>
+
+  <div class="archive-license-cta">
+    <h2>License the St. Augustine archive.</h2>
+    <p>An early-stage field record of the nation's oldest city, entered as the practice's first step into Northeast Florida.</p>
+    <div class="license-specs">
+      <div class="license-spec"><span class="license-spec-label">Format</span>High-resolution digital files</div>
+      <div class="license-spec"><span class="license-spec-label">Region</span>St. Augustine, FL — St. Johns County</div>
+    </div>
+    <a class="btn btn-light" onclick="showPage('contact')">Start the conversation →</a>
+  </div>
+
+  <div class="related-links">
+    <div class="related-links-col">
+      <p class="eyebrow">More From This Place</p>
+      <p class="related-links-empty">No Place Stories linked yet.</p>
+    </div>
+    <div class="related-links-col">
+      <p class="eyebrow">Physical Initiatives</p>
+      <p class="related-links-empty">No Place Projects linked yet.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4766,9 +5081,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4813,9 +5125,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4866,9 +5175,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4902,9 +5208,6 @@ img { max-width: 100%; display: block; }
   </div>
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4938,9 +5241,6 @@ img { max-width: 100%; display: block; }
   </div>
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -4974,9 +5274,6 @@ img { max-width: 100%; display: block; }
   </div>
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -5010,9 +5307,6 @@ img { max-width: 100%; display: block; }
   </div>
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -5053,9 +5347,6 @@ img { max-width: 100%; display: block; }
   </div>
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -5106,9 +5397,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -5169,9 +5457,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -5218,9 +5503,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -5307,9 +5589,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co.</span>
   </footer>
@@ -5373,9 +5652,6 @@ img { max-width: 100%; display: block; }
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
-    <span class="footer-links">
-      <a onclick="showPage('about-story')">About</a> · <a onclick="showPage('work')">The Work</a> · <a onclick="showPage('method')">Method</a> · <a onclick="showPage('contact')">Contact</a>
-    </span>
     <span class="footer-center">From Higher Ground</span>
     <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
   </footer>
