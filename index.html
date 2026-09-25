@@ -1832,6 +1832,45 @@ img { max-width: 100%; display: block; }
 
 .node-nav-item:hover { border-color: var(--deep-blue); }
 
+/* Atlas sub-nav — persistent link strip across every page inside the Atlas tree */
+.atlas-subnav {
+  padding: 20px 64px;
+  background: var(--soft);
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(42, 74, 94, 0.1);
+}
+
+.atlas-subnav a {
+  font-family: 'Spectral', serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--deep-blue);
+  cursor: pointer;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.atlas-subnav a:hover { border-color: var(--deep-blue); }
+
+/* Atlas landing page — "Explore the Atlas" discovery row header */
+.atlas-discovery-header {
+  padding: 56px 64px 0;
+  background: var(--cream);
+}
+
+.atlas-discovery-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 2.8vw, 38px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  margin-top: 8px;
+}
+
 .archive-node {
   padding: 80px 64px;
   border-bottom: 1px solid rgba(42, 74, 94, 0.1);
@@ -2691,7 +2730,10 @@ img { max-width: 100%; display: block; }
   color: rgba(250, 248, 244, 0.55);
   max-width: 520px;
   line-height: 1.65;
+  margin-bottom: 16px;
 }
+
+.fp-hero p:last-child { margin-bottom: 0; }
 
 /* ============================================================
    FOUNDER'S PORTFOLIO PHOTO GALLERY — masonry
@@ -3081,7 +3123,8 @@ img { max-width: 100%; display: block; }
 
   .archive-grid { grid-template-columns: 1fr; }
 
-  .archive-stats, .node-nav { padding: 24px; }
+  .archive-stats, .node-nav, .atlas-subnav { padding: 24px; }
+  .atlas-discovery-header { padding-left: 24px; padding-right: 24px; }
   .archive-node { padding: 48px 24px; }
   .node-gallery { grid-template-columns: repeat(2, 1fr); }
 
@@ -3124,21 +3167,13 @@ img { max-width: 100%; display: block; }
   </a>
   <ul class="nav-links">
     <li>
-      <span>Place Portfolios ▾</span>
-      <div class="nav-dropdown">
-        <a onclick="showPage('founders-portfolio')">The Founder's Portfolio</a>
-        <a onclick="showPage('archive')">The Archive</a>
-      </div>
-    </li>
-    <li><a onclick="showPage('place-stories')">Place Stories</a></li>
-    <li><a onclick="showPage('place-projects')">Place Projects</a></li>
-    <li class="nav-dropdown-right">
       <span>About ▾</span>
       <div class="nav-dropdown">
         <a onclick="showPage('about-founder')">About the Founder</a>
         <a onclick="showPage('about-story')">The ASP & Co. Story</a>
       </div>
     </li>
+    <li><a onclick="showPage('atlas')">Atlas</a></li>
     <li><a onclick="showPage('contact')">Contact</a></li>
   </ul>
   <div class="nav-hamburger" onclick="toggleMobile()" id="hamburger">
@@ -3149,18 +3184,12 @@ img { max-width: 100%; display: block; }
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a onclick="showPage('home'); closeMobile()">Home</a>
-  <span>Place Portfolios</span>
-  <div class="mobile-sub">
-    <a onclick="showPage('founders-portfolio'); closeMobile()">The Founder's Portfolio</a>
-    <a onclick="showPage('archive'); closeMobile()">The Archive</a>
-  </div>
-  <a onclick="showPage('place-stories'); closeMobile()">Place Stories</a>
-  <a onclick="showPage('place-projects'); closeMobile()">Place Projects</a>
   <span>About</span>
   <div class="mobile-sub">
     <a onclick="showPage('about-founder'); closeMobile()">About the Founder</a>
     <a onclick="showPage('about-story'); closeMobile()">The ASP & Co. Story</a>
   </div>
+  <a onclick="showPage('atlas'); closeMobile()">Atlas</a>
   <a onclick="showPage('contact'); closeMobile()">Contact</a>
 </div>
 
@@ -3182,8 +3211,8 @@ img { max-width: 100%; display: block; }
     <p class="home-hero-thesis">Every leader who represents a place is making a claim about why it matters. ASP & Co. supplies the proof.</p>
 
     <div class="home-hero-actions">
-      <a class="btn btn-light" onclick="showPage('founders-portfolio')">The Founder's Portfolio</a>
-      <a class="btn btn-light" onclick="showPage('archive')">View St. Pete →</a>
+      <a class="btn btn-light" onclick="showPage('watchtower')">The Watchtower</a>
+      <a class="btn btn-light" onclick="showPage('atlas')">View St. Pete →</a>
     </div>
   </div>
 
@@ -3192,12 +3221,12 @@ img { max-width: 100%; display: block; }
        ============================================================ -->
   <div class="place-panels">
 
-    <!-- Panel 1: Place Portfolios -->
+    <!-- Panel 1: Atlas -->
     <div class="place-panel">
       <div class="place-panel-header">
         <p class="eyebrow">Panel One</p>
-        <h2>Place <em>Portfolios.</em></h2>
-        <p class="place-panel-intro">The entry point to the Archive — every place ASP & Co. has entered, documented from the ground up.</p>
+        <h2>The <em>Atlas.</em></h2>
+        <p class="place-panel-intro">The entry point to the Atlas — every place ASP & Co. has entered, documented from the ground up.</p>
       </div>
       <div class="place-panel-grid">
         <div class="place-panel-card" onclick="showPage('stpete-archive')">
@@ -3222,7 +3251,7 @@ img { max-width: 100%; display: block; }
         </div>
       </div>
       <div class="place-panel-footer">
-        <a class="btn btn-light" onclick="showPage('archive')">View the Archive →</a>
+        <a class="btn btn-light" onclick="showPage('atlas')">View the Atlas →</a>
       </div>
     </div>
 
@@ -3386,7 +3415,7 @@ img { max-width: 100%; display: block; }
       </div>
     </div>
     <div class="archive-strip-cta" style="margin-top:40px;">
-      <a class="btn btn-light" onclick="showPage('founders-portfolio')">View All Portfolios →</a>
+      <a class="btn btn-light" onclick="showPage('watchtower')">View All Portfolios →</a>
     </div>
   </div>
 
@@ -3406,7 +3435,7 @@ img { max-width: 100%; display: block; }
     </div>
     <div class="home-hq-map-foot">
       <span class="home-hq-map-coords">27.773° N · 82.639° W · Pinellas County, FL</span>
-      <a class="btn btn-light" style="font-size:9px; padding:8px 16px;" onclick="showPage('stpete-archive')">View St. Pete Archive →</a>
+      <a class="btn btn-light" style="font-size:9px; padding:8px 16px;" onclick="showPage('stpete-archive')">View St. Pete Atlas →</a>
     </div>
   </div>
 
@@ -3551,7 +3580,7 @@ img { max-width: 100%; display: block; }
     <p>We work on retainer. No one-time shoots. Tell us about your place — we'll tell you if it's a fit.</p>
     <div class="home-cta-actions">
       <a class="btn btn-primary" onclick="showPage('contact')">Get in Touch</a>
-      <a class="btn btn-light" onclick="showPage('archive')">Explore the Archive</a>
+      <a class="btn btn-light" onclick="showPage('atlas')">Explore the Atlas</a>
     </div>
   </div>
 
@@ -3732,10 +3761,10 @@ img { max-width: 100%; display: block; }
   <!-- About CTA -->
   <div class="about-cta">
     <p>"Every engagement begins with a field research conversation, not a brief."</p>
-    <p class="sub">Start the conversation · The Archive · Media Kit</p>
+    <p class="sub">Start the conversation · Atlas · Media Kit</p>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
       <a class="btn btn-primary" onclick="showPage('contact')">Get in Touch</a>
-      <a class="btn btn-light" onclick="showPage('archive')">The Archive</a>
+      <a class="btn btn-light" onclick="showPage('atlas')">Atlas</a>
       <a class="btn btn-light" onclick="showPage('media-kit')">Media Kit</a>
     </div>
   </div>
@@ -3838,12 +3867,21 @@ img { max-width: 100%; display: block; }
 <!-- ============================================================
      FOUNDERS PORTFOLIO PAGE
      ============================================================ -->
-<div class="page page-content" id="page-founders-portfolio">
+<div class="page page-content" id="page-watchtower">
+
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
 
   <div class="fp-hero">
-    <p class="eyebrow">ASP & Co. — The Founder's Portfolio</p>
-    <h1>Living archives of the places <em>that matter.</em></h1>
-    <p>A curated glimpse of the work — the places, the people, and the geographies that define the practice. All imagery available for licensing.</p>
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <p class="eyebrow">ASP & Co. — The Watchtower</p>
+    <h1>The <em>Watchtower.</em></h1>
+    <p>Hand-picked by the Founder. A signal of the eye ASP & Co. brings to every place it enters — and a mark of the practice's ongoing watch.</p>
+    <p>The Watchtower gathers the Founder's own selections — the images he considers his sharpest work across every place ASP & Co. has entered. It is not organized by region or Record; it's organized by eye. The name reflects something beyond a highlight reel: it signals that ASP & Co.'s posture toward a place is not a single visit, but an ongoing watch — surveying, returning, and deepening relationship with the environment and the people who hold it, so that the work only gets more attuned to a place the longer the practice stays close to it.</p>
   </div>
 
   <div class="fp-gallery-header">
@@ -4015,7 +4053,7 @@ img { max-width: 100%; display: block; }
 
   </div>
 
-  <div class="fp-gallery-surface">This is the surface. The Archive goes deeper. — <span style="cursor:pointer; text-decoration:underline;" onclick="showPage('archive')">Explore the Archive →</span></div>
+  <div class="fp-gallery-surface">This is the surface. The Atlas goes deeper. — <span style="cursor:pointer; text-decoration:underline;" onclick="showPage('atlas')">Explore the Atlas →</span></div>
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
@@ -4031,14 +4069,21 @@ img { max-width: 100%; display: block; }
 <!-- ============================================================
      ARCHIVE HUB
      ============================================================ -->
-<div class="page page-content" id="page-archive">
+<div class="page page-content" id="page-atlas">
+
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
 
   <div class="archive-hub-hero">
-    <p class="eyebrow">The Archive</p>
+    <p class="eyebrow">Atlas</p>
     <h1>The places <em>documented.</em></h1>
-    <p>Every place ASP & Co. enters becomes a permanent part of the Archive. What begins as field research resolves into a Visual Reckoning, a Written Reckoning, and a Physical Reckoning — built from the ground up, place by place.</p>
+    <p>Every place ASP & Co. enters becomes a permanent part of the Atlas. What begins as field research resolves into a Visual Reckoning, a Written Reckoning, and a Physical Reckoning — built from the ground up, place by place.</p>
     <div style="margin-top:32px; display:flex; gap:16px; flex-wrap:wrap;">
-      <a class="btn btn-light" onclick="showPage('founders-portfolio')">The Founder's Portfolio →</a>
+      <a class="btn btn-light" onclick="showPage('watchtower')">The Watchtower →</a>
     </div>
   </div>
 
@@ -4122,6 +4167,29 @@ img { max-width: 100%; display: block; }
 
   <div class="archive-map-note">These archives are field records — active, growing research documents from a practice rooted in the American coastal South and expanding outward. The geographic thesis: coastal communities with layered cultural histories are systematically underrepresented by the imagery that's supposed to speak for them. Barrier islands, river mouths, port towns, cultural heritage corridors — each distinct, each carrying histories worth documenting honestly.</div>
 
+  <div class="atlas-discovery-header">
+    <p class="eyebrow">Explore the Atlas</p>
+    <h2>Beyond the <em>map.</em></h2>
+  </div>
+
+  <div class="archive-grid">
+    <div class="archive-card" onclick="showPage('watchtower')">
+      <p class="archive-card-region">Hand-Picked by the Founder</p>
+      <h3>The <em>Watchtower.</em></h3>
+      <p class="archive-card-sub">The Founder's own selections — organized by eye, not by region.</p>
+    </div>
+    <div class="archive-card" onclick="showPage('place-stories')">
+      <p class="archive-card-region">Editorial</p>
+      <h3>Place <em>Stories.</em></h3>
+      <p class="archive-card-sub">Essays and series built from the Atlas's research.</p>
+    </div>
+    <div class="archive-card" onclick="showPage('place-projects')">
+      <p class="archive-card-region">Physical Initiatives</p>
+      <h3>Place <em>Projects.</em></h3>
+      <p class="archive-card-sub">Programming and place-based work built from what the research established.</p>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Research practice · Visual storytelling · Portfolio curation</span>
     <span class="footer-links">
@@ -4137,9 +4205,15 @@ img { max-width: 100%; display: block; }
      ST. PETE ARCHIVE PAGE
      ============================================================ -->
 <div class="page page-content" id="page-stpete-archive">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-page-hero">
-    <span class="back-btn" onclick="showPage('archive')">The Archive</span>
-    <h1>The St. Pete <em>Archive.</em></h1>
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <h1>The St. Pete <em>Atlas.</em></h1>
     <p>St. Petersburg is the home base of the practice — the place where the research runs deepest and the archive grows fastest. Documented across two distinct geographies: the bay-side city with its cultural corridors and neighborhood histories, and the Gulf-side barrier islands with their own light and character. A field record of a city mid-negotiation with its own identity.</p>
   </div>
   <div class="archive-stats">
@@ -4224,9 +4298,15 @@ img { max-width: 100%; display: block; }
      TARPON SPRINGS ARCHIVE PAGE
      ============================================================ -->
 <div class="page page-content" id="page-tarpon-archive">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-page-hero">
-    <span class="back-btn" onclick="showPage('archive')">The Archive</span>
-    <h1>The Tarpon <em>Archive.</em></h1>
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <h1>The Tarpon <em>Atlas.</em></h1>
     <p>Tarpon Springs is one of the most culturally layered coastal communities in the American coastal South — and one of the least accurately documented. Greek sponge diving heritage and Bahamian cultural roots exist in the same city, separated by geography but connected by water. This field record documents both, from the inside.</p>
   </div>
   <div class="archive-stats">
@@ -4322,9 +4402,15 @@ img { max-width: 100%; display: block; }
      LOWER CAPE FEAR ARCHIVE
      ============================================================ -->
 <div class="page page-content" id="page-lowercapefear-archive">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-page-hero">
-    <span class="back-btn" onclick="showPage('archive')">The Archive</span>
-    <h1>The Lower Cape <em>Fear Archive.</em></h1>
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <h1>The Lower Cape <em>Fear Atlas.</em></h1>
     <p>The origin point of the practice. The Lower Cape Fear corridor is where the geographic thesis first took shape — a chain of coastal communities between the water and the pines, connected by the Cape Fear River and a shared cultural heritage that most destination photography has never reached. Four nodes. One field record.</p>
   </div>
   <div class="archive-stats">
@@ -4436,9 +4522,15 @@ img { max-width: 100%; display: block; }
      RALEIGH ARCHIVE
      ============================================================ -->
 <div class="page page-content" id="page-raleigh-archive">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-page-hero">
-    <span class="back-btn" onclick="showPage('archive')">The Archive</span>
-    <h1>The Raleigh <em>Archive.</em></h1>
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <h1>The Raleigh <em>Atlas.</em></h1>
     <p>Raleigh is the inland counterpart to the coastal corridor — a city with its own layered identity, its own tensions between old and new, and its own record worth keeping. Three years of sustained presence built an archive that goes deeper than the surface the city usually shows.</p>
   </div>
   <div class="archive-stats">
@@ -4498,9 +4590,15 @@ img { max-width: 100%; display: block; }
      NASHVILLE ARCHIVE
      ============================================================ -->
 <div class="page page-content" id="page-nashville-archive">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-page-hero">
-    <span class="back-btn" onclick="showPage('archive')">The Archive</span>
-    <h1>The Nashville <em>Archive.</em></h1>
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <h1>The Nashville <em>Atlas.</em></h1>
     <p>The Cumberland River corridor, Jefferson Street, and the migration routes that brought country and gospel into the same geography — Nashville is where the practice's Place, Practice, and People sectors converge most fully.</p>
   </div>
   <div class="archive-stats">
@@ -4560,9 +4658,15 @@ img { max-width: 100%; display: block; }
      MIAMI ARCHIVE
      ============================================================ -->
 <div class="page page-content" id="page-miami-archive">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-page-hero">
-    <span class="back-btn" onclick="showPage('archive')">The Archive</span>
-    <h1>The Miami <em>Archive.</em></h1>
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
+    <h1>The Miami <em>Atlas.</em></h1>
     <p>South Florida's coastal geography and Caribbean-facing waterways, traced along the same Atlantic corridor that connects Nassau, Miami, Key West, and Tarpon Springs — the Bahamian sponging heritage the practice already documents on Florida's Gulf side.</p>
   </div>
   <div class="archive-stats">
@@ -4622,7 +4726,14 @@ img { max-width: 100%; display: block; }
      PLACE STORIES HUB
      ============================================================ -->
 <div class="page page-content" id="page-place-stories">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-hub-hero">
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
     <p class="eyebrow">Place Stories</p>
     <h1>The stories <em>told.</em></h1>
     <p>Editorial essays and series built from the Archive's research — where field documentation resolves into narrative. Place Stories is where the practice writes what the images can't say on their own.</p>
@@ -4661,6 +4772,12 @@ img { max-width: 100%; display: block; }
      PLACE STORY — WATER VISTAS (placeholder detail page)
      ============================================================ -->
 <div class="page page-content" id="page-story-water-vistas">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-page-hero">
     <span class="back-btn" onclick="showPage('place-stories')">Place Stories</span>
     <h1>Water <em>Vistas.</em></h1>
@@ -4702,7 +4819,14 @@ img { max-width: 100%; display: block; }
      PLACE PROJECTS HUB
      ============================================================ -->
 <div class="page page-content" id="page-place-projects">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-hub-hero">
+    <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
     <p class="eyebrow">Place Projects</p>
     <h1>The work <em>built.</em></h1>
     <p>Physical initiatives built from what the field research established — programming, routes, and place-based work that resolves the research into a lived experience.</p>
@@ -4748,6 +4872,12 @@ img { max-width: 100%; display: block; }
      PLACE PROJECT — CONCH ROAD (placeholder detail page)
      ============================================================ -->
 <div class="page page-content" id="page-project-conch-road">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-page-hero">
     <span class="back-btn" onclick="showPage('place-projects')">Place Projects</span>
     <h1>Conch <em>Road.</em></h1>
@@ -4756,7 +4886,7 @@ img { max-width: 100%; display: block; }
   <div class="related-links">
     <div class="related-links-col">
       <p class="eyebrow">Portfolio Imagery</p>
-      <a class="btn btn-outline" onclick="showPage('archive')">View the Archive →</a>
+      <a class="btn btn-outline" onclick="showPage('atlas')">View the Atlas →</a>
     </div>
     <div class="related-links-col">
       <p class="eyebrow">Stories It Produced</p>
@@ -4778,6 +4908,12 @@ img { max-width: 100%; display: block; }
      PLACE PROJECT — SHADE LINES (placeholder detail page)
      ============================================================ -->
 <div class="page page-content" id="page-project-shade-lines">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-page-hero">
     <span class="back-btn" onclick="showPage('place-projects')">Place Projects</span>
     <h1>Shade <em>Lines.</em></h1>
@@ -4786,7 +4922,7 @@ img { max-width: 100%; display: block; }
   <div class="related-links">
     <div class="related-links-col">
       <p class="eyebrow">Portfolio Imagery</p>
-      <a class="btn btn-outline" onclick="showPage('archive')">View the Archive →</a>
+      <a class="btn btn-outline" onclick="showPage('atlas')">View the Atlas →</a>
     </div>
     <div class="related-links-col">
       <p class="eyebrow">Stories It Produced</p>
@@ -4808,6 +4944,12 @@ img { max-width: 100%; display: block; }
      PLACE PROJECT — THE ROSS ERA (placeholder detail page)
      ============================================================ -->
 <div class="page page-content" id="page-project-ross-era">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-page-hero">
     <span class="back-btn" onclick="showPage('place-projects')">Place Projects</span>
     <h1>The Ross <em>Era.</em></h1>
@@ -4816,7 +4958,7 @@ img { max-width: 100%; display: block; }
   <div class="related-links">
     <div class="related-links-col">
       <p class="eyebrow">Portfolio Imagery</p>
-      <a class="btn btn-outline" onclick="showPage('archive')">View the Archive →</a>
+      <a class="btn btn-outline" onclick="showPage('atlas')">View the Atlas →</a>
     </div>
     <div class="related-links-col">
       <p class="eyebrow">Stories It Produced</p>
@@ -4838,6 +4980,12 @@ img { max-width: 100%; display: block; }
      PLACE PROJECT — RESPECT THE LOCALS (placeholder detail page)
      ============================================================ -->
 <div class="page page-content" id="page-project-respect-the-locals">
+  <div class="atlas-subnav">
+    <a onclick="showPage('atlas')">Atlas</a>
+    <a onclick="showPage('watchtower')">The Watchtower</a>
+    <a onclick="showPage('place-stories')">Place Stories</a>
+    <a onclick="showPage('place-projects')">Place Projects</a>
+  </div>
   <div class="archive-page-hero">
     <span class="back-btn" onclick="showPage('place-projects')">Place Projects</span>
     <h1>Respect The <em>Locals.</em></h1>
@@ -4846,7 +4994,7 @@ img { max-width: 100%; display: block; }
   <div class="related-links">
     <div class="related-links-col">
       <p class="eyebrow">Portfolio Imagery</p>
-      <a class="btn btn-outline" onclick="showPage('archive')">View the Archive →</a>
+      <a class="btn btn-outline" onclick="showPage('atlas')">View the Atlas →</a>
     </div>
     <div class="related-links-col">
       <p class="eyebrow">Stories It Produced</p>
