@@ -5472,6 +5472,7 @@ img { max-width: 100%; display: block; }
       style: 'mapbox://styles/adstepter/cmtlvk4rp010601s90ehf343r',
       center: [-82.639, 27.773],
       zoom: 11,
+      antialias: true,
       interactive: false,
       attributionControl: true
     });
@@ -5482,7 +5483,7 @@ img { max-width: 100%; display: block; }
       miniMap.addLayer({ id: 'pinellas-line', type: 'line', source: 'pinellas', paint: { 'line-color': '#2a4a5e', 'line-width': 1.5, 'line-opacity': 0.6, 'line-dasharray': [4, 3] } });
       const el = document.createElement('div');
       el.className = 'map-palm-pin';
-      el.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:block;filter:drop-shadow(0 2px 3px rgba(26,35,48,0.5));"><path d="M12,1 L12.77,10.15 L16.24,7.76 L13.85,11.23 L23,12 L13.85,12.77 L16.24,16.24 L12.77,13.85 L12,23 L11.23,13.85 L7.76,16.24 L10.15,12.77 L1,12 L10.15,11.23 L7.76,7.76 L11.23,10.15 Z" style="fill:var(--gold)"/></svg>';
+      el.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:block;filter:drop-shadow(0 2px 3px rgba(26,35,48,0.5));"><path d="M12,1 L13.34,8.77 L16.24,7.76 L15.23,10.66 L23,12 L15.23,13.34 L16.24,16.24 L13.34,15.23 L12,23 L10.66,15.23 L7.76,16.24 L8.77,13.34 L1,12 L8.77,10.66 L7.76,7.76 L10.66,8.77 Z" style="fill:var(--gold)"/></svg>';
       new mapboxgl.Marker({ element: el, anchor: 'center' }).setLngLat([-82.639, 27.773])
         .setPopup(new mapboxgl.Popup({ offset: 12 }).setHTML('<div class="map-popup"><div class="map-popup-status" style="color:var(--gold)">Headquarters</div><div class="map-popup-title">St. Petersburg, FL</div><div class="map-popup-sub">27.773° N · 82.639° W</div></div>'))
         .addTo(miniMap);
@@ -5534,6 +5535,7 @@ img { max-width: 100%; display: block; }
       style: 'mapbox://styles/adstepter/cmtlvk4rp010601s90ehf343r',
       center: [-82.5, 31.5],
       zoom: 4.8,
+      antialias: true,
       attributionControl: true
     });
     _archiveMap.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-left');
@@ -5595,7 +5597,7 @@ img { max-width: 100%; display: block; }
     function compassIconDataURI() {
       const size = 48 * ICON_PIXEL_RATIO;
       const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + size + '" viewBox="0 0 24 24">'
-        + '<path d="M12,1 L12.77,10.15 L16.24,7.76 L13.85,11.23 L23,12 L13.85,12.77 L16.24,16.24 L12.77,13.85 L12,23 L11.23,13.85 L7.76,16.24 L10.15,12.77 L1,12 L10.15,11.23 L7.76,7.76 L11.23,10.15 Z" fill="#2a4a5e"/>'
+        + '<path d="M12,1 L13.34,8.77 L16.24,7.76 L15.23,10.66 L23,12 L15.23,13.34 L16.24,16.24 L13.34,15.23 L12,23 L10.66,15.23 L7.76,16.24 L8.77,13.34 L1,12 L8.77,10.66 L7.76,7.76 L10.66,8.77 Z" fill="#2a4a5e"/>'
         + '</svg>';
       return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
     }
