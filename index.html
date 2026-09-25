@@ -711,7 +711,7 @@ img { max-width: 100%; display: block; }
 
 .field-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2px;
   background: rgba(42, 74, 94, 0.12);
 }
@@ -3167,6 +3167,7 @@ img { max-width: 100%; display: block; }
       </div>
     </li>
     <li><a onclick="showPage('atlas')">Atlas</a></li>
+    <li><a onclick="showPage('field-notes')">Field Notes</a></li>
     <li><a onclick="showPage('contact')">Contact</a></li>
   </ul>
   <div class="nav-hamburger" onclick="toggleMobile()" id="hamburger">
@@ -3183,6 +3184,7 @@ img { max-width: 100%; display: block; }
     <a onclick="showPage('about-story'); closeMobile()">The ASP & Co. Story</a>
   </div>
   <a onclick="showPage('atlas'); closeMobile()">Atlas</a>
+  <a onclick="showPage('field-notes'); closeMobile()">Field Notes</a>
   <a onclick="showPage('contact'); closeMobile()">Contact</a>
 </div>
 
@@ -3367,6 +3369,9 @@ img { max-width: 100%; display: block; }
         <p>A field reconnaissance of the Nashville Identity Portfolio — the Cumberland River corridor, Jefferson Street, the gospel migration routes that shaped American music. Notes and imagery from what the practice found on its most recent visit, ahead of the Records to come.</p>
         <span class="coming-tag">Content in Development</span>
       </div>
+    </div>
+    <div style="text-align:center; margin-top:32px;">
+      <a class="btn btn-outline" onclick="showPage('field-notes')">View All Field Notes →</a>
     </div>
   </div>
 
@@ -5585,6 +5590,48 @@ img { max-width: 100%; display: block; }
     <h2>Press Contact.</h2>
     <p>Direct line for press and interview requests.</p>
     <a class="btn btn-light" href="mailto:ashton@aspandco.com">ashton@aspandco.com →</a>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© 2025 ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     FIELD NOTES
+     ============================================================ -->
+<div class="page page-content" id="page-field-notes">
+  <div class="archive-hub-hero">
+    <p class="eyebrow">Field Notes</p>
+    <h1>Notes from the <em>field.</em></h1>
+    <p>Not every trip resolves into a Portfolio, a Story, or a Project — some of it is just the practice at work. Field Notes is where that lives: dispatches, reconnaissance, and moments from the ground, posted as they happen rather than held until they're finished.</p>
+  </div>
+
+  <div class="field-grid" style="margin:0;">
+    <div class="field-card coming-soon" id="field-bims-melbourne">
+      <p class="field-card-pub">BIMS · Melbourne, FL</p>
+      <h4>Field Documentation — Florida Institute of Technology & Little Growers, Inc.</h4>
+      <p>Photography alongside Florida Tech marine research professors and community nonprofit Little Growers, Inc., during a Black In Marine Science field trip to Melbourne. Documenting the intersection of scientific research, community stewardship, and environmental education on Florida's Space Coast.</p>
+      <a class="field-link" onclick="showPage('melbourne-archive')">Melbourne Atlas →</a>
+      <span class="coming-tag">Content in Development</span>
+    </div>
+    <div class="field-card coming-soon">
+      <p class="field-card-pub">BIMS · Miami, FL</p>
+      <h4>Juneteenth — Portrait Session with the Founder & CEO of Black In Marine Science</h4>
+      <p>A brief portrait session with the founder and CEO of BIMS at the organization's Juneteenth event in Miami — documenting the people and leadership behind one of the most significant movements in ocean science equity.</p>
+      <a class="field-link" onclick="showPage('miami-archive')">Miami Atlas →</a>
+      <span class="coming-tag">Content in Development</span>
+    </div>
+    <div class="field-card coming-soon">
+      <p class="field-card-pub">ASP & Co. · Nashville, TN</p>
+      <h4>Reconnaissance — What We Saw on the Ground</h4>
+      <p>A field reconnaissance of the Nashville Identity Portfolio — the Cumberland River corridor, Jefferson Street, the gospel migration routes that shaped American music. Notes and imagery from what the practice found on its most recent visit, ahead of the Records to come.</p>
+      <a class="field-link" onclick="showPage('nashville-archive')">Nashville Atlas →</a>
+      <span class="coming-tag">Content in Development</span>
+    </div>
   </div>
 
   <footer class="site-footer">
