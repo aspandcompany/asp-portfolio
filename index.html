@@ -5587,17 +5587,23 @@ img { max-width: 100%; display: block; }
     // pan/zoom — no DOM marker lag. Testing this in place of the old palm
     // icon — an 8-point compass rose, centered on each coordinate rather
     // than anchored like a pin.
+    // Rendered at 4x the display size (registered with a matching pixelRatio
+    // below) so the icon stays crisp on Retina/high-DPI screens — a small
+    // raster source is fine for the old palm's soft curves, but this star's
+    // sharp straight edges show upscaling blur otherwise.
+    const ICON_PIXEL_RATIO = 4;
     function compassIconDataURI() {
-      const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">'
+      const size = 48 * ICON_PIXEL_RATIO;
+      const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + size + '" viewBox="0 0 24 24">'
         + '<path d="M12,1 L12.77,10.15 L16.24,7.76 L13.85,11.23 L23,12 L13.85,12.77 L16.24,16.24 L12.77,13.85 L12,23 L11.23,13.85 L7.76,16.24 L10.15,12.77 L1,12 L10.15,11.23 L7.76,7.76 L11.23,10.15 Z" fill="#2a4a5e"/>'
         + '</svg>';
       return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
     }
 
     _archiveMap.on('load', () => {
-      const img = new Image(48, 48);
+      const img = new Image(48 * ICON_PIXEL_RATIO, 48 * ICON_PIXEL_RATIO);
       img.onload = () => {
-        _archiveMap.addImage('compass-icon', img);
+        _archiveMap.addImage('compass-icon', img, { pixelRatio: ICON_PIXEL_RATIO });
 
         // Regions: one large palm per region, standing in for the whole
         // area. Hovering or clicking it reveals that region's city palms
