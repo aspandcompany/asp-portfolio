@@ -5397,6 +5397,9 @@ img { max-width: 100%; display: block; }
         _homeMiniMapInit = true;
         initHomeMiniMap();
       }
+    } else if (id === 'atlas') {
+      // Map is the default entry point into the Atlas
+      setArchiveView('map');
     }
   }
 
