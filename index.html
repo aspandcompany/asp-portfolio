@@ -5544,11 +5544,21 @@ img { max-width: 100%; display: block; }
     const CITY_PIN_MINZOOM = 7;
 
     const regions = {
-      pinellas:  { name: 'Tampa Bay Region',   center: [-82.696, 27.961], coords: [[-82.84,28.17],[-82.56,28.17],[-82.56,27.63],[-82.84,27.63],[-82.84,28.17]] },
+      pinellas:  { name: 'Pinellas County',    center: [-82.696, 27.961], coords: [[-82.84,28.17],[-82.56,28.17],[-82.56,27.63],[-82.84,27.63],[-82.84,28.17]] },
       lcf:       { name: 'Lower Cape Fear',    center: [-77.916, 34.124], coords: [[-78.10,34.52],[-77.40,34.52],[-77.40,33.82],[-78.10,33.82],[-78.10,34.52]] },
       raleigh:   { name: 'Raleigh / Triangle', center: [-78.638, 35.779], coords: [[-78.90,36.06],[-78.38,36.06],[-78.38,35.52],[-78.90,35.52],[-78.90,36.06]] },
       nashville: { name: 'Nashville',          center: [-86.781, 36.174], coords: [[-87.08,36.40],[-86.52,36.40],[-86.52,35.96],[-87.08,35.96],[-87.08,36.40]] },
-      miami:     { name: 'Miami',              center: [-80.191, 25.762], coords: [[-80.44,25.98],[-80.10,25.98],[-80.10,25.46],[-80.44,25.46],[-80.44,25.98]] }
+      miami:     { name: 'Miami',              center: [-80.191, 25.762], coords: [[-80.44,25.98],[-80.10,25.98],[-80.10,25.46],[-80.44,25.46],[-80.44,25.98]] },
+      manatee:   { name: 'Manatee County',     center: [-82.5748, 27.4989], coords: [[-82.87,27.72],[-82.27,27.72],[-82.27,27.28],[-82.87,27.28],[-82.87,27.72]] },
+      // Bbox deliberately wider north-south than a typical single-city region —
+      // Cocoa Beach (~28.32N) will land comfortably inside it when added as a
+      // second city here later, so this bbox shouldn't need revisiting then.
+      spacecoast: { name: 'Space Coast',       center: [-80.6081, 28.0836], coords: [[-80.95,28.50],[-80.30,28.50],[-80.30,27.85],[-80.95,27.85],[-80.95,28.50]] },
+      // TEMP single-city region. Expected to be renamed/absorbed into a future
+      // 'northeastflorida' region once Jacksonville/Duval County and Nassau
+      // County (Amelia Island) are added as additional cities — don't assume
+      // elsewhere in this file that only St. Augustine will ever live here.
+      staugustine: { name: 'St. Augustine',    center: [-81.3124, 29.9012], coords: [[-81.61,30.12],[-81.01,30.12],[-81.01,29.68],[-81.61,29.68],[-81.61,30.12]] }
     };
 
     // Each city is a Place Portfolio. Two fields support The Atlas (internal/
@@ -5571,7 +5581,12 @@ img { max-width: 100%; display: block; }
       { lng: -78.150, lat: 33.915, title: 'Oak Island',      sub: 'Brunswick County, NC',   status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf' },
       { lng: -78.638, lat: 35.779, title: 'Raleigh',         sub: 'Wake County, NC',        status: 'Active — Growing',   pageId: 'raleigh-archive',       region: 'raleigh' },
       { lng: -86.781, lat: 36.174, title: 'Nashville',       sub: 'Davidson County, TN',    status: 'Identity Portfolio', pageId: 'nashville-archive',     region: 'nashville' },
-      { lng: -80.191, lat: 25.762, title: 'Miami',           sub: 'South Florida',          status: 'Identity Portfolio', pageId: 'miami-archive',         region: 'miami' }
+      { lng: -80.191, lat: 25.762, title: 'Miami',           sub: 'South Florida',          status: 'Identity Portfolio', pageId: 'miami-archive',         region: 'miami' },
+      { lng: -82.7031, lat: 27.7459, title: 'Gulfport',      sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'gulfport-archive',      region: 'pinellas',   atlasStatus: 'known-portrait' },
+      { lng: -82.6987, lat: 28.0084, title: 'Safety Harbor', sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'safetyharbor-archive',  region: 'pinellas',   atlasStatus: 'known-portrait' },
+      { lng: -82.5748, lat: 27.4989, title: 'Bradenton',     sub: 'Manatee County, FL',     status: 'Active — Growing',   pageId: 'bradenton-archive',     region: 'manatee',    atlasStatus: 'known-portrait' },
+      { lng: -80.6081, lat: 28.0836, title: 'Melbourne',     sub: 'Space Coast, FL',        status: 'Active — Growing',   pageId: 'melbourne-archive',     region: 'spacecoast', atlasStatus: 'known-portrait' },
+      { lng: -81.3124, lat: 29.9012, title: 'St. Augustine', sub: 'St. Johns County, FL',   status: 'Active — Growing',   pageId: 'staugustine-archive',   region: 'staugustine', atlasStatus: 'known-portrait' }
     ];
 
     function boundsOf(coords) {
