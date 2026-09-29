@@ -5459,6 +5459,7 @@ img { max-width: 100%; display: block; }
      ============================================================ -->
 <div class="page page-content" id="page-work">
   <div class="work-hub-hero">
+    <span class="back-btn" onclick="showPage('home')">Home</span>
     <p class="eyebrow">The Work</p>
     <h1>The <em>Work.</em></h1>
     <p>ASP & Co. does not sell destination marketing. It sells what destination marketing has been missing — the cultural and geographical foundation that makes a place worth representing in the first place. The work is available in three forms.</p>
@@ -5859,12 +5860,15 @@ img { max-width: 100%; display: block; }
   // and buildPortfolioLocationMap() once their map actually exists.
   const _mapInstances = {};
 
-  function showPage(id) {
+  function showPage(id, fromHistory) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const target = document.getElementById('page-' + id);
     if (target) {
       target.classList.add('active');
       window.scrollTo(0, 0);
+      if (!fromHistory && (!history.state || history.state.page !== id)) {
+        history.pushState({ page: id }, '', id === 'home' ? location.pathname + location.search : '#' + id);
+      }
     }
     closeMobile();
     if (_mapInstances[id]) {
@@ -6375,6 +6379,26 @@ img { max-width: 100%; display: block; }
     document.getElementById('contactForm').style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
   }
+
+  // ── Browser back/forward support ──────────────────────────────
+  // showPage() only ever toggled .active classes — it never touched the
+  // URL or window.history, so the browser's own Back button had nowhere
+  // in-app to go back to; it just left the site. Every showPage() call
+  // now pushes a history entry keyed to the page id (fromHistory=true
+  // skips the push, so replaying a popstate doesn't create a new one),
+  // and this listener replays showPage() when Back/Forward fires. The
+  // hash also means reloading or sharing a page's URL lands on that page.
+  window.addEventListener('popstate', function(e) {
+    const id = (e.state && e.state.page) || 'home';
+    showPage(id, true);
+  });
+
+  (function initialRoute() {
+    const requestedId = (location.hash || '').slice(1);
+    const startId = requestedId && document.getElementById('page-' + requestedId) ? requestedId : 'home';
+    history.replaceState({ page: startId }, '', startId === 'home' ? location.pathname + location.search : '#' + startId);
+    if (startId !== 'home') showPage(startId, true);
+  })();
 </script>
 
 </body>
