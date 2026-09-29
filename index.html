@@ -1575,8 +1575,11 @@ img { max-width: 100%; display: block; }
   padding: 96px 64px 80px;
 }
 
-/* Atlas hero — same hub-hero text treatment, with a photo behind it */
-.atlas-hero-photo {
+/* Hub-hero modifier — same hub-hero text treatment, with a photo behind it.
+   Used by Atlas and Field Notes; the other .archive-hub-hero pages (About
+   the Founder, Place Stories, Place Projects) don't opt in, so they're
+   unaffected. */
+.hub-hero-photo {
   position: relative;
   overflow: hidden;
   min-height: 480px;
@@ -1585,7 +1588,7 @@ img { max-width: 100%; display: block; }
   justify-content: flex-end;
 }
 
-.atlas-hero-photo > *:not(.archive-page-hero-bg) {
+.hub-hero-photo > *:not(.archive-page-hero-bg) {
   position: relative;
   z-index: 1;
 }
@@ -4159,7 +4162,7 @@ img { max-width: 100%; display: block; }
     <a onclick="showPage('place-projects')">Place Projects</a>
   </div>
 
-  <div class="archive-hub-hero atlas-hero-photo">
+  <div class="archive-hub-hero hub-hero-photo">
     <div class="archive-page-hero-bg"><img src="photos/hub-watersunset.jpg" alt="Sunset light stretching across open water"></div>
     <span class="back-btn" onclick="showPage('home')">Home</span>
     <p class="eyebrow">Atlas</p>
@@ -5760,7 +5763,8 @@ img { max-width: 100%; display: block; }
      FIELD NOTES
      ============================================================ -->
 <div class="page page-content" id="page-field-notes">
-  <div class="archive-hub-hero">
+  <div class="archive-hub-hero hub-hero-photo">
+    <div class="archive-page-hero-bg"><img src="photos/DSC_0858.jpg" alt="Two anglers on a pier at golden hour, one pulling a loaded cart"></div>
     <span class="back-btn" onclick="showPage('home')">Home</span>
     <p class="eyebrow">Field Notes</p>
     <h1>Notes from the <em>field.</em></h1>
