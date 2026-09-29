@@ -1575,6 +1575,21 @@ img { max-width: 100%; display: block; }
   padding: 96px 64px 80px;
 }
 
+/* Atlas hero — same hub-hero text treatment, with a photo behind it */
+.atlas-hero-photo {
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.atlas-hero-photo > *:not(.archive-page-hero-bg) {
+  position: relative;
+  z-index: 1;
+}
+
 .archive-hub-hero h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(40px, 5.5vw, 72px);
@@ -4142,7 +4157,8 @@ img { max-width: 100%; display: block; }
     <a onclick="showPage('place-projects')">Place Projects</a>
   </div>
 
-  <div class="archive-hub-hero">
+  <div class="archive-hub-hero atlas-hero-photo">
+    <div class="archive-page-hero-bg"><img src="photos/hub-watersunset.jpg" alt="Sunset light stretching across open water"></div>
     <p class="eyebrow">Atlas</p>
     <h1>The places <em>documented.</em></h1>
     <p>Every place ASP & Co. enters becomes a permanent part of the Atlas. What begins as field research resolves into a Visual Reckoning, a Written Reckoning, and a Physical Reckoning — built from the ground up, place by place.</p>
