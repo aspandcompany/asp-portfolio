@@ -5848,6 +5848,17 @@ img { max-width: 100%; display: block; }
   // Page routing
   let _homeMiniMapInit = false;
 
+  // Every already-built Mapbox map on the site, keyed by the showPage() id
+  // whose container it lives in — home mini-map + one per Portfolio page
+  // (the Atlas map handles its own resize inside setArchiveView(), since it
+  // toggles visibility via the Grid/Map buttons too, not just showPage()).
+  // A map's container sits at display:none whenever its page isn't active;
+  // Mapbox GL's canvas can get stuck at whatever (sometimes 0×0) size it
+  // last measured while hidden, which reads as the map "shrinking to a
+  // corner" until something forces a resize. Populated by buildMiniMap()
+  // and buildPortfolioLocationMap() once their map actually exists.
+  const _mapInstances = {};
+
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const target = document.getElementById('page-' + id);
@@ -5856,6 +5867,12 @@ img { max-width: 100%; display: block; }
       window.scrollTo(0, 0);
     }
     closeMobile();
+    if (_mapInstances[id]) {
+      // Deferred (not rAF — can be throttled on a backgrounded tab) so the
+      // display:block from classList.add('active') above has definitely
+      // been applied before Mapbox re-measures the container.
+      setTimeout(() => _mapInstances[id].resize(), 0);
+    }
     if (id === 'home') {
       typewriteGeoTag();
       // Init St. Pete mini-map when home loads
@@ -6023,6 +6040,7 @@ img { max-width: 100%; display: block; }
       interactive: false,
       attributionControl: true
     });
+    _mapInstances[pageId] = map;
     map.on('load', () => {
       pins.forEach((p) => {
         const el = document.createElement('div');
@@ -6069,6 +6087,7 @@ img { max-width: 100%; display: block; }
       interactive: false,
       attributionControl: true
     });
+    _mapInstances['home'] = miniMap;
     miniMap.on('load', () => {
       miniMap.addSource('pinellas', { type: 'geojson', data: { type: 'Feature', geometry: { type: 'Polygon',
         coordinates: [[[-82.84,28.17],[-82.56,28.17],[-82.56,27.63],[-82.84,27.63],[-82.84,28.17]]] } } });
@@ -6099,7 +6118,17 @@ img { max-width: 100%; display: block; }
       filtersEl.style.display = 'none';
       btnMap.classList.add('active');
       btnGrid.classList.remove('active');
-      if (!_mapInitialized) initArchiveMap();
+      if (!_mapInitialized) {
+        initArchiveMap();
+      } else if (_archiveMap) {
+        // The container sits at display:none while Grid view (or another
+        // page) is showing, so Mapbox GL's canvas can be left at a stale —
+        // sometimes 0×0 — size from whatever it last measured while
+        // hidden. Force it to re-measure now that the container is
+        // visible again — deferred (not rAF, which can be throttled on a
+        // backgrounded tab) so the display:block above is applied first.
+        setTimeout(() => _archiveMap.resize(), 0);
+      }
     } else {
       mapEl.style.display = 'none';
       gridEl.style.display = '';
