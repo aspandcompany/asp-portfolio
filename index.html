@@ -1763,6 +1763,25 @@ img { max-width: 100%; display: block; }
   line-height: 1.65;
 }
 
+.archive-location {
+  background: var(--night);
+  padding: 0 64px 40px;
+}
+
+.archive-location .eyebrow {
+  color: rgba(250, 248, 244, 0.35);
+}
+
+.archive-location-map {
+  width: 100%;
+  max-width: 680px;
+  height: 260px;
+  margin-top: 16px;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .archive-stats {
   display: flex;
   gap: 48px;
@@ -3073,6 +3092,9 @@ img { max-width: 100%; display: block; }
   .work-hub-hero, .work-page-hero, .rtp-hero, .contact-hero,
   .fp-hero { padding: 64px 24px 48px; }
 
+  .archive-location { padding: 0 24px 32px; }
+  .archive-location-map { height: 200px; }
+
   .home-hero-headline-row { flex-direction: column; align-items: flex-start; }
   .home-hero-geo-tag { max-width: 100%; text-align: left; white-space: normal; }
 
@@ -4236,6 +4258,10 @@ img { max-width: 100%; display: block; }
     <h1>The St. Pete <em>Atlas.</em></h1>
     <p>St. Petersburg is the home base of the practice — the place where the research runs deepest and the archive grows fastest. Documented across two distinct geographies: the bay-side city with its cultural corridors and neighborhood histories, and the Gulf-side barrier islands with their own light and character. A field record of a city mid-negotiation with its own identity.</p>
   </div>
+  <div class="archive-location">
+    <p class="eyebrow">Location</p>
+    <div class="archive-location-map" id="loc-map-stpete-archive"></div>
+  </div>
   <div class="archive-stats">
     <div class="archive-stat-item"><span class="archive-stat-num">2</span><span class="archive-stat-label">Documented nodes</span></div>
     <div class="archive-stat-item"><span class="archive-stat-num">12+</span><span class="archive-stat-label">Locations documented</span></div>
@@ -4325,6 +4351,10 @@ img { max-width: 100%; display: block; }
     <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
     <h1>The Tarpon <em>Atlas.</em></h1>
     <p>Tarpon Springs is one of the most culturally layered coastal communities in the American coastal South — and one of the least accurately documented. Greek sponge diving heritage and Bahamian cultural roots exist in the same city, separated by geography but connected by water. This field record documents both, from the inside.</p>
+  </div>
+  <div class="archive-location">
+    <p class="eyebrow">Location</p>
+    <div class="archive-location-map" id="loc-map-tarpon-archive"></div>
   </div>
   <div class="archive-stats">
     <div class="archive-stat-item"><span class="archive-stat-num">2</span><span class="archive-stat-label">Documented nodes</span></div>
@@ -4426,6 +4456,10 @@ img { max-width: 100%; display: block; }
     <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
     <h1>The Lower Cape <em>Fear Atlas.</em></h1>
     <p>The origin point of the practice. The Lower Cape Fear corridor is where the geographic thesis first took shape — a chain of coastal communities between the water and the pines, connected by the Cape Fear River and a shared cultural heritage that most destination photography has never reached. Four nodes. One field record.</p>
+  </div>
+  <div class="archive-location">
+    <p class="eyebrow">Location</p>
+    <div class="archive-location-map" id="loc-map-lowercapefear-archive"></div>
   </div>
   <div class="archive-stats">
     <div class="archive-stat-item"><span class="archive-stat-num">4</span><span class="archive-stat-label">Documented nodes</span></div>
@@ -4544,6 +4578,10 @@ img { max-width: 100%; display: block; }
     <h1>The Raleigh <em>Atlas.</em></h1>
     <p>Raleigh is the inland counterpart to the coastal corridor — a city with its own layered identity, its own tensions between old and new, and its own record worth keeping. Three years of sustained presence built an archive that goes deeper than the surface the city usually shows.</p>
   </div>
+  <div class="archive-location">
+    <p class="eyebrow">Location</p>
+    <div class="archive-location-map" id="loc-map-raleigh-archive"></div>
+  </div>
   <div class="archive-stats">
     <div class="archive-stat-item"><span class="archive-stat-num">1</span><span class="archive-stat-label">Anchor node</span></div>
     <div class="archive-stat-item"><span class="archive-stat-num">3+</span><span class="archive-stat-label">Years in the field</span></div>
@@ -4608,6 +4646,10 @@ img { max-width: 100%; display: block; }
     <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
     <h1>The Nashville <em>Atlas.</em></h1>
     <p>The Cumberland River corridor, Jefferson Street, and the migration routes that brought country and gospel into the same geography — Nashville is where the practice's Place, Practice, and People sectors converge most fully.</p>
+  </div>
+  <div class="archive-location">
+    <p class="eyebrow">Location</p>
+    <div class="archive-location-map" id="loc-map-nashville-archive"></div>
   </div>
   <div class="archive-stats">
     <div class="archive-stat-item"><span class="archive-stat-num">Identity</span><span class="archive-stat-label">Portfolio status</span></div>
@@ -4674,6 +4716,10 @@ img { max-width: 100%; display: block; }
     <h1>The Miami <em>Atlas.</em></h1>
     <p>South Florida's coastal geography and Caribbean-facing waterways, traced along the same Atlantic corridor that connects Nassau, Miami, Key West, and Tarpon Springs — the Bahamian sponging heritage the practice already documents on Florida's Gulf side.</p>
   </div>
+  <div class="archive-location">
+    <p class="eyebrow">Location</p>
+    <div class="archive-location-map" id="loc-map-miami-archive"></div>
+  </div>
   <div class="archive-stats">
     <div class="archive-stat-item"><span class="archive-stat-num">Identity</span><span class="archive-stat-label">Portfolio status</span></div>
     <div class="archive-stat-item"><span class="archive-stat-num">4</span><span class="archive-stat-label">Active sectors</span></div>
@@ -4738,6 +4784,10 @@ img { max-width: 100%; display: block; }
     <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
     <h1>The Gulfport <em>Atlas.</em></h1>
     <p>A pocket of Pinellas County that never smoothed itself out for anyone — a walkable arts district, a historic Gulf-front casino ballroom, and a small-town bohemian character that sits in deliberate contrast to its larger neighbor across the bay.</p>
+  </div>
+  <div class="archive-location">
+    <p class="eyebrow">Location</p>
+    <div class="archive-location-map" id="loc-map-gulfport-archive"></div>
   </div>
   <div class="archive-stats">
     <div class="archive-stat-item"><span class="archive-stat-num">1</span><span class="archive-stat-label">Anchor node</span></div>
@@ -4804,6 +4854,10 @@ img { max-width: 100%; display: block; }
     <h1>The Safety Harbor <em>Atlas.</em></h1>
     <p>A natural mineral spring on Old Tampa Bay that drew the Tocobaga people long before it drew a spa town — Safety Harbor's Main Street character sits directly on top of one of Pinellas County's oldest continuously significant sites.</p>
   </div>
+  <div class="archive-location">
+    <p class="eyebrow">Location</p>
+    <div class="archive-location-map" id="loc-map-safetyharbor-archive"></div>
+  </div>
   <div class="archive-stats">
     <div class="archive-stat-item"><span class="archive-stat-num">1</span><span class="archive-stat-label">Anchor node</span></div>
     <div class="archive-stat-item"><span class="archive-stat-num">New</span><span class="archive-stat-label">To the Atlas</span></div>
@@ -4868,6 +4922,10 @@ img { max-width: 100%; display: block; }
     <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
     <h1>The Bradenton <em>Atlas.</em></h1>
     <p>Manatee County's river city — a working downtown on the Manatee River that serves as the gateway to Anna Maria Island, documented as the practice's first step south of Tampa Bay proper.</p>
+  </div>
+  <div class="archive-location">
+    <p class="eyebrow">Location</p>
+    <div class="archive-location-map" id="loc-map-bradenton-archive"></div>
   </div>
   <div class="archive-stats">
     <div class="archive-stat-item"><span class="archive-stat-num">1</span><span class="archive-stat-label">Anchor node</span></div>
@@ -4934,6 +4992,10 @@ img { max-width: 100%; display: block; }
     <h1>The Melbourne <em>Atlas.</em></h1>
     <p>The anchor city of Florida's Space Coast — the Indian River Lagoon on one side, the aerospace corridor leading up to Cape Canaveral on the other, and a coastline defined by both in equal measure.</p>
   </div>
+  <div class="archive-location">
+    <p class="eyebrow">Location</p>
+    <div class="archive-location-map" id="loc-map-melbourne-archive"></div>
+  </div>
   <div class="archive-stats">
     <div class="archive-stat-item"><span class="archive-stat-num">1</span><span class="archive-stat-label">Anchor node</span></div>
     <div class="archive-stat-item"><span class="archive-stat-num">New</span><span class="archive-stat-label">To the Atlas</span></div>
@@ -4998,6 +5060,10 @@ img { max-width: 100%; display: block; }
     <span class="back-btn" onclick="showPage('atlas')">Atlas</span>
     <h1>The St. Augustine <em>Atlas.</em></h1>
     <p>The oldest continuously occupied European-founded city in the country — Spanish colonial streets, a coastline that has been fought over for five centuries, and a historic weight that most destination photography flattens into a postcard.</p>
+  </div>
+  <div class="archive-location">
+    <p class="eyebrow">Location</p>
+    <div class="archive-location-map" id="loc-map-staugustine-archive"></div>
   </div>
   <div class="archive-stats">
     <div class="archive-stat-item"><span class="archive-stat-num">1</span><span class="archive-stat-label">Anchor node</span></div>
@@ -5730,6 +5796,8 @@ img { max-width: 100%; display: block; }
     } else if (id === 'atlas') {
       // Map is the default entry point into the Atlas
       setArchiveView('map');
+    } else if (PORTFOLIO_PAGE_IDS.includes(id)) {
+      initPortfolioLocationMap(id);
     }
   }
 
@@ -5783,6 +5851,125 @@ img { max-width: 100%; display: block; }
   // ── Mapbox token ───────────────────────────────────────────
   const MAPBOX_TOKEN = 'pk.eyJ1IjoiYWRzdGVwdGVyIiwiYSI6ImNtbnRnMnBqYTBvYzAycXEwbWl0YjFnb3YifQ.T108PjN5fRwJSK-yaeJS4Q';
 
+  // Each city is a Place Portfolio. Two fields support The Atlas (internal/
+  // conceptual grouping — not a UI label — covering anything that represents
+  // ASP & Co.'s work spatially: this map, plus a set of per-location ArcGIS
+  // StoryMaps). Both are optional and omitted entirely until real data exists:
+  //   storymapUrl — link to this Place Portfolio's ArcGIS StoryMap, once built.
+  //                 When present, clicking the pin opens it in a new tab
+  //                 instead of the usual showPage() navigation.
+  //   atlasStatus — 'imagery-only' (Portfolio page has no Stories/Projects
+  //                 linked yet) or 'depth-available' (at least one Story or
+  //                 Project links back to this place). Not yet wired to any
+  //                 visual treatment — purely descriptive for now. (Renamed
+  //                 2026-09 from 'known-portrait'/'records-in-progress' —
+  //                 same meaning, clearer names now that relatedStories/
+  //                 relatedProjects presence is the actual definition.)
+  // Hoisted to top-level scope (was local to buildArchiveMap()) so the
+  // per-Portfolio-page location maps below can reuse the same data instead
+  // of duplicating coordinates.
+  const cities = [
+    { lng: -82.639, lat: 27.773, title: 'St. Petersburg', sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'stpete-archive',        region: 'pinellas',   atlasStatus: 'depth-available' },
+    { lng: -82.753, lat: 28.149, title: 'Tarpon Springs',  sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'tarpon-archive',        region: 'pinellas',   atlasStatus: 'imagery-only' },
+    { lng: -77.548, lat: 34.434, title: 'Surf City',       sub: 'Pender County, NC',      status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf',        atlasStatus: 'imagery-only' },
+    { lng: -77.944, lat: 34.226, title: 'Wilmington',      sub: 'New Hanover County, NC', status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf',        atlasStatus: 'imagery-only' },
+    { lng: -78.021, lat: 33.920, title: 'Southport',       sub: 'Brunswick County, NC',   status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf',        atlasStatus: 'imagery-only' },
+    { lng: -78.150, lat: 33.915, title: 'Oak Island',      sub: 'Brunswick County, NC',   status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf',        atlasStatus: 'imagery-only' },
+    { lng: -78.638, lat: 35.779, title: 'Raleigh',         sub: 'Wake County, NC',        status: 'Active — Growing',   pageId: 'raleigh-archive',       region: 'raleigh',    atlasStatus: 'imagery-only' },
+    { lng: -86.781, lat: 36.174, title: 'Nashville',       sub: 'Davidson County, TN',    status: 'Identity Portfolio', pageId: 'nashville-archive',     region: 'nashville',  atlasStatus: 'imagery-only' },
+    { lng: -80.191, lat: 25.762, title: 'Miami',           sub: 'South Florida',          status: 'Identity Portfolio', pageId: 'miami-archive',         region: 'miami',      atlasStatus: 'imagery-only' },
+    { lng: -82.7031, lat: 27.7459, title: 'Gulfport',      sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'gulfport-archive',      region: 'pinellas',   atlasStatus: 'imagery-only' },
+    { lng: -82.6987, lat: 28.0084, title: 'Safety Harbor', sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'safetyharbor-archive',  region: 'pinellas',   atlasStatus: 'imagery-only' },
+    { lng: -82.5748, lat: 27.4989, title: 'Bradenton',     sub: 'Manatee County, FL',     status: 'Active — Growing',   pageId: 'bradenton-archive',     region: 'manatee',    atlasStatus: 'imagery-only' },
+    { lng: -80.6081, lat: 28.0836, title: 'Melbourne',     sub: 'Space Coast, FL',        status: 'Active — Growing',   pageId: 'melbourne-archive',     region: 'spacecoast', atlasStatus: 'imagery-only' },
+    { lng: -81.3124, lat: 29.9012, title: 'St. Augustine', sub: 'St. Johns County, FL',   status: 'Active — Growing',   pageId: 'staugustine-archive',   region: 'staugustine', atlasStatus: 'imagery-only' }
+  ];
+
+  // Every Place Portfolio page id that should get a stationary location map.
+  // Derived from cities[] rather than hand-listed, so a newly added city
+  // automatically gets one.
+  const PORTFOLIO_PAGE_IDS = [...new Set(cities.map(c => c.pageId))];
+
+  // A handful of Portfolio pages document more sub-locations than they have
+  // separate Atlas pins (St. Pete and Tarpon each cover multiple named nodes
+  // within one city). Their location map shows every node, using the same
+  // coordinates already printed in that node's .node-coords line — not new
+  // data. Pages not listed here fall back to their cities[] entry/entries
+  // (buildPortfolioLocationMap below) — this covers Lower Cape Fear's 4
+  // nodes automatically, since those are already 4 separate cities[] rows.
+  const portfolioMapPins = {
+    'stpete-archive': [
+      { lng: -82.6393, lat: 27.7731, label: 'St. Petersburg' },
+      { lng: -82.7416, lat: 27.7302, label: 'The Beaches' }
+    ],
+    'tarpon-archive': [
+      { lng: -82.7537, lat: 28.1486, label: 'Sponge Docks' },
+      { lng: -82.7342, lat: 28.1481, label: 'Rose Cemetery' },
+      { lng: -82.8020, lat: 28.1625, label: 'Fred Howard Park' }
+    ]
+  };
+
+  // Shared compass-star marker markup (same mark used on the Atlas map and
+  // the home HQ mini-map) — factored out so every stationary map on the
+  // site uses one definition.
+  function starMarkerHTML(color) {
+    return '<svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:block;filter:drop-shadow(0 2px 3px rgba(26,35,48,0.5));"><path d="M12,1 L13.07,9.41 L16.24,7.76 L14.59,10.93 L23,12 L14.59,13.07 L16.24,16.24 L13.07,14.59 L12,23 L10.93,14.59 L7.76,16.24 L9.41,13.07 L1,12 L9.41,10.93 L7.76,7.76 L10.93,9.41 Z" style="fill:' + color + '"/></svg>';
+  }
+
+  // ── Per-Portfolio-page location map ─────────────────────────
+  // A small, non-interactive map dropped into each Place Portfolio's hero,
+  // so the page always orients the reader in real space — "the places
+  // documented," made literal. Lazy-built the first time its page is
+  // opened (see showPage()), same pattern as the Atlas map itself.
+  const _locationMapsInit = {};
+  function initPortfolioLocationMap(pageId) {
+    if (_locationMapsInit[pageId]) return;
+    _locationMapsInit[pageId] = true;
+    if (typeof mapboxgl === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js';
+      script.onload = () => buildPortfolioLocationMap(pageId);
+      document.head.appendChild(script);
+    } else {
+      buildPortfolioLocationMap(pageId);
+    }
+  }
+
+  function buildPortfolioLocationMap(pageId) {
+    const containerId = 'loc-map-' + pageId;
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const pins = portfolioMapPins[pageId] ||
+      cities.filter(c => c.pageId === pageId).map(c => ({ lng: c.lng, lat: c.lat, label: c.title }));
+    if (!pins.length) return;
+
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    const map = new mapboxgl.Map({
+      container: containerId,
+      style: 'mapbox://styles/adstepter/cmtlvk4rp010601s90ehf343r',
+      center: [pins[0].lng, pins[0].lat],
+      zoom: pins.length > 1 ? 9 : 10.5,
+      antialias: true,
+      interactive: false,
+      attributionControl: true
+    });
+    map.on('load', () => {
+      pins.forEach((p) => {
+        const el = document.createElement('div');
+        el.className = 'map-palm-pin';
+        el.innerHTML = starMarkerHTML('var(--gold)');
+        new mapboxgl.Marker({ element: el, anchor: 'center' }).setLngLat([p.lng, p.lat]).addTo(map);
+      });
+      if (pins.length > 1) {
+        const bounds = pins.slice(1).reduce(
+          (b, p) => b.extend([p.lng, p.lat]),
+          new mapboxgl.LngLatBounds([pins[0].lng, pins[0].lat], [pins[0].lng, pins[0].lat])
+        );
+        map.fitBounds(bounds, { padding: 48, duration: 0 });
+      }
+    });
+  }
+
   // ── St. Pete HQ mini-map ───────────────────────────────────
   function initHomeMiniMap() {
     if (typeof mapboxgl === 'undefined') {
@@ -5813,7 +6000,7 @@ img { max-width: 100%; display: block; }
       miniMap.addLayer({ id: 'pinellas-line', type: 'line', source: 'pinellas', paint: { 'line-color': '#2a4a5e', 'line-width': 1.5, 'line-opacity': 0.6, 'line-dasharray': [4, 3] } });
       const el = document.createElement('div');
       el.className = 'map-palm-pin';
-      el.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:block;filter:drop-shadow(0 2px 3px rgba(26,35,48,0.5));"><path d="M12,1 L13.07,9.41 L16.24,7.76 L14.59,10.93 L23,12 L14.59,13.07 L16.24,16.24 L13.07,14.59 L12,23 L10.93,14.59 L7.76,16.24 L9.41,13.07 L1,12 L9.41,10.93 L7.76,7.76 L10.93,9.41 Z" style="fill:var(--gold)"/></svg>';
+      el.innerHTML = starMarkerHTML('var(--gold)');
       new mapboxgl.Marker({ element: el, anchor: 'center' }).setLngLat([-82.639, 27.773])
         .setPopup(new mapboxgl.Popup({ offset: 12 }).setHTML('<div class="map-popup"><div class="map-popup-status" style="color:var(--gold)">Headquarters</div><div class="map-popup-title">St. Petersburg, FL</div><div class="map-popup-sub">27.773° N · 82.639° W</div></div>'))
         .addTo(miniMap);
@@ -5891,37 +6078,6 @@ img { max-width: 100%; display: block; }
       // elsewhere in this file that only St. Augustine will ever live here.
       staugustine: { name: 'St. Augustine',    center: [-81.3124, 29.9012], geometry: {"type":"Polygon","coordinates":[[[-81.60121,30.13054],[-81.43374,30.10603],[-81.43693,30.25233],[-81.37988,30.25291],[-81.35559,30.16256],[-81.30898,29.96944],[-81.29527,29.92861],[-81.28896,29.91518],[-81.27654,29.90046],[-81.27044,29.88311],[-81.26469,29.85821],[-81.2634,29.82066],[-81.25671,29.78469],[-81.24092,29.73922],[-81.22902,29.71469],[-81.21288,29.67067],[-81.32406,29.62561],[-81.52366,29.62243],[-81.52369,29.62499],[-81.52387,29.63154],[-81.52523,29.7595],[-81.58121,29.84018],[-81.60099,29.95602],[-81.68888,30.02857],[-81.68022,30.12124],[-81.65051,30.12154],[-81.62381,30.13364],[-81.60121,30.13054]]]} }
     };
-
-    // Each city is a Place Portfolio. Two fields support The Atlas (internal/
-    // conceptual grouping — not a UI label — covering anything that represents
-    // ASP & Co.'s work spatially: this map, plus a set of per-location ArcGIS
-    // StoryMaps). Both are optional and omitted entirely until real data exists:
-    //   storymapUrl — link to this Place Portfolio's ArcGIS StoryMap, once built.
-    //                 When present, clicking the pin opens it in a new tab
-    //                 instead of the usual showPage() navigation.
-    //   atlasStatus — 'imagery-only' (Portfolio page has no Stories/Projects
-    //                 linked yet) or 'depth-available' (at least one Story or
-    //                 Project links back to this place). Not yet wired to any
-    //                 visual treatment — purely descriptive for now. (Renamed
-    //                 2026-09 from 'known-portrait'/'records-in-progress' —
-    //                 same meaning, clearer names now that relatedStories/
-    //                 relatedProjects presence is the actual definition.)
-    const cities = [
-      { lng: -82.639, lat: 27.773, title: 'St. Petersburg', sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'stpete-archive',        region: 'pinellas',   atlasStatus: 'depth-available' },
-      { lng: -82.753, lat: 28.149, title: 'Tarpon Springs',  sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'tarpon-archive',        region: 'pinellas',   atlasStatus: 'imagery-only' },
-      { lng: -77.548, lat: 34.434, title: 'Surf City',       sub: 'Pender County, NC',      status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf',        atlasStatus: 'imagery-only' },
-      { lng: -77.944, lat: 34.226, title: 'Wilmington',      sub: 'New Hanover County, NC', status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf',        atlasStatus: 'imagery-only' },
-      { lng: -78.021, lat: 33.920, title: 'Southport',       sub: 'Brunswick County, NC',   status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf',        atlasStatus: 'imagery-only' },
-      { lng: -78.150, lat: 33.915, title: 'Oak Island',      sub: 'Brunswick County, NC',   status: 'Active — Growing',   pageId: 'lowercapefear-archive', region: 'lcf',        atlasStatus: 'imagery-only' },
-      { lng: -78.638, lat: 35.779, title: 'Raleigh',         sub: 'Wake County, NC',        status: 'Active — Growing',   pageId: 'raleigh-archive',       region: 'raleigh',    atlasStatus: 'imagery-only' },
-      { lng: -86.781, lat: 36.174, title: 'Nashville',       sub: 'Davidson County, TN',    status: 'Identity Portfolio', pageId: 'nashville-archive',     region: 'nashville',  atlasStatus: 'imagery-only' },
-      { lng: -80.191, lat: 25.762, title: 'Miami',           sub: 'South Florida',          status: 'Identity Portfolio', pageId: 'miami-archive',         region: 'miami',      atlasStatus: 'imagery-only' },
-      { lng: -82.7031, lat: 27.7459, title: 'Gulfport',      sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'gulfport-archive',      region: 'pinellas',   atlasStatus: 'imagery-only' },
-      { lng: -82.6987, lat: 28.0084, title: 'Safety Harbor', sub: 'Pinellas County, FL',    status: 'Active — Growing',   pageId: 'safetyharbor-archive',  region: 'pinellas',   atlasStatus: 'imagery-only' },
-      { lng: -82.5748, lat: 27.4989, title: 'Bradenton',     sub: 'Manatee County, FL',     status: 'Active — Growing',   pageId: 'bradenton-archive',     region: 'manatee',    atlasStatus: 'imagery-only' },
-      { lng: -80.6081, lat: 28.0836, title: 'Melbourne',     sub: 'Space Coast, FL',        status: 'Active — Growing',   pageId: 'melbourne-archive',     region: 'spacecoast', atlasStatus: 'imagery-only' },
-      { lng: -81.3124, lat: 29.9012, title: 'St. Augustine', sub: 'St. Johns County, FL',   status: 'Active — Growing',   pageId: 'staugustine-archive',   region: 'staugustine', atlasStatus: 'imagery-only' }
-    ];
 
     // Walks a Polygon or MultiPolygon's nested coordinate arrays (any depth)
     // to find its bounding box — regions now carry real county/coastline
