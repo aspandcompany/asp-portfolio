@@ -507,6 +507,24 @@ img { max-width: 100%; display: block; }
   margin: 0 auto 56px;
 }
 
+/* Photo variant — breaks up the flat navy of the panel with an inset
+   image behind the header text, reusing the .archive-page-hero-bg
+   img+gradient component used everywhere else on the site. */
+.place-panel-header.has-photo {
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+  padding: 40px 44px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.place-panel-header.has-photo > *:not(.archive-page-hero-bg) {
+  position: relative;
+  z-index: 1;
+}
+
 .place-panel .eyebrow { color: var(--terracotta); }
 .place-panel .eyebrow::before { background: var(--terracotta); }
 
@@ -3373,7 +3391,8 @@ img { max-width: 100%; display: block; }
 
     <!-- Panel 1: Atlas -->
     <div class="place-panel">
-      <div class="place-panel-header reveal">
+      <div class="place-panel-header has-photo reveal">
+        <div class="archive-page-hero-bg"><img src="photos/hub-watersunset.jpg" alt="Sunset light stretching across open water"></div>
         <p class="eyebrow">Panel One</p>
         <h2>The <em>Atlas.</em></h2>
         <p class="place-panel-intro">The entry point to the Atlas — every place ASP & Co. has entered, documented from the ground up.</p>
@@ -3407,7 +3426,8 @@ img { max-width: 100%; display: block; }
 
     <!-- Panel 2: Place Stories -->
     <div class="place-panel">
-      <div class="place-panel-header reveal">
+      <div class="place-panel-header has-photo reveal">
+        <div class="archive-page-hero-bg"><img src="photos/clay-barnettfishing.jpg" alt="A man fishing off a dock, seen from behind" style="object-position: center 15%;"></div>
         <p class="eyebrow">Panel Two</p>
         <h2>Place <em>Stories.</em></h2>
         <p class="place-panel-intro">Editorial essays and series built from the Archive's research — where the documentation becomes narrative.</p>
@@ -3431,7 +3451,8 @@ img { max-width: 100%; display: block; }
 
     <!-- Panel 3: Place Projects -->
     <div class="place-panel">
-      <div class="place-panel-header reveal">
+      <div class="place-panel-header has-photo reveal">
+        <div class="archive-page-hero-bg"><img src="photos/DSC_0646.jpg" alt="Fishing boat passing the St. Pete Pier building"></div>
         <p class="eyebrow">Panel Three</p>
         <h2>Place <em>Projects.</em></h2>
         <p class="place-panel-intro">Physical initiatives built from what the research established — programming, routes, and place-based work.</p>
