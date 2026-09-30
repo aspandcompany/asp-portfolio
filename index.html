@@ -861,6 +861,22 @@ img { max-width: 100%; display: block; }
   padding: 64px;
 }
 
+.archive-strip-header.has-photo {
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  padding: 36px 40px 30px;
+  margin: 0 0 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.archive-strip-header.has-photo > *:not(.archive-page-hero-bg) {
+  position: relative;
+  z-index: 1;
+}
+
 .archive-strip-eyebrow {
   font-family: 'Spectral', serif;
   font-size: 10px;
@@ -1183,6 +1199,16 @@ img { max-width: 100%; display: block; }
   align-items: center;
   text-align: center;
   gap: 24px;
+}
+
+.home-cta.has-photo-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-cta.has-photo-bg > *:not(.archive-page-hero-bg) {
+  position: relative;
+  z-index: 1;
 }
 
 .home-cta h2 {
@@ -3553,9 +3579,12 @@ img { max-width: 100%; display: block; }
 
   <!-- Archive strip -->
   <div class="home-archive-strip">
-    <p class="archive-strip-eyebrow">ASP & Co. — The Founder's Portfolio</p>
-    <p class="archive-strip-quote reveal">"Every archive begins somewhere. Ours begins here."</p>
-    <p class="archive-strip-attr">27.773° N, 82.639° W · St. Petersburg, FL · Est. 2025</p>
+    <div class="archive-strip-header has-photo reveal">
+      <div class="archive-page-hero-bg"><img src="photos/DSC_0960.jpg" alt="Miami skyline across the bay"></div>
+      <p class="archive-strip-eyebrow">ASP & Co. — The Founder's Portfolio</p>
+      <p class="archive-strip-quote">"Every archive begins somewhere. Ours begins here."</p>
+      <p class="archive-strip-attr">27.773° N, 82.639° W · St. Petersburg, FL · Est. 2025</p>
+    </div>
     <div class="archive-spine reveal-stagger">
       <div class="spine-row" onclick="showPage('stpete-archive')">
         <span class="spine-year">2022→</span>
@@ -3749,7 +3778,8 @@ img { max-width: 100%; display: block; }
   </div>
 
   <!-- CTA -->
-  <div class="home-cta reveal">
+  <div class="home-cta reveal has-photo-bg">
+    <div class="archive-page-hero-bg"><img src="photos/surf-city-ocean.jpg" alt="Waves rolling in at Surf City, NC"></div>
     <h2>Start the <em>conversation.</em></h2>
     <p>We work on retainer. No one-time shoots. Tell us about your place — we'll tell you if it's a fit.</p>
     <div class="home-cta-actions">
