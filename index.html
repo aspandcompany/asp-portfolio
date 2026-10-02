@@ -2884,12 +2884,13 @@ img { max-width: 100%; display: block; }
 
 .cal-embed-wrap {
   width: 100%;
-  min-height: 600px;
+  height: 600px;
   background: var(--soft);
   border: 1px solid rgba(42, 74, 94, 0.2);
+  overflow: hidden;
 }
 
-.cal-embed-wrap > div { width: 100%; height: 600px; }
+.cal-embed-wrap > div { width: 100%; height: 100%; overflow: auto; overscroll-behavior: contain; }
 
 .form-note {
   font-family: 'Spectral', serif;
