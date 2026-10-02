@@ -2882,43 +2882,14 @@ img { max-width: 100%; display: block; }
   margin-bottom: 32px;
 }
 
-.form-field {
-  margin-bottom: 24px;
-}
-
-.form-field label {
-  display: block;
-  font-family: 'Spectral', serif;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--steel-blue);
-  margin-bottom: 8px;
-}
-
-.form-field input,
-.form-field select,
-.form-field textarea {
+.cal-embed-wrap {
   width: 100%;
+  min-height: 600px;
   background: var(--soft);
   border: 1px solid rgba(42, 74, 94, 0.2);
-  padding: 12px 16px;
-  font-family: 'Source Serif 4', serif;
-  font-size: 15px;
-  font-weight: 300;
-  color: var(--ink);
-  outline: none;
-  transition: border-color 0.15s;
-  appearance: none;
 }
 
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
-  border-color: var(--deep-blue);
-}
-
-.form-field textarea { resize: vertical; min-height: 120px; }
+.cal-embed-wrap > div { width: 100%; height: 600px; }
 
 .form-note {
   font-family: 'Spectral', serif;
@@ -6159,42 +6130,26 @@ img { max-width: 100%; display: block; }
     <span class="back-btn" onclick="showPage('home')">Home</span>
     <p class="eyebrow">ASP & Co. — Get in Touch</p>
     <h1>Let's talk about your <em>place.</em></h1>
-    <p>Whether you're a business looking to build an authentic visual identity, a tourism board interested in licensing primary source imagery, or a cultural institution with a story worth documenting — every engagement begins with a field research conversation, not a brief.</p>
+    <p>Every engagement begins with a field research conversation, not a brief. Whether you're a destination, a travel or hospitality brand, an editorial outlet, a cultural or conservation institution, or a research organization — find a time below and let's start there.</p>
   </div>
 
   <div class="contact-body">
     <div class="contact-form-col">
-      <h2>Send a message</h2>
-      <form id="contactForm" onsubmit="handleContactForm(event)">
-        <div class="form-field">
-          <label>Name</label>
-          <input type="text" placeholder="Your name" required>
-        </div>
-        <div class="form-field">
-          <label>Email</label>
-          <input type="email" placeholder="your@email.com" required>
-        </div>
-        <div class="form-field">
-          <label>I'm reaching out about</label>
-          <select>
-            <option value="">Select a topic</option>
-            <option>Portfolio Curation — retainer for my business</option>
-            <option>Licensing — imagery for my campaign or destination</option>
-            <option>Cultural Documentation — heritage or institutional project</option>
-            <option>Rooted Travel Partnership</option>
-            <option>General inquiry</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label>Message</label>
-          <textarea placeholder="Tell us about your place..." rows="5"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send message →</button>
-        <p class="form-note">We'll respond within 48 hours.</p>
-      </form>
-      <div class="form-success" id="formSuccess">
-        <p>Message sent. Thank you for reaching out. We'll be in touch within 48 hours.</p>
+      <h2>Book a time</h2>
+      <div class="cal-embed-wrap">
+        <div id="cal-inline-ashtonstepter"></div>
       </div>
+      <p class="form-note">Pick whatever works — the invite includes everything you need to join.</p>
+      <script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", { origin: "https://cal.com" });
+        Cal("inline", {
+          elementOrSelector: "#cal-inline-ashtonstepter",
+          calLink: "ashtonstepter",
+          layout: "month_view"
+        });
+        Cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+      </script>
     </div>
 
     <div class="contact-info-col">
@@ -6744,13 +6699,6 @@ img { max-width: 100%; display: block; }
         card.style.display = sectors.includes(sector) ? '' : 'none';
       }
     });
-  }
-
-  // Contact form (demo — no actual submission)
-  function handleContactForm(e) {
-    e.preventDefault();
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
   }
 
   // ── Scroll reveal ────────────────────────────────────────────
