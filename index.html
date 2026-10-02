@@ -3315,8 +3315,10 @@ img { max-width: 100%; display: block; }
 
   .archive-page-hero { min-height: 360px; }
   .archive-location { padding: 0 24px 32px; }
-  .archive-location-map { height: 200px; }
-  .archive-location-state-wrap { display: none; }
+  .archive-location-row { flex-direction: column; align-items: stretch; gap: 20px; }
+  .archive-location-map { flex: 0 0 auto; height: 200px; max-width: 100%; }
+  .archive-location-state-wrap { min-width: 0; }
+  .archive-location-state { height: 170px; margin: 0 auto; padding-bottom: 0; }
 
   .home-hero-headline-row { flex-direction: column; align-items: flex-start; }
   .home-hero-geo-tag { max-width: 100%; text-align: left; white-space: normal; }
