@@ -5863,7 +5863,7 @@ img { max-width: 100%; display: block; }
 
   <div style="max-width:720px; margin:0 auto 64px; text-align:center; padding:0 24px;">
     <p style="font-size:14px; font-weight:300; color:#666; margin-bottom:16px;">Conch Road and The Home Break are now open to partners.</p>
-    <a class="btn btn-primary" onclick="showPage('partner-place-project')">Partner with a Place Project →</a>
+    <a class="btn btn-primary" onclick="showPage('work'); setTimeout(function(){ var el=document.getElementById('back-a-place-project'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 50)">See How to Partner →</a>
   </div>
 
   <footer class="site-footer">
@@ -6012,10 +6012,12 @@ img { max-width: 100%; display: block; }
 <div class="page page-content" id="page-work">
   <div class="work-hub-hero">
     <span class="back-btn" onclick="showPage('home')">Home</span>
-    <p class="eyebrow">The Work</p>
-    <h1>The <em>Work.</em></h1>
-    <p>ASP & Co. does not sell destination marketing. It sells what destination marketing has been missing — the cultural and geographical foundation that makes a place worth representing in the first place. The work is available in three forms.</p>
+    <p class="eyebrow">Work With Us</p>
+    <h1>How to Work <em>With Us.</em></h1>
+    <p>ASP & Co. does not sell destination marketing. It sells what destination marketing has been missing — the cultural and geographical foundation that makes a place worth representing in the first place. There are two ways in: commission the research for your own place, or back one of the places ASP & Co. is already documenting.</p>
   </div>
+
+  <p class="partner-section-num" style="padding:48px 64px 0;">01 · Commission ASP & Co.</p>
   <div class="work-cards">
     <div class="work-card" onclick="showPage('origin-brief')">
       <div class="work-card-num">01</div>
@@ -6027,8 +6029,9 @@ img { max-width: 100%; display: block; }
     <div class="work-card" onclick="showPage('rooted-travel')">
       <div class="work-card-num">02</div>
       <h3>Rooted Travel <em>Partnerships</em></h3>
-      <p>For experiential travel operators who want their experiences to be genuinely rooted in the cultural identity of the places they operate in — not just marketed through it. We help travel brands build deeper relationships between visitors and the places they serve.</p>
+      <p>For experiential travel operators who want <em>their own</em> experience documented and rooted in the cultural identity of the places they operate in — not just marketed through it. A commissioned engagement: your experience is the subject, wherever it is.</p>
       <p class="work-card-sectors">Typically delivered to: Travel, Hospitality & Water Recreation</p>
+      <p style="margin-top:8px; font-size:12px; color:#888;">Operate inside Conch Road or The Home Break instead? See Back a Place Project below.</p>
       <p style="margin-top:16px; font-family:'Spectral',serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--terracotta);">View →</p>
     </div>
     <div class="work-card" onclick="showPage('license')">
@@ -6040,14 +6043,45 @@ img { max-width: 100%; display: block; }
     </div>
   </div>
 
-  <div style="max-width:720px; margin:0 auto 32px; text-align:center; padding:0 24px;">
+  <div style="max-width:720px; margin:0 auto 0; text-align:center; padding:0 24px 64px;">
     <p style="font-size:14px; font-weight:300; color:#666; margin-bottom:16px;">Not yet in the Archive? A Commissioned Place Portfolio brings the full research methodology to a location on behalf of a specific client.</p>
     <a class="btn btn-outline" onclick="showPage('license'); setTimeout(function(){ var el=document.getElementById('commissioned-place-portfolios'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 50)">Learn about Commissioned Portfolios →</a>
   </div>
 
-  <div style="max-width:720px; margin:0 auto 64px; text-align:center; padding:0 24px;">
-    <p style="font-size:14px; font-weight:300; color:#666; margin-bottom:16px;">Looking to put your name behind a Place Project instead of commissioning one?</p>
-    <a class="btn btn-primary" onclick="showPage('partner-place-project')">Partner with a Place Project →</a>
+  <div class="partner-body" id="back-a-place-project" style="padding-top:48px;">
+    <div class="partner-section">
+      <p class="partner-section-num">02 · Back a Place Project</p>
+      <h2>Join one of ASP & Co.'s own <em>corridor projects.</em></h2>
+      <p>Place Projects are where ASP & Co.'s research becomes something people can travel, read, and experience. Each one follows a corridor or community through the 225 Lens, and each is made possible by partners who want to be part of the story from the start. Unlike a commissioned engagement, ASP & Co. originates these — a partner backs the work already underway.</p>
+      <ul class="partner-list">
+        <li>A named place in a credible, original body of work, not a logo on someone else's campaign</li>
+        <li>Licensed imagery and story rights for their own channels, released as each Reckoning of Place is completed</li>
+        <li>For travel and hospitality partners, routes and itineraries built from the research</li>
+        <li>First access to the research as it develops</li>
+      </ul>
+
+      <h3>What Stays Protected</h3>
+      <div class="partner-protected">
+        <p>ASP & Co. holds editorial control. The communities who share their stories are consulted, credited, and compensated within every project budget, and they are never charged.</p>
+      </div>
+    </div>
+
+    <div class="partner-section">
+      <h2>Now open to <em>partners.</em></h2>
+      <div class="partner-projects-grid" id="partner-projects-list"></div>
+    </div>
+
+    <div class="partner-section">
+      <h2>Ways to <em>partner.</em></h2>
+      <ul class="partner-list">
+        <li><strong>Presenting Partner:</strong> your name on the project, first licensing rights, and a documentary deliverable made for your channels</li>
+        <li><strong>Route or In-Kind Partner:</strong> flights, boats, lodging, or access in exchange for credit and licensed content</li>
+        <li><strong>Supporting Partner:</strong> fund one piece, such as a Place Story, a community archive, or a field trip</li>
+        <li><strong>Institutional Partner:</strong> co-develop the research with us</li>
+      </ul>
+    </div>
+
+    <a class="btn btn-primary" onclick="showPage('contact')">Start the conversation →</a>
   </div>
 
   <footer class="site-footer">
@@ -6155,60 +6189,6 @@ img { max-width: 100%; display: block; }
       <h2>The research keeps <em>renewing.</em></h2>
       <p>The underlying research archive produced during every partnership belongs to ASP & Co. and feeds the broader Archive. Operators license the documentary content produced for their specific use.</p>
       <p>ASP & Co. is actively building partnerships with operators who are already doing meaningful work in place and want to go further. The goal on both sides is the same: visitors who leave knowing where they've been.</p>
-    </div>
-
-    <a class="btn btn-primary" onclick="showPage('contact')">Start a partnership conversation →</a>
-  </div>
-
-  <footer class="site-footer">
-    <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
-    <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
-  </footer>
-</div>
-
-
-<!-- ============================================================
-     PARTNER WITH A PLACE PROJECT PAGE
-     ============================================================ -->
-<div class="page page-content" id="page-partner-place-project">
-  <div class="work-page-hero">
-    <span class="back-btn" onclick="showPage('place-projects')">Place Projects</span>
-    <h1>Partner with a Place <em>Project.</em></h1>
-    <p>Place Projects are where ASP & Co.'s research becomes something people can travel, read, and experience. Each one follows a corridor or community through the 225 Lens, and each is made possible by partners who want to be part of the story from the start.</p>
-  </div>
-
-  <div class="partner-body">
-    <div class="partner-section">
-      <p class="partner-section-num">01 · What Partners Receive</p>
-      <ul class="partner-list">
-        <li>A named place in a credible, original body of work, not a logo on someone else's campaign</li>
-        <li>Licensed imagery and story rights for their own channels, released as each Reckoning of Place is completed</li>
-        <li>For travel and hospitality partners, routes and itineraries built from the research</li>
-        <li>First access to the research as it develops</li>
-      </ul>
-
-      <h3>What Stays Protected</h3>
-      <div class="partner-protected">
-        <p>ASP & Co. holds editorial control. The communities who share their stories are consulted, credited, and compensated within every project budget, and they are never charged.</p>
-      </div>
-    </div>
-
-    <div class="partner-section">
-      <p class="partner-section-num">02 · Now Open to Partners</p>
-      <h2>Now open to <em>partners.</em></h2>
-      <div class="partner-projects-grid" id="partner-projects-list"></div>
-    </div>
-
-    <div class="partner-section">
-      <p class="partner-section-num">03 · Ways to Partner</p>
-      <h2>Ways to <em>partner.</em></h2>
-      <ul class="partner-list">
-        <li><strong>Presenting Partner:</strong> your name on the project, first licensing rights, and a documentary deliverable made for your channels</li>
-        <li><strong>Route or In-Kind Partner:</strong> flights, boats, lodging, or access in exchange for credit and licensed content</li>
-        <li><strong>Supporting Partner:</strong> fund one piece, such as a Place Story, a community archive, or a field trip</li>
-        <li><strong>Institutional Partner:</strong> co-develop the research with us</li>
-      </ul>
     </div>
 
     <a class="btn btn-primary" onclick="showPage('contact')">Start a partnership conversation →</a>
