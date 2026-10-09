@@ -2793,6 +2793,151 @@ img { max-width: 100%; display: block; }
   margin: 16px 0;
 }
 
+/* ============================================================
+   PARTNER WITH A PLACE PROJECT PAGE
+   ============================================================ */
+.partner-body {
+  padding: 80px 64px;
+  background: var(--cream);
+}
+
+.partner-section {
+  max-width: 900px;
+  margin-bottom: 64px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(42, 74, 94, 0.12);
+}
+
+.partner-section:first-child { border-top: none; padding-top: 0; }
+
+.partner-section-num {
+  font-family: 'Spectral', serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--steel-blue);
+  margin-bottom: 16px;
+}
+
+.partner-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.partner-section h2 em { font-style: italic; color: var(--deep-blue); }
+
+.partner-section h3 {
+  font-family: 'Spectral', serif;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--deep-blue);
+  margin-bottom: 14px;
+}
+
+.partner-section p {
+  font-size: 15px;
+  font-weight: 300;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+.partner-list {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+}
+
+.partner-list li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 15px;
+  font-weight: 300;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.partner-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 16px;
+  height: 1px;
+  background: var(--terracotta);
+}
+
+.partner-list li strong {
+  color: var(--deep-blue);
+  font-weight: 600;
+}
+
+.partner-protected {
+  background: var(--soft);
+  padding: 24px 28px;
+  border-left: 3px solid var(--terracotta);
+  margin: 20px 0;
+}
+
+.partner-protected p {
+  font-size: 14px;
+  margin: 0;
+  color: #444;
+}
+
+.partner-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 8px;
+}
+
+.partner-project-card {
+  background: #fff;
+  border: 1px solid rgba(42, 74, 94, 0.12);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.partner-project-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.partner-project-head h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--deep-blue);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.partner-project-card .coming-tag { margin-top: 2px; font-size: 9px; padding: 5px 9px; white-space: nowrap; flex-shrink: 0; }
+
+.partner-project-card p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #444;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+.partner-project-partners {
+  font-size: 12px !important;
+  letter-spacing: 0.02em;
+  color: var(--steel-blue) !important;
+  margin-bottom: 0 !important;
+}
+
 .mk-color-chip {
   display: flex;
   flex-direction: column;
@@ -3408,6 +3553,9 @@ img { max-width: 100%; display: block; }
   .license-body, .mk-body { padding: 48px 24px; }
   .mk-assets-grid { grid-template-columns: 1fr; }
 
+  .partner-body { padding: 48px 24px; }
+  .partner-projects-grid { grid-template-columns: 1fr; }
+
   .contact-body { grid-template-columns: 1fr; padding: 48px 24px; gap: 48px; }
   .mk-press-cta { padding: 48px 24px; }
 
@@ -3443,6 +3591,7 @@ img { max-width: 100%; display: block; }
     </li>
     <li><a onclick="showPage('atlas')">Atlas</a></li>
     <li><a onclick="showPage('field-notes')">Field Notes</a></li>
+    <li><a onclick="showPage('work')">Work With Us</a></li>
     <li><a onclick="showPage('contact')">Contact</a></li>
   </ul>
   <div class="nav-hamburger" onclick="toggleMobile()" id="hamburger">
@@ -3461,6 +3610,7 @@ img { max-width: 100%; display: block; }
   </div>
   <a onclick="showPage('atlas'); closeMobile()">Atlas</a>
   <a onclick="showPage('field-notes'); closeMobile()">Field Notes</a>
+  <a onclick="showPage('work'); closeMobile()">Work With Us</a>
   <a onclick="showPage('contact'); closeMobile()">Contact</a>
 </div>
 
@@ -3786,7 +3936,7 @@ img { max-width: 100%; display: block; }
           <div class="client-row-body-spacer"></div>
           <div class="client-row-body-content">
             <p>Place-based storytelling is easy to get wrong. A weekend visit produces a weekend's worth of observation. What editors and readers can sense — even when they can't name it — is the difference between a piece written from the outside and one written from sustained presence inside a place.</p>
-            <p>ASP & Co. brings a documented research methodology, a proprietary archive built from years of field work across the American coastal South, and a geographic thesis to every editorial relationship: that the places worth writing about are the ones where the lived culture runs deeper than the visitor experience, and where the two exist alongside each other in ways that reward careful attention. A weekend produces observation, not perspective. ASP & Co. brings the years of presence that create it.</p>
+            <p>ASP & Co. brings a documented research methodology, a proprietary archive built from years of field work across the American coastal South, and a geographic thesis to every editorial relationship: that the places worth writing about are the ones where the lived culture runs deeper than the visitor experience, and where the two exist alongside each other in ways that reward careful attention. A weekend produces observation, not perspective. ASP & Co. brings a method for building that presence, place by place, and the archive to show for it.</p>
             <div class="client-row-deliverables">
               <span class="deliverable-tag">Place-Based Editorial Photography</span>
               <span class="deliverable-tag">The Reckoning of Place — Long-Form Narrative</span>
@@ -3868,7 +4018,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co. · St. Petersburg, FL</span>
   </footer>
 </div>
 
@@ -3997,8 +4147,8 @@ img { max-width: 100%; display: block; }
     <div class="pillars-grid">
       <div class="pillar">
         <p class="pillar-num">01</p>
-        <h3>Belonging is a credential.</h3>
-        <p>The most important thing a photographer can bring to a place is time already spent there. Not access. Not equipment. Presence — the kind that makes you invisible enough to see what's actually there.</p>
+        <h3>Belonging is built, not inherited.</h3>
+        <p>The most important thing a documentarian brings to a place isn't an address. It's the work of earning it: returning, listening, and learning from the people who hold a place's story before a single frame is made. We practice that wherever the story is. Not access. Not equipment. Presence that is built, and rebuilt, with every place we enter.</p>
       </div>
       <div class="pillar">
         <p class="pillar-num">02</p>
@@ -4060,7 +4210,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co. · St. Petersburg, FL</span>
   </footer>
 </div>
 
@@ -4087,7 +4237,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -4141,7 +4291,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -4341,7 +4491,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -4515,7 +4665,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -4621,7 +4771,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co. · St. Petersburg, FL</span>
   </footer>
 </div>
 
@@ -4738,7 +4888,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co. · St. Petersburg, FL</span>
   </footer>
 </div>
 
@@ -4871,7 +5021,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -4952,7 +5102,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5033,7 +5183,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5114,7 +5264,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5195,7 +5345,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5276,7 +5426,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5357,7 +5507,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5438,7 +5588,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5519,7 +5669,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5563,7 +5713,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5607,7 +5757,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5655,10 +5805,15 @@ img { max-width: 100%; display: block; }
     </div>
   </div>
 
+  <div style="max-width:720px; margin:0 auto 64px; text-align:center; padding:0 24px;">
+    <p style="font-size:14px; font-weight:300; color:#666; margin-bottom:16px;">Conch Road and The Home Break are now open to partners.</p>
+    <a class="btn btn-primary" onclick="showPage('partner-place-project')">Partner with a Place Project →</a>
+  </div>
+
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5691,7 +5846,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5724,7 +5879,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5757,7 +5912,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5790,7 +5945,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5828,10 +5983,16 @@ img { max-width: 100%; display: block; }
       <p style="margin-top:16px; font-family:'Spectral',serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--terracotta);">View →</p>
     </div>
   </div>
+
+  <div style="max-width:720px; margin:0 auto 64px; text-align:center; padding:0 24px;">
+    <p style="font-size:14px; font-weight:300; color:#666; margin-bottom:16px;">Looking to put your name behind a Place Project instead of commissioning one?</p>
+    <a class="btn btn-primary" onclick="showPage('partner-place-project')">Partner with a Place Project →</a>
+  </div>
+
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5881,7 +6042,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5941,7 +6102,61 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
+  </footer>
+</div>
+
+
+<!-- ============================================================
+     PARTNER WITH A PLACE PROJECT PAGE
+     ============================================================ -->
+<div class="page page-content" id="page-partner-place-project">
+  <div class="work-page-hero">
+    <span class="back-btn" onclick="showPage('place-projects')">Place Projects</span>
+    <h1>Partner with a Place <em>Project.</em></h1>
+    <p>Place Projects are where ASP & Co.'s research becomes something people can travel, read, and experience. Each one follows a corridor or community through the 225 Lens, and each is made possible by partners who want to be part of the story from the start.</p>
+  </div>
+
+  <div class="partner-body">
+    <div class="partner-section">
+      <p class="partner-section-num">01 · What Partners Receive</p>
+      <ul class="partner-list">
+        <li>A named place in a credible, original body of work, not a logo on someone else's campaign</li>
+        <li>Licensed imagery and story rights for their own channels, released as each Reckoning of Place is completed</li>
+        <li>For travel and hospitality partners, routes and itineraries built from the research</li>
+        <li>First access to the research as it develops</li>
+      </ul>
+
+      <h3>What Stays Protected</h3>
+      <div class="partner-protected">
+        <p>ASP & Co. holds editorial control. The communities who share their stories are consulted, credited, and compensated within every project budget, and they are never charged.</p>
+      </div>
+    </div>
+
+    <div class="partner-section">
+      <p class="partner-section-num">02 · Now Open to Partners</p>
+      <h2>Now open to <em>partners.</em></h2>
+      <div class="partner-projects-grid" id="partner-projects-list"></div>
+    </div>
+
+    <div class="partner-section">
+      <p class="partner-section-num">03 · Ways to Partner</p>
+      <h2>Ways to <em>partner.</em></h2>
+      <ul class="partner-list">
+        <li><strong>Presenting Partner:</strong> your name on the project, first licensing rights, and a documentary deliverable made for your channels</li>
+        <li><strong>Route or In-Kind Partner:</strong> flights, boats, lodging, or access in exchange for credit and licensed content</li>
+        <li><strong>Supporting Partner:</strong> fund one piece, such as a Place Story, a community archive, or a field trip</li>
+        <li><strong>Institutional Partner:</strong> co-develop the research with us</li>
+      </ul>
+    </div>
+
+    <a class="btn btn-primary" onclick="showPage('contact')">Start a partnership conversation →</a>
+  </div>
+
+  <footer class="site-footer">
+    <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
+    <span class="footer-center">From Higher Ground</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -5987,7 +6202,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -6073,7 +6288,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -6117,7 +6332,7 @@ img { max-width: 100%; display: block; }
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co.</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co.</span>
   </footer>
 </div>
 
@@ -6159,14 +6374,14 @@ img { max-width: 100%; display: block; }
       <p style="margin-top:16px;">
         <a href="mailto:ashton@aspandco.com" class="contact-direct">ashton@aspandco.com →</a>
       </p>
-      <p style="margin-top:48px; font-size:14px; font-weight:300; color:#888; font-style:italic; line-height:1.75;">"The right client isn't looking for a photographer. They're looking for someone who already belongs to the place."</p>
+      <p style="margin-top:48px; font-size:14px; font-weight:300; color:#888; font-style:italic; line-height:1.75;">"The right client isn't looking for a photographer. They're looking for someone who will do the work of belonging to their place."</p>
     </div>
   </div>
 
   <footer class="site-footer">
     <span class="footer-left">ASP & Co. · Documentary Practice · Creation Research · ROOTED.</span>
     <span class="footer-center">From Higher Ground</span>
-    <span class="footer-right">© 2025 ASP & Co. · St. Petersburg, FL</span>
+    <span class="footer-right">© <span class="copyright-year">2025</span> ASP & Co. · St. Petersburg, FL</span>
   </footer>
 </div>
 
@@ -6726,6 +6941,49 @@ img { max-width: 100%; display: block; }
     targets.forEach(el => observer.observe(el));
   }
   initScrollReveal();
+
+  // ── Footer copyright year ───────────────────────────────────
+  // Every footer's "© 2025" is a .copyright-year span; this fills them
+  // all in once, as "2025" while it's still 2025 and "2025–<year>" after,
+  // so the footer never needs a manual date bump again.
+  (function setCopyrightYear() {
+    const startYear = 2025;
+    const currentYear = new Date().getFullYear();
+    const display = currentYear > startYear ? `${startYear}–${currentYear}` : String(startYear);
+    document.querySelectorAll('.copyright-year').forEach(el => { el.textContent = display; });
+  })();
+
+  // ── Partner with a Place Project: project cards ─────────────────
+  // Single data object so new corridors can be added without touching markup.
+  const PARTNER_PROJECTS = [
+    {
+      name: 'Conch Road',
+      status: 'In development',
+      description: "The Bahamian sponging diaspora ran on water: from Nassau and Andros, to Coconut Grove, across to Key West, and up the Gulf to Tarpon Springs. Four places, one story, and a route that exists in the research and can exist as a journey.",
+      partners: 'Natural partners: airlines, cruise and small-ship operators, destination organizations along the route, charter and water-recreation brands, research institutions.'
+    },
+    {
+      name: 'The Home Break',
+      status: 'In development',
+      description: "Every surfer has a home break, the stretch of coast they grew up on and still measure everything against. From New Smyrna Beach to Sebastian Inlet, with Cocoa Beach at the center, this project documents the surf families, shops, and breaks that built the culture around Florida's most marketed surf town.",
+      partners: 'Natural partners: surf and coastal brands, Space Coast destination organizations, hospitality, outfitters, regional carriers.'
+    }
+  ];
+
+  (function renderPartnerProjects() {
+    const container = document.getElementById('partner-projects-list');
+    if (!container) return;
+    container.innerHTML = PARTNER_PROJECTS.map(p => `
+      <div class="partner-project-card">
+        <div class="partner-project-head">
+          <h3>${p.name}</h3>
+          <span class="coming-tag">${p.status}</span>
+        </div>
+        <p>${p.description}</p>
+        <p class="partner-project-partners">${p.partners}</p>
+      </div>
+    `).join('');
+  })();
 
   // ── Browser back/forward support ──────────────────────────────
   // showPage() only ever toggled .active classes — it never touched the
