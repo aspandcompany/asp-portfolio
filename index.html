@@ -2175,6 +2175,45 @@ img { max-width: 100%; display: block; }
 
 .node-header .node-section-label { margin-top: 0; }
 
+/* The [Place] Record — a named research unit, deeper than the node blurb */
+.place-record {
+  margin: 20px 0 28px;
+  padding: 28px 32px;
+  background: var(--soft);
+  border-left: 3px solid var(--deep-blue);
+}
+
+.place-record-label {
+  font-family: 'Spectral', serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--deep-blue);
+  margin-bottom: 18px;
+}
+
+.place-record-body {
+  display: grid;
+  gap: 20px;
+}
+
+.place-record-section h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--terracotta);
+  margin-bottom: 6px;
+}
+
+.place-record-section p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #444;
+  line-height: 1.75;
+  max-width: 640px;
+}
+
 .node-gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -4860,9 +4899,26 @@ img { max-width: 100%; display: block; }
     <div class="node-header">
       <p class="node-coords">Tarpon Springs, FL — Anclote River · 28.1486° N, 82.7537° W</p>
       <h2>Sponge Docks & <em>Spring Bayou</em></h2>
-      <p class="node-section-label">The Story</p>
-      <p>The story of the Tarpon Springs sponge docks begins with the Bahamians — Black sponge fishermen who settled here in the late 1800s and introduced the traditional hook method, working the Gulf beds before anyone else had a commercial operation. The Greeks arrived in the early 1900s, bringing helmet diving and a more industrial approach that transformed the trade. Both communities built this place. The docks carry both histories, though one has been told louder than the other.</p>
     </div>
+
+    <div class="place-record">
+      <p class="place-record-label">The Sponge Docks Record</p>
+      <div class="place-record-body">
+        <div class="place-record-section">
+          <h4>Origins</h4>
+          <p>The Bahamians were first — Black sponge fishermen who settled here in the late 1800s and introduced the traditional hook method, working the Gulf beds before anyone else had a commercial operation.</p>
+        </div>
+        <div class="place-record-section">
+          <h4>The Greek Arrival</h4>
+          <p>The Greeks arrived in the early 1900s, bringing helmet diving and a more industrial approach that transformed the trade into the commercial industry most people recognize today.</p>
+        </div>
+        <div class="place-record-section">
+          <h4>What the Record Holds</h4>
+          <p>Both communities built this place. The docks carry both histories, though one has been told louder than the other — and that imbalance is exactly what a Record like this is built to correct.</p>
+        </div>
+      </div>
+    </div>
+
     <p class="node-section-label">Photos</p>
     <p class="node-gallery-label">Sponge Docks — Selected imagery · Full collection available on request</p>
     <div class="node-gallery">
