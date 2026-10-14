@@ -2373,26 +2373,54 @@ img { max-width: 100%; display: block; }
 }
 
 .work-whofor {
-  max-width: 720px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 64px 64px 0;
+  padding: 64px 64px 16px;
   text-align: center;
   background: var(--cream);
 }
 
-.work-whofor p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(19px, 2.2vw, 27px);
-  font-weight: 400;
-  font-style: italic;
-  color: #555;
-  line-height: 1.55;
+.work-whofor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 32px;
+  margin-bottom: 40px;
 }
 
-.work-whofor .work-whofor-close {
+.whofor-tile { text-align: center; }
+
+.whofor-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 16px;
+  color: var(--terracotta);
+}
+
+.whofor-tile h4 {
+  font-family: 'Spectral', serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--deep-blue);
+  margin-bottom: 8px;
+}
+
+.whofor-tile p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: #555;
+  line-height: 1.4;
+}
+
+.work-whofor-close {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-style: italic;
   color: var(--deep-blue);
   font-weight: 600;
-  margin-top: 8px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(42, 74, 94, 0.12);
 }
 
 .work-cards {
@@ -3596,6 +3624,8 @@ img { max-width: 100%; display: block; }
   .worldview-globe { width: 150px; height: 150px; }
 
   .movements-grid, .for-whom-grid, .pillars-grid { grid-template-columns: 1fr; }
+  .work-whofor-grid { grid-template-columns: 1fr; gap: 32px; }
+  .work-whofor { padding: 48px 24px 16px; }
 
   /* Stack timeline vertically on mobile */
   .timeline-entry { grid-template-columns: 1fr; }
@@ -6081,8 +6111,62 @@ img { max-width: 100%; display: block; }
   </div>
 
   <div class="work-whofor">
-    <p>If you represent a destination. If you operate inside one, for the people who visit it. If you work it, for a living. If you study it, or work to preserve it. If you write about it. Or if it's simply yours, and always has been —</p>
-    <p class="work-whofor-close">we'd like to work with you.</p>
+    <div class="work-whofor-grid">
+      <div class="whofor-tile">
+        <svg class="whofor-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 44s14-12.5 14-24A14 14 0 0 0 10 20c0 11.5 14 24 14 24z"/>
+          <circle cx="24" cy="19" r="5"/>
+        </svg>
+        <h4>Destinations</h4>
+        <p>You represent a destination.</p>
+      </div>
+      <div class="whofor-tile">
+        <svg class="whofor-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="10" r="4"/>
+          <line x1="24" y1="14" x2="24" y2="40"/>
+          <path d="M10 26c0 8 6 14 14 14s14-6 14-14"/>
+          <line x1="14" y1="22" x2="34" y2="22"/>
+        </svg>
+        <h4>Travel, Hospitality &amp; Water Recreation</h4>
+        <p>You operate inside one, for the people who visit it.</p>
+      </div>
+      <div class="whofor-tile">
+        <svg class="whofor-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 24c6-8 14-12 22-12 8 0 14 5 14 12s-6 12-14 12c-8 0-16-4-22-12z"/>
+          <path d="M42 24l6-6v12z"/>
+          <circle cx="16" cy="21" r="1.3" fill="currentColor" stroke="none"/>
+        </svg>
+        <h4>Working Waterfronts</h4>
+        <p>You work it, for a living.</p>
+      </div>
+      <div class="whofor-tile">
+        <svg class="whofor-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 12c-4-3-10-4-16-3v26c6-1 12 0 16 3 4-3 10-4 16-3V9c-6-1-12 0-16 3z"/>
+          <line x1="24" y1="12" x2="24" y2="38"/>
+        </svg>
+        <h4>Research &amp; Cultural Institutions</h4>
+        <p>You study it, or work to preserve it.</p>
+      </div>
+      <div class="whofor-tile">
+        <svg class="whofor-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M34 8l6 6-20 20-8 2 2-8z"/>
+          <line x1="28" y1="14" x2="34" y2="20"/>
+        </svg>
+        <h4>Editorial</h4>
+        <p>You write about it.</p>
+      </div>
+      <div class="whofor-tile">
+        <svg class="whofor-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="16" r="6"/>
+          <path d="M6 40c0-8 5-13 12-13s12 5 12 13"/>
+          <circle cx="33" cy="18" r="5"/>
+          <path d="M27 40c1-6 5-10 11-10 5 0 9 3 11 8"/>
+        </svg>
+        <h4>Communities We Document</h4>
+        <p>It's simply yours, and always has been.</p>
+      </div>
+    </div>
+    <p class="work-whofor-close">We'd like to work with you.</p>
   </div>
 
   <p class="partner-section-num" style="padding:48px 64px 0;">01 · Commission ASP & Co.</p>
