@@ -1072,23 +1072,31 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid rgba(42, 74, 94, 0.12);
 }
 
-.client-row {
+.client-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 40px 0;
   border-bottom: 1px solid rgba(42, 74, 94, 0.12);
 }
 
-.client-row-header {
-  display: grid;
-  grid-template-columns: 220px 1fr 32px;
-  align-items: center;
-  gap: 32px;
-  padding: 28px 0;
-  cursor: pointer;
-  transition: background 0.15s;
+.client-card:first-child { padding-top: 0; }
+
+.client-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 
-.client-row-header:hover { background: rgba(42, 74, 94, 0.03); }
+.client-card-icon {
+  width: 34px;
+  height: 34px;
+  color: var(--terracotta);
+  margin-bottom: 4px;
+}
 
-.client-row-label {
+.client-card-label {
   font-family: 'Spectral', serif;
   font-size: 10px;
   letter-spacing: 0.22em;
@@ -1096,7 +1104,7 @@ img { max-width: 100%; display: block; }
   color: var(--terracotta);
 }
 
-.client-row-title {
+.client-card-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 20px;
   font-weight: 400;
@@ -1104,37 +1112,9 @@ img { max-width: 100%; display: block; }
   line-height: 1.25;
 }
 
-.client-row-title em { font-style: italic; color: var(--deep-blue); }
+.client-card-title em { font-style: italic; color: var(--deep-blue); }
 
-.client-row-toggle {
-  font-family: 'Spectral', serif;
-  font-size: 16px;
-  color: var(--steel-blue);
-  text-align: right;
-  transition: transform 0.25s ease;
-  user-select: none;
-}
-
-.client-row.open .client-row-toggle { transform: rotate(45deg); }
-
-.client-row-body {
-  display: none;
-  padding: 0 0 36px;
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 32px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-}
-
-.client-row.open .client-row-body {
-  max-height: 600px;
-}
-
-.client-row-body-spacer { /* empty left column for alignment */ }
-
-.client-row-body-content p {
+.client-card-body p {
   font-size: 15px;
   font-weight: 300;
   color: #444;
@@ -3602,10 +3582,7 @@ img { max-width: 100%; display: block; }
 
   .home-clients { padding: 64px 24px; }
   .clients-thesis { padding: 24px; }
-  .client-row-header { grid-template-columns: 1fr 32px; gap: 16px; }
-  .client-row-label { display: none; }
-  .client-row-body { grid-template-columns: 1fr; }
-  .client-row-body-spacer { display: none; }
+  .client-card { grid-template-columns: 1fr; gap: 12px; }
 
   .model-grid, .clients-grid { grid-template-columns: 1fr; }
 
@@ -3757,137 +3734,142 @@ img { max-width: 100%; display: block; }
 
     <div class="clients-rows reveal-stagger">
 
-      <div class="client-row" id="cr-destinations">
-        <div class="client-row-header" onclick="toggleClientRow('cr-destinations')">
-          <span class="client-row-label">Destinations</span>
-          <span class="client-row-title">DMOs, tourism boards, <em>CVBs</em></span>
-          <span class="client-row-toggle">+</span>
+      <div class="client-card" id="cr-destinations">
+        <div class="client-card-left">
+          <svg class="client-card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 44s14-12.5 14-24A14 14 0 0 0 10 20c0 11.5 14 24 14 24z"/>
+            <circle cx="24" cy="19" r="5"/>
+          </svg>
+          <span class="client-card-label">Destinations</span>
+          <span class="client-card-title">DMOs, tourism boards, <em>CVBs</em></span>
         </div>
-        <div class="client-row-body">
-          <div class="client-row-body-spacer"></div>
-          <div class="client-row-body-content">
-            <p>A destination's official identity is usually built around what draws visitors — the landmarks, the experiences, the things most people associate with a place before they arrive. That foundation is real, and ASP & Co. documents it with the same craft and rigor applied to everything else. But a place is more than its visitor-facing identity. It is also the surf culture that has defined a stretch of coastline for generations. The founding story that never made it into the brochure. The neighborhood that shaped the city's music before anyone was paying attention.</p>
-            <p>ASP & Co. works with the people responsible for how a destination is represented — building a visual record that holds both: the identity travelers already know and the lived culture that exists alongside it. A brochure is not a place. ASP & Co. documents what the brochure left out.</p>
-            <div class="client-row-deliverables">
-              <span class="offering-tag" onclick="showPage('stepter-cultural-report')">Work: The Stepter Cultural Report</span>
-              <span class="deliverable-tag">Licensed Visual Archive</span>
-              <span class="deliverable-tag">Identity Portfolio Documentation</span>
-              <span class="offering-tag" onclick="showPage('license')">Work: License Imagery</span>
-            </div>
-            <p class="sector-link" onclick="showPage('stpete-archive')">See the record →</p>
+        <div class="client-card-body">
+          <p>A destination's official identity is usually built around what draws visitors — the landmarks, the experiences, the things most people associate with a place before they arrive. That foundation is real, and ASP & Co. documents it with the same craft and rigor applied to everything else. But a place is more than its visitor-facing identity. It is also the surf culture that has defined a stretch of coastline for generations. The founding story that never made it into the brochure. The neighborhood that shaped the city's music before anyone was paying attention.</p>
+          <p>ASP & Co. works with the people responsible for how a destination is represented — building a visual record that holds both: the identity travelers already know and the lived culture that exists alongside it. A brochure is not a place. ASP & Co. documents what the brochure left out.</p>
+          <div class="client-row-deliverables">
+            <span class="offering-tag" onclick="showPage('stepter-cultural-report')">Work: The Stepter Cultural Report</span>
+            <span class="deliverable-tag">Licensed Visual Archive</span>
+            <span class="deliverable-tag">Identity Portfolio Documentation</span>
+            <span class="offering-tag" onclick="showPage('license')">Work: License Imagery</span>
           </div>
+          <p class="sector-link" onclick="showPage('stpete-archive')">See the record →</p>
         </div>
       </div>
 
-      <div class="client-row" id="cr-operators">
-        <div class="client-row-header" onclick="toggleClientRow('cr-operators')">
-          <span class="client-row-label">Travel, Hospitality & Water Recreation</span>
-          <span class="client-row-title">Operators, cruise lines, hotels & resorts, <em>charter & water-recreation brands</em></span>
-          <span class="client-row-toggle">+</span>
+      <div class="client-card" id="cr-operators">
+        <div class="client-card-left">
+          <svg class="client-card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="10" r="4"/>
+            <line x1="24" y1="14" x2="24" y2="40"/>
+            <path d="M10 26c0 8 6 14 14 14s14-6 14-14"/>
+            <line x1="14" y1="22" x2="34" y2="22"/>
+          </svg>
+          <span class="client-card-label">Travel, Hospitality & Water Recreation</span>
+          <span class="client-card-title">Operators, cruise lines, hotels & resorts, <em>charter & water-recreation brands</em></span>
         </div>
-        <div class="client-row-body">
-          <div class="client-row-body-spacer"></div>
-          <div class="client-row-body-content">
-            <p>The most memorable travel experiences aren't the ones that show guests the most polished version of a place. They're the ones that show them something true about it. A hotel that knows the neighborhood it's in. A tour that follows routes people actually travel, not just the ones that photograph well. A charter or water-recreation outfitter that understands the water it operates on, not just the waiver it hands out. An itinerary built from research, not from marketing instinct.</p>
-            <p>ASP & Co. partners with the people who decide what an experience actually is — documenting what it's connected to: the geography, the communities, the cultural life that makes a destination worth visiting in the first place. A polished stay isn't a relationship with a place. ASP & Co. supplies the research that builds one.</p>
-            <div class="client-row-deliverables">
-              <span class="deliverable-tag">Rooted Travel Partnership</span>
-              <span class="deliverable-tag">Field Documentation</span>
-              <span class="deliverable-tag">Physical Reckoning — Experience Design</span>
-              <span class="offering-tag" onclick="showPage('rooted-travel')">Work: Rooted Travel Partnerships</span>
-            </div>
-            <p class="sector-link" onclick="showPage('rooted-travel')">See the record →</p>
+        <div class="client-card-body">
+          <p>The most memorable travel experiences aren't the ones that show guests the most polished version of a place. They're the ones that show them something true about it. A hotel that knows the neighborhood it's in. A tour that follows routes people actually travel, not just the ones that photograph well. A charter or water-recreation outfitter that understands the water it operates on, not just the waiver it hands out. An itinerary built from research, not from marketing instinct.</p>
+          <p>ASP & Co. partners with the people who decide what an experience actually is — documenting what it's connected to: the geography, the communities, the cultural life that makes a destination worth visiting in the first place. A polished stay isn't a relationship with a place. ASP & Co. supplies the research that builds one.</p>
+          <div class="client-row-deliverables">
+            <span class="deliverable-tag">Rooted Travel Partnership</span>
+            <span class="deliverable-tag">Field Documentation</span>
+            <span class="deliverable-tag">Physical Reckoning — Experience Design</span>
+            <span class="offering-tag" onclick="showPage('rooted-travel')">Work: Rooted Travel Partnerships</span>
           </div>
+          <p class="sector-link" onclick="showPage('rooted-travel')">See the record →</p>
         </div>
       </div>
 
-      <div class="client-row" id="cr-waterfronts">
-        <div class="client-row-header" onclick="toggleClientRow('cr-waterfronts')">
-          <span class="client-row-label">Working Waterfronts</span>
-          <span class="client-row-title">Seafood suppliers, fisheries companies, <em>marine resource managers</em></span>
-          <span class="client-row-toggle">+</span>
+      <div class="client-card" id="cr-waterfronts">
+        <div class="client-card-left">
+          <svg class="client-card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 24c6-8 14-12 22-12 8 0 14 5 14 12s-6 12-14 12c-8 0-16-4-22-12z"/>
+            <path d="M42 24l6-6v12z"/>
+            <circle cx="16" cy="21" r="1.3" fill="currentColor" stroke="none"/>
+          </svg>
+          <span class="client-card-label">Working Waterfronts</span>
+          <span class="client-card-title">Seafood suppliers, fisheries companies, <em>marine resource managers</em></span>
         </div>
-        <div class="client-row-body">
-          <div class="client-row-body-spacer"></div>
-          <div class="client-row-body-content">
-            <p>A destination's visitor-facing identity rarely includes the people who actually work its water — the boats that go out before sunrise, the docks where the catch comes in, the trade routes and family businesses that have moved seafood from water to table for generations. That economy is not a backdrop. It is often the oldest continuous relationship a place has with its water.</p>
-            <p>ASP & Co. documents the working waterfront with the same rigor applied to every other geography: the people, the trade, the boats, the docks, and the communities built around them. A fishery is not a stock photo of a sunset over water. ASP & Co. documents the labor that makes the water a living economy, not just a view.</p>
-            <div class="client-row-deliverables">
-              <span class="deliverable-tag">Working Waterfront Documentation</span>
-              <span class="deliverable-tag">Identity Portfolio Development</span>
-              <span class="offering-tag" onclick="showPage('stepter-cultural-report')">Work: The Stepter Cultural Report</span>
-              <span class="offering-tag" onclick="showPage('license')">Work: License Imagery</span>
-            </div>
-            <p class="sector-link" onclick="showPage('tarpon-archive')">See the record →</p>
+        <div class="client-card-body">
+          <p>A destination's visitor-facing identity rarely includes the people who actually work its water — the boats that go out before sunrise, the docks where the catch comes in, the trade routes and family businesses that have moved seafood from water to table for generations. That economy is not a backdrop. It is often the oldest continuous relationship a place has with its water.</p>
+          <p>ASP & Co. documents the working waterfront with the same rigor applied to every other geography: the people, the trade, the boats, the docks, and the communities built around them. A fishery is not a stock photo of a sunset over water. ASP & Co. documents the labor that makes the water a living economy, not just a view.</p>
+          <div class="client-row-deliverables">
+            <span class="deliverable-tag">Working Waterfront Documentation</span>
+            <span class="deliverable-tag">Identity Portfolio Development</span>
+            <span class="offering-tag" onclick="showPage('stepter-cultural-report')">Work: The Stepter Cultural Report</span>
+            <span class="offering-tag" onclick="showPage('license')">Work: License Imagery</span>
           </div>
+          <p class="sector-link" onclick="showPage('tarpon-archive')">See the record →</p>
         </div>
       </div>
 
-      <div class="client-row" id="cr-institutions">
-        <div class="client-row-header" onclick="toggleClientRow('cr-institutions')">
-          <span class="client-row-label">Research & Cultural Institutions</span>
-          <span class="client-row-title">Heritage organizations, conservation nonprofits, universities, <em>and marine science institutions</em></span>
-          <span class="client-row-toggle">+</span>
+      <div class="client-card" id="cr-institutions">
+        <div class="client-card-left">
+          <svg class="client-card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 12c-4-3-10-4-16-3v26c6-1 12 0 16 3 4-3 10-4 16-3V9c-6-1-12 0-16 3z"/>
+            <line x1="24" y1="12" x2="24" y2="38"/>
+          </svg>
+          <span class="client-card-label">Research & Cultural Institutions</span>
+          <span class="client-card-title">Heritage organizations, conservation nonprofits, universities, <em>and marine science institutions</em></span>
         </div>
-        <div class="client-row-body">
-          <div class="client-row-body-spacer"></div>
-          <div class="client-row-body-content">
-            <p>Conservation has always understood that what isn't documented is at risk. The same is true for culture, and increasingly, for the science built to study both. The surf shops that have been on a barrier island for forty years. The congregation whose music shaped a city's identity. The ecological surveys and marine assessments that rarely reach the public they're meant to serve. These aren't marginal stories or incomplete reports. They are the living record of what a place is — and without documentation and translation, they disappear or go unread.</p>
-            <p>ASP & Co. works with the people leading that preservation mission, and with the researchers whose findings need to reach a public audience, using the same methodology applied to every geography: document the physical environment, document the cultural life that grew out of it, document the present-day condition honestly, and translate it into imagery and narrative a general audience can connect to. An archive isn't preservation until it's public, and a report is not a story. ASP & Co. gives the culture and the science a record before either goes unseen.</p>
-            <div class="client-row-deliverables">
-              <span class="deliverable-tag">Community & Institutional Documentation</span>
-              <span class="deliverable-tag">The Reckoning of Place — Public Record</span>
-              <span class="deliverable-tag">Science Field Documentation</span>
-              <span class="deliverable-tag">Licensed Archive for Institutional & Editorial Use</span>
-              <span class="offering-tag" onclick="showPage('stepter-cultural-report')">Work: The Stepter Cultural Report</span>
-              <span class="offering-tag" onclick="showPage('license')">Work: License Imagery</span>
-            </div>
-            <p class="sector-link" onclick="showPage('tarpon-archive'); setTimeout(function(){ var el=document.getElementById('tarpon-node2'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 50)">See the record →</p>
+        <div class="client-card-body">
+          <p>Conservation has always understood that what isn't documented is at risk. The same is true for culture, and increasingly, for the science built to study both. The surf shops that have been on a barrier island for forty years. The congregation whose music shaped a city's identity. The ecological surveys and marine assessments that rarely reach the public they're meant to serve. These aren't marginal stories or incomplete reports. They are the living record of what a place is — and without documentation and translation, they disappear or go unread.</p>
+          <p>ASP & Co. works with the people leading that preservation mission, and with the researchers whose findings need to reach a public audience, using the same methodology applied to every geography: document the physical environment, document the cultural life that grew out of it, document the present-day condition honestly, and translate it into imagery and narrative a general audience can connect to. An archive isn't preservation until it's public, and a report is not a story. ASP & Co. gives the culture and the science a record before either goes unseen.</p>
+          <div class="client-row-deliverables">
+            <span class="deliverable-tag">Community & Institutional Documentation</span>
+            <span class="deliverable-tag">The Reckoning of Place — Public Record</span>
+            <span class="deliverable-tag">Science Field Documentation</span>
+            <span class="deliverable-tag">Licensed Archive for Institutional & Editorial Use</span>
+            <span class="offering-tag" onclick="showPage('stepter-cultural-report')">Work: The Stepter Cultural Report</span>
+            <span class="offering-tag" onclick="showPage('license')">Work: License Imagery</span>
           </div>
+          <p class="sector-link" onclick="showPage('tarpon-archive'); setTimeout(function(){ var el=document.getElementById('tarpon-node2'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 50)">See the record →</p>
         </div>
       </div>
 
-      <div class="client-row" id="cr-editorial">
-        <div class="client-row-header" onclick="toggleClientRow('cr-editorial')">
-          <span class="client-row-label">Editorial</span>
-          <span class="client-row-title">Regional culture, luxury travel, <em>and diaspora travel publications</em></span>
-          <span class="client-row-toggle">+</span>
+      <div class="client-card" id="cr-editorial">
+        <div class="client-card-left">
+          <svg class="client-card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M34 8l6 6-20 20-8 2 2-8z"/>
+            <line x1="28" y1="14" x2="34" y2="20"/>
+          </svg>
+          <span class="client-card-label">Editorial</span>
+          <span class="client-card-title">Regional culture, luxury travel, <em>and diaspora travel publications</em></span>
         </div>
-        <div class="client-row-body">
-          <div class="client-row-body-spacer"></div>
-          <div class="client-row-body-content">
-            <p>Place-based storytelling is easy to get wrong. A weekend visit produces a weekend's worth of observation. What editors and readers can sense — even when they can't name it — is the difference between a piece written from the outside and one written from sustained presence inside a place.</p>
-            <p>ASP & Co. brings a documented research methodology, a proprietary archive built from years of field work across the American coastal South, and a geographic thesis to every editorial relationship: that the places worth writing about are the ones where the lived culture runs deeper than the visitor experience, and where the two exist alongside each other in ways that reward careful attention. A weekend produces observation, not perspective. ASP & Co. brings a method for building that presence, place by place, and the archive to show for it.</p>
-            <div class="client-row-deliverables">
-              <span class="deliverable-tag">Place-Based Editorial Photography</span>
-              <span class="deliverable-tag">The Reckoning of Place — Long-Form Narrative</span>
-              <span class="deliverable-tag">Archive Licensing for Publication</span>
-              <span class="offering-tag" onclick="showPage('license')">Work: License Imagery</span>
-            </div>
-            <p class="sector-link" onclick="showPage('nashville-archive')">See the record →</p>
+        <div class="client-card-body">
+          <p>Place-based storytelling is easy to get wrong. A weekend visit produces a weekend's worth of observation. What editors and readers can sense — even when they can't name it — is the difference between a piece written from the outside and one written from sustained presence inside a place.</p>
+          <p>ASP & Co. brings a documented research methodology, a proprietary archive built from years of field work across the American coastal South, and a geographic thesis to every editorial relationship: that the places worth writing about are the ones where the lived culture runs deeper than the visitor experience, and where the two exist alongside each other in ways that reward careful attention. A weekend produces observation, not perspective. ASP & Co. brings a method for building that presence, place by place, and the archive to show for it.</p>
+          <div class="client-row-deliverables">
+            <span class="deliverable-tag">Place-Based Editorial Photography</span>
+            <span class="deliverable-tag">The Reckoning of Place — Long-Form Narrative</span>
+            <span class="deliverable-tag">Archive Licensing for Publication</span>
+            <span class="offering-tag" onclick="showPage('license')">Work: License Imagery</span>
           </div>
+          <p class="sector-link" onclick="showPage('nashville-archive')">See the record →</p>
         </div>
       </div>
 
-      <div class="client-row" id="cr-communities">
-        <div class="client-row-header" onclick="toggleClientRow('cr-communities')">
-          <span class="client-row-label">Communities We Document</span>
-          <span class="client-row-title">The people whose place this already is — <em>never a sales path</em></span>
-          <span class="client-row-toggle">+</span>
+      <div class="client-card" id="cr-communities">
+        <div class="client-card-left">
+          <svg class="client-card-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="16" r="6"/>
+            <path d="M6 40c0-8 5-13 12-13s12 5 12 13"/>
+            <circle cx="33" cy="18" r="5"/>
+            <path d="M27 40c1-6 5-10 11-10 5 0 9 3 11 8"/>
+          </svg>
+          <span class="client-card-label">Communities We Document</span>
+          <span class="client-card-title">The people whose place this already is — <em>never a sales path</em></span>
         </div>
-        <div class="client-row-body">
-          <div class="client-row-body-spacer"></div>
-          <div class="client-row-body-content">
-            <span class="coming-tag" style="margin-top:0; margin-bottom:12px;">No-Charge Partnership</span>
-            <p>Every Identity Portfolio ASP & Co. builds is made possible by the people already living inside the place being documented — the families, congregations, tradespeople, and elders whose daily life is the culture a visitor-facing identity can only gesture at. They are not a client ASP & Co. is selling to. They are the reason the work exists at all.</p>
-            <p>Communities who share their stories with ASP & Co. are consulted on how they're represented, credited by name wherever their story appears, and compensated within every project budget. They are never charged — not for access, not for their time, not for the right to be documented accurately.</p>
-            <div class="client-row-deliverables">
-              <span class="deliverable-tag">Community Consultation</span>
-              <span class="deliverable-tag">Named Credit</span>
-              <span class="deliverable-tag">Compensation Built Into Every Project Budget</span>
-            </div>
-            <p class="sector-link" onclick="showPage('tarpon-archive')">See the record →</p>
+        <div class="client-card-body">
+          <span class="coming-tag" style="margin-top:0; margin-bottom:12px;">No-Charge Partnership</span>
+          <p>Every Identity Portfolio ASP & Co. builds is made possible by the people already living inside the place being documented — the families, congregations, tradespeople, and elders whose daily life is the culture a visitor-facing identity can only gesture at. They are not a client ASP & Co. is selling to. They are the reason the work exists at all.</p>
+          <p>Communities who share their stories with ASP & Co. are consulted on how they're represented, credited by name wherever their story appears, and compensated within every project budget. They are never charged — not for access, not for their time, not for the right to be documented accurately.</p>
+          <div class="client-row-deliverables">
+            <span class="deliverable-tag">Community Consultation</span>
+            <span class="deliverable-tag">Named Credit</span>
+            <span class="deliverable-tag">Compensation Built Into Every Project Budget</span>
           </div>
+          <p class="sector-link" onclick="showPage('tarpon-archive')">See the record →</p>
         </div>
       </div>
 
@@ -6666,14 +6648,6 @@ img { max-width: 100%; display: block; }
 
   function closeMobile() {
     document.getElementById('mobileMenu').classList.remove('open');
-  }
-
-  // Client row accordion
-  function toggleClientRow(id) {
-    const row = document.getElementById(id);
-    const isOpen = row.classList.contains('open');
-    document.querySelectorAll('.client-row').forEach(r => r.classList.remove('open'));
-    if (!isOpen) row.classList.add('open');
   }
 
   // ── Mapbox token ───────────────────────────────────────────
